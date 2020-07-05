@@ -20,3 +20,7 @@ def login(request):
 def signup(request):
 
     return render(request,'mainsite/Signup.html')
+
+def dashboard(request):
+
+    return render(request,'mainsite/Dashboard.html')

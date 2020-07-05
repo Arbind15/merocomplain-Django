@@ -1,10 +1,28 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'mainsite/dashboard.css' %}">
+<script type="text/javascript" src="{% static 'mainsite/dashboard.js' %}"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
+
 </head>
 <body>
+
+<div id="mySidenav" class="sidenav">
+{#  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>#}
+
+   <a href="javascript:void(0)" onclick="toggleNav()"   class="closebtn">
+       <span style="font-size:30px;cursor:pointer; color: #f1f1f1" >&#9776;</span>
+   </a>
+  <a href="#"> <i class="fas fa-home icn"></i>  <span>Dashboard</span></a>
+    <a href="#"><i class="fas fa-bug icn"></i>  <span>My Complain</span></a>
+  <a href="#"><i class="far fa-flag icn"></i>  <span>Reports</span></a>
+  <a href="#"><i class="far fa-question-circle icn"></i><span>FAQ</span>  </a>
+</div>
+
+
 
 </body>
 </html>
