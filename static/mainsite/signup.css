@@ -1,0 +1,68 @@
+.main_div{
+    background-color: #3b6978;
+    display: flex;
+    /*height: 100vh;*/
+    justify-content: center;
+    padding: 5px;
+}
+
+.signu_div{
+
+}
+.main_card{
+    align-self: flex-start;
+    margin-top: 5px;
+    background-color: #3b6978;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.inpt{
+    background-color: #3b6978;
+    margin: 5px;
+}
+
+.lgn_btn{
+  border: none;
+  border-radius: 3px;
+  background-color: #84a9ac;
+}
+
+.lgn_btn:hover{
+  cursor: pointer;
+  background-color: #84b9ac;
+}
+.lgn_lbl_txt{
+  color: #f4f6ff;
+    font-size: 13px;
+}
+.agrmnt{
+    margin-left: 10px;
+}
+
+.lgn_inpt{
+  border: none;
+  border-radius: 3px;
+}
+.file_lbl{
+    background-color: #84a9ac;
+    border-radius: 3px;
+    padding: 5px;
+    font-size: 13px;
+}
+.file_lbl:hover{
+    background-color: #84b9ac;
+    cursor: pointer;
+}
+@media(min-width: 500px){
+    .main_card{
+        /*background-color: red;*/
+        min-width: 500px;
+    }
+}
+
+@media(min-width: 700px){
+    .main_card{
+        /*background-color: red;*/
+        min-width: 600px;
+    }
+}

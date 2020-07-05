@@ -1,10 +1,226 @@
-<!DOCTYPE html>
+{% load static %}
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-</body>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'mainsite/signup.css' %}">
+    <script type="text/javascript" src="{% static 'mainsite/signup.js' %}"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
+    <title>Signup | Mero Complain</title>
+  </head>
+  <body>
+
+    <div class="container-fluid main_div">
+            <div class="card main_card">
+                <div class="card-header">
+                    SignUp
+                </div>
+                <div class="card inpt">
+                    <div class="card-header">
+                        Personal Info:
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="lgn_lbl_txt">Full Name:</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" class="lgn_inpt">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="lgn_lbl_txt">Email:</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" class="lgn_inpt">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="lgn_lbl_txt">Date of Birth:</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="date" class="lgn_inpt">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="lgn_lbl_txt">Gender:</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="radio" id="male" name="gender" value="male">
+                                  <label for="male" class="lgn_lbl_txt">Male</label>
+                                  <input type="radio" id="female" name="gender" value="female">
+                                  <label for="female" class="lgn_lbl_txt">Female</label>
+                                  <input type="radio" id="other" name="gender" value="other">
+                                  <label for="other" class="lgn_lbl_txt">Other</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="lgn_lbl_txt">Mobile No:</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" class="lgn_inpt">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card inpt">
+                    <div class="card-header">
+                        Address:
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="lgn_lbl_txt">Country:</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <select name="country" id="country" class="lgn_inpt">
+                                    <option value="cntry">Nepal</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="lgn_lbl_txt">Provience:</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <select name="proviece" id="proviece" class="lgn_inpt">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">4</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="lgn_lbl_txt">Provience:</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <select name="dict" id="dict" class="lgn_inpt">
+                                    <option value="cntry">District</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="lgn_lbl_txt">Muncipal/VDC:</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <select name="dict" id="dict" class="lgn_inpt">
+                                    <option value="cntry">ABC</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="lgn_lbl_txt">Chowk/Tole:</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input name="tole" class="lgn_inpt">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="lgn_lbl_txt">Postal Code:</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input name="postal" class="lgn_inpt">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="card inpt">
+                    <div class="card-header">
+                        Documents:
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="lgn_lbl_txt">Documents Type:</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <select name="document" id="document" class="lgn_inpt">
+                                    <option value="ctzn">Citizenship Certificate</option>
+                                    <option value="lic">Driving Licence</option>
+                                    <option value="psprt">Passport</option>
+                                    <option value="vtr">Voter ID</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="lgn_lbl_txt">Document No:</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" class="lgn_inpt">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="lgn_lbl_txt">Document Front:</label>
+                            </div>
+                            <div class="col-sm-8">
+                                 <label for="front" class="file_lbl">Upload File</label>
+                                <input id="front" type="file" style="display: none;">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="lgn_lbl_txt">Document Rare:</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <label for="rare" class="file_lbl">Upload File</label>
+                                <input id="rare" type="file"  style="display: none;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="agrmnt">
+                         <input type="checkbox" id="agrrmt">
+                        <label for="agrrmt" class="lgn_lbl_txt">Agree our terms and conditions.</label>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <div class="row justify-content-center">
+                        <div class="col-4">
+                            <button class="lgn_btn">Cancel</button>
+                        </div>
+                        <div class="col-3">
+                            <button class="lgn_btn">Signup</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
 </html>

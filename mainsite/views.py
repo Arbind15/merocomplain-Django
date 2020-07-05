@@ -16,3 +16,7 @@ def home(request):
 def login(request):
 
     return render(request,'mainsite/login.html')
+
+def signup(request):
+
+    return render(request,'mainsite/Signup.html')
