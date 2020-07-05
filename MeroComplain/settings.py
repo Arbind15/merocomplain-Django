@@ -25,7 +25,7 @@ SECRET_KEY = '_)+^4^2@0z12lsdp_q9_a%k^z1jsn_juku8&rmj9w0=gim*r^e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['merocomplain.herokuapp.com','127.0.0.1']
 
 
 # Application definition
