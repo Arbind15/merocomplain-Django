@@ -1,0 +1,79 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'mainsite/login.css' %}">
+    <script type="text/javascript" src="{% static 'mainsite/login.js' %}"></script>
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
+      <title>Login | Mero Complain</title>
+  </head>
+  <body>
+
+
+  <div class="main_div">
+        <div class="login_form">
+            <div class="card login_card">
+                <div class="card-body">
+                    <div class="login_main_lable">
+                        Mero Complain
+                    </div>
+                    <form>
+                        <table>
+                            <tr>
+                                <td>
+                                    <label class="lgn_lbl_txt">User ID:</label>
+                                </td>
+                                <td>
+                                    <input type="text" class="lgn_inpt">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="lgn_lbl_txt">Password:</label>
+                                </td>
+                                <td>
+                                    <input type="password" class="lgn_inpt">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="remember" type="checkbox">
+                                    <label class="lgn_lbl_txt" for="remember">Remember me.</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button type="reset" class="lgn_btn" >Cancel</button>
+                                </td>
+                                <td>
+                                    <button type="submit" class="lgn_btn">Login</button>
+                                </td>
+                            </tr>
+                        </table>
+                        <div>
+                            <a href="#" class="lgn_lnk">Forget Password</a>
+                        </div>
+                        <div>
+                            <a href="#" class="lgn_lnk">Don't have an account? SignUP</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+  </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
+

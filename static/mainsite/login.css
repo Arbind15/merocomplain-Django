@@ -1,0 +1,51 @@
+.main_div{
+    background-color: #3b6978;
+    display: flex;
+    justify-content: center;
+    vertical-align: center;
+    height: 100vh;
+}
+
+.login_form{
+    align-self: center;
+
+}
+
+.login_card{
+  background-color: #3b6978;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.login_main_lable{
+  text-align: center;
+  font: 30px bold Bahnschrift Anuradha;
+  margin-bottom: 20px;
+}
+.lgn_lbl_txt{
+  color: #f4f6ff;
+}
+.lgn_lnk{
+  text-decoration: none;
+  color: #f4f6ff;
+  font-size: 10px;
+
+}
+
+.lgn_lnk:hover{
+  color: #f4f4ff;
+}
+
+.lgn_btn{
+  border: none;
+  border-radius: 3px;
+  background-color: #84a9ac;
+}
+
+.lgn_btn:hover{
+  cursor: pointer;
+  background-color: #84b9ac;
+}
+
+.lgn_inpt{
+  border: none;
+  border-radius: 3px;
+}
