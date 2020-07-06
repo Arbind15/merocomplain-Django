@@ -1,0 +1,157 @@
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background-color: #3b6978;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  font-size: 36px;
+  /*margin-left: 50px;*/
+  text-decoration: none;
+}
+
+.closebtn_sm:hover{
+  text-decoration: none;
+  color: rgba(1,1,1,0.8);
+}
+.toggler_sm:hover{
+    text-decoration: none;
+    color: rgba(1,1,1,0.8);
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.icn{
+  font-size: 20px;
+}
+
+.nav_itm{
+  padding: 8px 8px 8px 20px;
+  text-decoration: none;
+  font-size: 15px;
+  color: rgba(1,1,1,0.8);
+  display: block;
+  transition: 0.3s;
+}
+
+.nav_itm:hover{
+  color: white;
+  background-color: rgba(1,1,1,0.3);
+  text-decoration: none;
+  /*background-color: brown;*/
+  border-left: 3px solid rgba(182,2,33,0.9);
+
+}
+
+.toggler_sm{
+  position: absolute;
+  top: 0;
+  /*right: 15px;*/
+  font-size: 36px;
+  margin-left: 10px;
+  margin-top: -7px!important;
+  text-decoration: none;
+  display: none;
+}
+
+.closebtn_sm{
+  position: absolute;
+  top: 0;
+  color: rgba(1,1,1,0.8);
+  right: 15px;
+  font-size: 36px;
+  margin-left: 50px;
+  text-decoration: none;
+  display: none;
+
+}
+
+@media (max-width: 800px) {
+  .sidenav{
+    width: 0;
+  }
+  #main_content{
+    left: 0px;
+    z-index: 99;
+  }
+
+  .closebtn{
+    display: none;
+  }
+  .closebtn_sm{
+    display: block;
+  }
+
+  .toggler_sm{
+    display: block;
+  }
+  #main_content{
+    width: 100%;
+  }
+
+
+}
+
+@media (min-width: 800px) {
+  .sidenav{
+    width: 200px;
+    /*background-color: red;*/
+  }
+  .closebtn{
+    display: block;
+  }
+}
+
+.main_content{
+  background-color: #84a9ac;
+  /*height: 100vh;*/
+  height: 100vh;
+  width: calc(calc(100vw) - 200px);
+  /*overflow-x: auto;*/
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 200px;
+  /*background-color: red;*/
+  transition: 0.5s;
+  padding:0!important;
+  margin: 0!important;
+}
+
+.main_container{
+  /*background-color: #84a9ac;*/
+}
+.hom_nav{
+  background-color: #eeeeee;
+  text-align: right;
+  font-size: 15px;
+}
+.chng_cnt{
+  background-color: green;
+}
+
+.pro_pic{
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+}
+.pro_tbl{
+  margin-left: auto;
+}

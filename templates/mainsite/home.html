@@ -1,24 +1,81 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="{% static 'mainsite/dashboard.css' %}">
-<script type="text/javascript" src="{% static 'mainsite/dashboard.js' %}"></script>
+    <title>Home | Mero Complain</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'mainsite/home.css' %}">
+    <script type="text/javascript" src="{% static 'mainsite/home.js' %}"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
+          integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
+<div class="main_container">
+
+    <div id="mySidenav" class="sidenav">
+
+        <a href="javascript:void(0)" class="closebtn_sm" onclick="closeNavSm()">&times;</a>
+
+        <a href="javascript:void(0)" onclick="toggleNav()" class="closebtn">
+            <span style="font-size:30px;cursor:pointer; color: rgba(1,1,1,0.8)">&#9776;</span>
+        </a>
+        <a href="javascript:void(0)" onclick="dashBoard()" class="nav_itm"> <i class="fas fa-home icn"></i> <span>Dashboard</span></a>
+        <a href="javascript:void(0)" onclick="myComplain()" class="nav_itm"><i class="fas fa-bug icn"></i> <span>My Complain</span></a>
+        <a href="javascript:void(0)" onclick="reports()" class="nav_itm"><i class="far fa-flag icn"></i>
+            <span>Reports</span></a>
+        <a href="javascript:void(0)" class="nav_itm" onclick="faq()"><i
+                class="far fa-question-circle icn"></i><span>FAQ</span> </a>
+    </div>
+
+    <div class="main_content" id="main_content">
+        <a href="javascript:void(0)" onclick="openNavSm()" class="toggler_sm">
+            <span style="font-size:30px;cursor:pointer; color: rgba(1,1,1,0.8)">&#9776;</span>
+        </a>
+        <div class="hom_nav container-fluid">
+            <table class="pro_tbl">
+                <tr>
+                    <td>
+                        Arbind Kumar Mehta
+                    </td>
+                    <td rowspan="2">
+                        <img src="{% static 'mainsite/a.jpg' %}" class="pro_pic">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        ID No: 06-06-0772-258
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="chng_cnt container-fluid">
+
+        </div>
+
+
+    </div>
+
 </div>
 
-<h2>Animated Sidenav Example</h2>
-<p>Click on the element below to open the side navigation menu.</p>
-<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
 </body>
 </html>
