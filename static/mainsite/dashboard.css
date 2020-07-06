@@ -15,25 +15,14 @@ body {
   padding-top: 60px;
 }
 
-.sidenav a {
-  padding: 8px 8px 8px 20px;
-  text-decoration: none;
-  font-size: 15px;
-  color: rgba(1,1,1,0.8);
-  display: block;
-  transition: 0.3s;
-}
-
-.sidenav a:hover {
-  color: #f1f1f1;
-}
 
 .sidenav .closebtn {
   position: absolute;
   top: 0;
-  right: 10px;
+  right: 15px;
   font-size: 36px;
-  margin-left: 50px;
+  /*margin-left: 50px;*/
+  text-decoration: none;
 }
 
 @media screen and (max-height: 450px) {
@@ -42,4 +31,71 @@ body {
 }
 .icn{
   font-size: 20px;
+}
+
+.nav_itm{
+  padding: 8px 8px 8px 20px;
+  text-decoration: none;
+  font-size: 15px;
+  color: rgba(1,1,1,0.8);
+  display: block;
+  transition: 0.3s;
+}
+
+.nav_itm:hover{
+  color: white;
+  background-color: rgba(1,1,1,0.3);
+  /*background-color: brown;*/
+  border-left: 3px solid rgba(182,2,33,0.9);
+
+}
+
+.toggler_sm{
+  position: absolute;
+  top: 0;
+  /*right: 15px;*/
+  font-size: 36px;
+  /*margin-left: 2px;*/
+  text-decoration: none;
+  display: none;
+}
+
+.closebtn_sm{
+  position: absolute;
+  top: 0;
+  color: rgba(1,1,1,0.8);
+  right: 15px;
+  font-size: 36px;
+  margin-left: 50px;
+  text-decoration: none;
+  display: none;
+
+}
+
+@media (max-width: 800px) {
+  .sidenav{
+    width: 0;
+  }
+  .closebtn{
+    display: none;
+  }
+  .closebtn_sm{
+    display: block;
+  }
+
+  .toggler_sm{
+    display: block;
+  }
+
+
+}
+
+@media (min-width: 800px) {
+  .sidenav{
+    width: 200px;
+    /*background-color: red;*/
+  }
+  .closebtn{
+    display: block;
+  }
 }
