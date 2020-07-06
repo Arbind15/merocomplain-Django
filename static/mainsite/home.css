@@ -55,10 +55,13 @@ body {
   color: white;
   background-color: rgba(1,1,1,0.3);
   text-decoration: none;
+  transition: 500ms;
+  animation: ease-in-out 500ms;
   /*background-color: brown;*/
   border-left: 3px solid rgba(182,2,33,0.9);
 
 }
+
 
 .toggler_sm{
   position: absolute;
@@ -66,7 +69,7 @@ body {
   /*right: 15px;*/
   font-size: 36px;
   margin-left: 10px;
-  margin-top: -7px!important;
+  margin-top: -10px!important;
   text-decoration: none;
   display: none;
 }
@@ -139,9 +142,11 @@ body {
   /*background-color: #84a9ac;*/
 }
 .hom_nav{
-  background-color: #eeeeee;
+  font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+  background-color: #dadad6;
+  color: rgba(0,0,0,0.71);
   text-align: right;
-  font-size: 15px;
+  font-size: 13px;
 }
 .chng_cnt{
   background-color: green;

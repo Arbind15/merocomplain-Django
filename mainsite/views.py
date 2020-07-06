@@ -24,3 +24,15 @@ def signup(request):
 def dashboard(request):
 
     return render(request,'mainsite/Dashboard.html')
+
+def myComplain(request):
+
+    return render(request,'mainsite/mycomplain.html')
+
+def report(request):
+
+    return render(request,'mainsite/report.html')
+
+def faq(request):
+
+    return render(request,'mainsite/faq.html')

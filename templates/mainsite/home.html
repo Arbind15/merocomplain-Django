@@ -26,11 +26,11 @@
         <a href="javascript:void(0)" onclick="toggleNav()" class="closebtn">
             <span style="font-size:30px;cursor:pointer; color: rgba(1,1,1,0.8)">&#9776;</span>
         </a>
-        <a href="javascript:void(0)" onclick="dashBoard()" class="nav_itm"> <i class="fas fa-home icn"></i> <span>Dashboard</span></a>
-        <a href="javascript:void(0)" onclick="myComplain()" class="nav_itm"><i class="fas fa-bug icn"></i> <span>My Complain</span></a>
-        <a href="javascript:void(0)" onclick="reports()" class="nav_itm"><i class="far fa-flag icn"></i>
+        <a href="javascript:void(0)" id="dashboard" onclick="dashBoard()" class="nav_itm"> <i class="fas fa-home icn"></i> <span>Dashboard</span></a>
+        <a href="javascript:void(0)" id="mycomplain" onclick="myComplain()" class="nav_itm"><i class="fas fa-bug icn"></i> <span>My Complain</span></a>
+        <a href="javascript:void(0)" id="report" onclick="reports()" class="nav_itm"><i class="far fa-flag icn"></i>
             <span>Reports</span></a>
-        <a href="javascript:void(0)" class="nav_itm" onclick="faq()"><i
+        <a href="javascript:void(0)" class="nav_itm" id="faq" onclick="faq()"><i
                 class="far fa-question-circle icn"></i><span>FAQ</span> </a>
     </div>
 
@@ -55,11 +55,9 @@
                 </tr>
             </table>
         </div>
-        <div class="chng_cnt container-fluid">
+        <div class="container-fluid" id="chng_cnt">
 
         </div>
-
-
     </div>
 
 </div>
