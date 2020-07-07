@@ -11,6 +11,7 @@ urlpatterns = [
     path('mycomplain/', views.myComplain, name='mycomplain'),
     path('report/', views.report, name='report'),
     path('faq/', views.faq, name='faq'),
-    path('login/', views.login, name='login')
+    path('login/', views.login, name='login'),
+    path('newcomplain/', views.newComplain, name='newcomplain')
 
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

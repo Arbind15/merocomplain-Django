@@ -1,6 +1,37 @@
-{% load static %}
-<div>
-    <p style="font-size: 30px; color: blue;">
-        My Complain From Server
-    </p>
+<div class="compln" id="com_cont">
+    <div class="new_cmp">
+        <button onclick="newComplain()" data-toggle="tooltip" data-placement="bottom"
+                title="New Comment"
+                class="addc"><i class="fas fa-plus-circle"></i></button>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-sm-1 col-md-2 align-self-start">
+            </div>
+            <div class="col-12 col-sm-10 col-md-8 align-self-center">
+
+            </div>
+            <div class="col-12 col-sm-1 col-md-2 align-self-end">
+            </div>
+        </div>
+    </div>
 </div>
+
+<style>
+    .addc {
+        border: 0;
+        color: #f4f4ff;
+        border-radius: 3px;
+        background-color: #84a9ac;
+    }
+
+    .addc:hover {
+        background-color: #84b9ac;
+        cursor: pointer;
+    }
+
+    .compln {
+        margin: 10px;
+    }
+
+</style>

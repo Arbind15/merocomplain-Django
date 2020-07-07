@@ -1,5 +1,6 @@
 var nav = true;
 
+
 function openNav() {
   document.getElementById("mySidenav").style.width = "200px";
   document.getElementById("main_content").style = "left: 200px; calc(calc(100vw) - 200px);";
@@ -43,7 +44,6 @@ function openNavSm() {
 
 
 function dashBoard() {
-  // console.log('dahboard');
   document.getElementById('dashboard').style='border-left: 3px solid rgba(182,2,33,0.9);' +
       'color: white;background-color: rgba(1,1,1,0.3);';
   document.getElementById('mycomplain').style='';
@@ -150,3 +150,21 @@ function faq() {
 
 
 }
+
+function newComplain() {
+        var div = document.getElementById('com_cont');
+        // div.innerHTML='<p>Hi from Dashboard</p>';
+
+        var xhttp = new XMLHttpRequest();
+        var url = '/newcomplain';
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var rtxt = (xhttp.responseText);
+                // console.log(rtxt);
+                div.innerHTML = rtxt;
+            }
+        };
+        xhttp.open("GET", url, true);
+        xhttp.send();
+    }
+

@@ -36,3 +36,7 @@ def report(request):
 def faq(request):
 
     return render(request,'mainsite/faq.html')
+
+def newComplain(request):
+
+    return render(request,'mainsite/newcomplain.html')

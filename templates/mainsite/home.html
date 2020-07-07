@@ -5,7 +5,9 @@
     <title>Home | Mero Complain</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'mainsite/home.css' %}">
+{#    <link rel="stylesheet" href="{% static 'mainsite/dashboard.css' %}">#}
     <script type="text/javascript" src="{% static 'mainsite/home.js' %}"></script>
+{#    <script type="text/javascript" src="{% static 'mainsite/dashboard.js' %}"></script>#}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
           integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
     <!-- Required meta tags -->
@@ -55,13 +57,18 @@
                 </tr>
             </table>
         </div>
-        <div class="container-fluid" id="chng_cnt">
+        <div class="container-fluid chng_cnt" onload="Temp()" id="chng_cnt">
 
         </div>
     </div>
 
 </div>
 
+<script>
+        function Temp() {
+        console.log('done');
+        }
+</script>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
