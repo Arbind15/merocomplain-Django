@@ -31,7 +31,22 @@ var stateObject= {
                     "Jhapa": ["kamal", "Buddha shanti", "Kachankawal", "jhapa", "Barhadashi", "Gaurigunj", "Haldibari", "kankai", "arjundhara", "shivasatakshi", "bhadrapur", "damak", "birtamod", "mechinagar", "Anarmani", "Bahundangi", "Baiagundhara", "Balubari", "Baniyani", "Budhabare", "Chakchaki", "Chandragadhi", "Charpane", "Dangibari", "Dhaijan", "Dharmpur", "Duhagadhi", "Garamani", "Gauriganj", "Gherabari", "Goldhhap", "Haldibari", "Jalthal", "Jyamirgadhi", "Kechana", "Khajurgachhi", "Khudunabari", "Korobari", "Kumarkhod", "Lakhanpur", "Mahabhara", "Maheshpur", "Panchganchi", "Pathabhari", "Pathariya", "Prithivinagar", "Rajgadh", "Shantinagar", "Sharanamati", "Taghanduba", "Topgachchi"," Arjundhara"],
                     "Panchthar": ["Milkajung", "Phalgunanda", "Hilihang", "Phalelung", "Yangwarak", "Kummayak", "Tumbewa", "phidim", "Ranitar", "Luwamphu", "Yangnam", "Nangin", "Lungrupa", "Ambarpur", "Panchami", "Subhang", "Bharapa", "Yasok", "Rani Gaun", "Mangjabung", "Syabarumba", "Aarubote", "Sarangdanda", "Rabi", "Kurumba", "Limba", "Durdimba", "Ektin", "Memeng", "Prangbung", "Yangnam", "Sidin", "Nawamidanda", "Imbung", "Pauwa Sartap", "Chilingdin", "Aangsarang", "Phaktep", "Aangna", "Olane", "Hangum", "Mauwa", "Chyangthapu", "Phalaicha", "Oyam", "Tharpu", "Nagi"],
                     "Taplejung": ["Pathibhara yangwarak", "Meringden", "Sidingwa", "Phaktanglung", "Maiwa khola", "Mikwa khola", "taplejung", "Ambegudin", "Ankhop", "Chaksibote", "Change", "Dhungesaghu", "Dummrise", "Ekhabu", "Hangdeva", "Hangpang", "Kalikhola", "Khamlung", "Khejenim", "Khewang", "Khokling", "Lelep", "Limbudin", "Lingtep", "Linkhim", "Liwang", "Mamangkhe", "Nalbu", "Nankholyang", "Nidhuradin", "Olangchung Gola", "Paidang","Papung", "Pedang", "Phakumba", "Phawakhola", "Phulbari", "Phurumbu", "Sadewa", "Sangu", "Santhakra", "Sawa", "Sawadin", "Sawalakhu", "Sikaicha", "Sinam", "Surumakhim", "Tapethok", "Tellok", "Thechambu", "Thinglabu", "Thukima", "Thumbedin", "Tiringe", "Yamphudin"],
-},}
+},
+    
+    "Province no 2": {
+                    "Parsha": ["Sakhuwa Prasauni", "Jagarnath", "Chhipaharmai", "Bindabasini", "Paterwa Sugauli", "Jira Bhavani", "Kalikamai", "Pakaha Manipur", "Thori", "Dhobini", "Birjung", "Bahudarmai", "Parshagadi", "Pokhariya", "Alau", "Amarpatti", "Auraha", "Bagahi", "Bagbana", "Bageshwari", "Bahauri Pidari", "Bahuarba Bhatha", "Basadilwa", "Basantapur", "Belwa Parsauni", "Beriya Birta", "Bhawanipur", "Bhedihari", "Bhisawa", "Bijbaniya", "Bindyabasini", "Biranchibarba", "Biruwa Guthi", "Bisrampur", "Charani", "Deukhana", "Dhaubini", "Gadi", "Gamhariya", "Ghoddauda Pipra", "Ghore", "Govindapur", "Hariharpur", "Hariharpur Birta", "Harapataganj", "Harpur", "Jagarnathpur Sira", "Jaimanglapur", "Janikatala", "Jhauwa Guthi", "Jitpur", "Kauwa Ban Kataiya", "Lahawarthakari", "Lakhanpur", "Lal Parsa", "Langadi", "Lipani Birta", "Madhuban Mathaul", "Mahadevpatti", "Mahuwan", "Mainiyari", "Mainpur", "Mikhampur", "Mirjapur", "Mosihani", "Mudali", "Nagardaha", "Nirchuta", "Nirmal Basti", "Pancharukhi", "Parsauni Birta", "Parsauni Matha", "Patbari Tola-Warwa", "Paterwa Sugauli", "Pidariguthi", "Pokhariya", "Prasurampur", "Ramgadhawa", "Ramnagari", "Sabaithawa", "Sakhuwa Parsauni", "Samjhauta", "Shankar Saraiya", "Sapauli", "Sedhawa", "Shiva Worga", "Sirsiya Khalwatola", "Sonbarsa", "Srisiya", "Subarnapur", "Sugauli Birta", "Sugauli Partewa", "Surjaha", "Thori", "Tulsi Barba", "Udayapur Dhurmi", "Vauratar"],
+                    "Bara": ["Subarna", "Adarsha Kotwal", "Baragadhi", "Pheta", "Karaiyamai", "Prasauni", "Bishrampur", "Devtal", "Parawanipur", "Kalaiya", "Jitpur Simara", "Mahagadhimai", "Simraungadh", "Kolhabi", "Nijgadh", "Pachrauta", "Amarpatti, Amlekhganj", "Amritganj", "Avab", "Babuain", "Bachhanpurwa", "Badaki Phulbariya", "Bagadi", "Bahuari", "Balirampur", "Bandhuwan", "Banjariya", "Barainiya", "Bariyarpur", "Basantapur", "Batara", "Beldari", "Benauli", "Bhagwanpur", "Bhaluwai Arwaliya", "Bhatauda", "Bhaudaha", "Bhuluhi Marwaliya", "Bishnupur", "Bishnupurwa", "Bishrampur", "Biswambharpur", "Brahmapuri", "Buniyad", "Chhatawa", "Dahiyar", "Dewapur", "Dharmanagar", "Dohari", "Gadhahal", "Ganj Bhawanipur", "Golaganj", "Haraiya", "Hardiya", "Hariharpur", "Inarwamal", "Inarwasira", "Itiyahi", "Jhitakaiya", "Jitpur", "Kabahigoth", "Kabahijabdi", "Kachorwa", "Karaiya", "Khopawa", "Khutwajabdi", "Kudawa", "Lakshmipur Kotwali", "Lipanimal", "Madhurijabdi", "Mahendra Adarsha", "Maheshpur", "Maini", "Majhariya", "Manaharwa", "Matiarwa", "Motisar", "Naktuwa", "Narahi", "Pakadiya Chikani", "Parsurampur", "Paterwa", "Patharhati", "Pathora", "Pheta", "Piparpati Ek", "Piparpati Dui", "Piparpati Jabdi", "Piparpati Parchrauwa", "Pipra Basantapur", "Piprabirta", "Pipradhi Goth", "Prasauni", "Prastoka", "Purainiya", "Raghunathpur", "Rampur Tokani", "Rampurwa", "Rauwahi", "Srinagar Bairiya", "Sihorwa", "Sinhasani", "Sisahaniya", "Tedhakatti", "Telkuwa", "Terariya", "Uchidiha", "Umarjan",
+                     "Pipara Simara", "Jitpur Bhawanipur", "Chhata Pipra", "Phattepur", "Dumbarwana", "Ratnapuri", "Bharatganj Singaul", "Kakadi", "Kolhabi", "Prasona", "Sapahi"],
+
+                    "Rautahat": ["Durga Bhagwati", "Yamunamai", "Chandrapur", "Garuda", "Gujara", "Brindaban", "Ishnath", "Rajpur", "Gadhimai", "Paroha", "Phatuwa Bijayapur", "Baudhimai", "Madhav Narayan", "Gaur", "Dewahi Gonahi", "Rajdevi", "Ajagabi", "Akolawa", "Auraiya", "Badharwa", "Bagahi", "Bahuwa Madanpur", "Bairiya", "Banjaraha", "Bariyarpur", "Basantapatti", "Basantapur", "Basbiti Jingadiya", "Bhalohiya", "Bhediyahi", "Birtipraskota", "Bishrampur", "Bisunpurwa Manpur", "Brahmapuri", "Debahi", "Dharampur", "Dharhari", "Dipahi", "Dumriya", "Balchanpur", "Gadhi", "Gamhariya Birta", "Gamhariya Parsa", "Gangapipra", "Garuda Bairiya", "Gedahiguthi", "Gunahi", "Hajminiya", "Hardiya Paltuwa", "Harsaha", "Hathiyahi", "Inarbari Jyutahi", "Inaruwa", "Jatahare", "Jayanagar", "Jethrahiya", "Jhunkhunma", "Jingadawa Belbichhwa", "Jingadiya", "Jowaha", "Judibela", "Kakanpur", "Karkach Karmaiya", "Karuniya", "Katahariya", "Khesarhiya", "Lakshminiya", "Lakshmipur", "Lakshmipur Belbichhawa", "Lokaha", "Madanpur", "Madhopur", "Mahamadpur", "Malahi", "Maryadpur", "Masedawa", "Mathiya", "Matsari", "Mithuawa", "Mudwalawa", "Narkatiya Guthi", "Pacharukhi", "Pataura", "Pathara Budharampur", "Paurai", "Phatuha Maheshpur", "Pipariya", "Pipra Bhagwanpur", "Pipra Pokhariya", "Pipra Rajbara", "Pothiyahi", "Pratappur Paltuwa", "Prempur Gunahi", "Purainawma", "Raghunathpur", "Rajdevi", "Rajpur Pharhadawa", "Rajpur Tulsi", "Ramoli Bairiya", "Rampur Khap", "Rangapur", "Sakhuwa", "Sakhuwa Dhamaura", "Samanpur", "Sangrampur", "Santapur", "Santpur", "Sarmujawa", "Saruatha", "Saunaraniya", "Sawagada", "Shitalpur Bairgania", "Simara Bhawanipur", "Sirsiya", "Tejapakar", "Tengraha", "Tikuliya"],
+                    "Sarlahi": ["Chandranagar", "Bramhapuri", "Ramnagar", "Chakraghatta", "Kaudena", "Dhankaul", "Bishnu", "Basbariya", "Parsa", "Barahathwa", "Ishwarpur", "Lalbandi", "Malangwa", "Balara", "Hariwan", "Kabilasi", "Bagmati", "Haripur", "Haripurwa", "Achalgadh", "Arnaha", "Aurahi", "Babarganj", "Bagdaha", "Bahadurpur", "Balara", "Bara Udhoran", "Basantapur", "Batraul", "Bela", "Belhi", "Belwajabdi", "Bhadsar", "Bhagawatipur", "Bhawanipur", "Brahmapuri", "Chandra Nagar", "Chhataul", "Chhatona", "Dhana Palbhawari", "Dhanakaul Purba", "Dhangada", "Dumariya", "Gadahiyabairi", "Gamhariya", "Godeta", "Gaurishankar", "Harakthawa", "Haripur", "Haripurwa", "Hathiyol", "Hempur", "Jamuniya", "Janaki Nagar", "Jingadawa", "Kabilasi", "Kalinjor", "Khaiharwa", "Khoriya", "Kisanpur", "Kodena", "Lakshmipur Kodraha", "Lakshmipur Su", "Madhubangoth", "Madhubani", "Mahinathpur", "Mailhi", "Manpur", "Masaili", "Mirjapur", "Mohanpur", "Motipur", "Musauli", "Narayan Khola", "Narayanpur", "Netraganj", "Naukailawa", "Parsa", "Parwanipur", "Pharahadawa", "Phulparasi", "Pidari", "Pidariya", "Pipariya", "Ramnagar Bahaur", "Ranban", "Raniganj", "Rohuwa", "Sakraula","Salempur", "Sangrampur", "Shahorwa", "Shreepur", "Sikhauna", "Simara", "Sisautiya", "Sisaut", "Shankarpur", "Sohadawa", "Sudama", "Sundarpur", "Sundarpur Choharwa", "Tribhuwannagar"],
+                    "Siraha": ["Laksmipur Patari", "Bariyarpatti", "Aaurahi",  "Arnama", "Bhagawanpur", "Naraha", "Nawarajpur", "Sakhuwanankarkatti", "Bishnupur", "Lahan", "Siraha", "Golbazar", "Mirchaiya", "Kalyanpur", "Dhangadimai", "Sukhipur", "karjanha", "Sukhipur", "Arnama Lalpur", "Arnama Rampur", "Aurahi", "Badharamal", "Barchhawa", "Bariyarpatti", "Basbita", "Bastipur", "Belaha", "Bhadaiya", "Bhagawanpur", "Bhagawatipur", "Bhawanpur Kalabanchar", "Bhokraha", "Bishnupur Pra. Ma", "Bishnupur Pra. Ra", "Brahmagaughadi", "Chandra Ayodhyapur", "Chatari", "Chikana", "Devipur", "Dhodhana", "Dumari", "Durgapur", "Gadha", "Gauripur", "Gautari", "Govindapur Malahanama", "Govindpur Taregana", "Hakpara", "Hanuman Nagar", "Harakathi", "Inarwa", "Itarhawa", "Itari Parsahi", "Itatar", "Janakinagar", "Jighaul", "Kabilasi", "Kachanari", "Kalyanpur Jabadi", "Kalyanpur Kalabanchar", "Karjanha", "Kharukyanhi", "Khirauna", "Krishnapur Birta", "Lagadi Gadiyani", "Lagadigoth", "Lakshminiya", "Lakshmipur (Pra. Ma.)", "Lakshmipur Patari", "Madar", "Mahadewa Portaha", "Mahanaur", "Maheshpur Patari", "Majhauliya", "Majhaura", "Makhanaha", "Malhaniya Gamharia", "Mauwahi", "Media", "Nahara Rigaul", "Naraha Balkawa", "Navarajpur", "Padariya Tharutol", "Pipra Pra. Dha", "Pipra Pra. Pi", "Pokharbhinda", "Rajpur", "Sakhuwanankarkatti", "Sanhaitha", "Sarashwar", "Sikron", "Sisawani", "Sonmati Majhaura", "Sothayan", "Sukhachina", "Tenuwapati", "Thalaha Kataha", "Thegahi", "Tulsipur"],
+                    "Dhanusha": ["Laksminiya", "Mukhiyapatti Musaharmiya", "Janak Nandini", "Aaurahi", "Bateshwar", "Dhanauji", "Janakpurdham", "Sabaila", "Dhanushadham", "Mithila", "Shahidnagar", "Kshireshwarnath", "Hansapur", "Kamala", "Ganeshman Charnath", "Nagarain", "Mithila Bihari", "Bideha", "Andupatti", "Aurahi", "Baphai", "Bagchaura", "Baheda Bala", "Bahuarba", "Bhatauliya", "Balabakhar", "Balaha Kathal", "Balaha Sadhara", "Ballagoth", "Baniniya", "Basahiya", "Basbitti", "Bateshwar", "Bega Shivapur", "Begadawar", "Bhuchakrapur", "Bhutahi Paterwa", "Bindhi", "Bisarbhora", "Chakkar", "Chora Koilpur", "Debadiha", "Deuri Parbaha", "Devpura Rupetha", "Dhabauli", "Dhanauji", "Dubarikot Hathalekha", "Duhabi", "Ekarahi", "Ghodghans", "Giddha", "Gopalpur", "Goth Kohelpur", "Hansapur Kathpula", "Harine", "Hathipur Harbara", "Inarwa", "Itaharwa", "Jhatiyahi", "Jhojhi Kataiya", "Kachuri Thera", "Kajara Ramaul", "Kanakpatti", "Khajuri Chanha", "Khariyani", "Kurtha", "Lagmamdha Guthi", "Lakhauri", "Lakkad", "Lakshminibas", "Lakshmipur Bagewa", "Lohana Bahbangama", "Machijhitakaiya", "Mahuwa (Pra. Ko)", "Mahuwa (Pra. Khe)", "Mansingpatti", "Mithileshwar Nikash", "Mithileshwar Mauwahi", "Mukhiyapatti Mushargiya", "Nagarain", "Nauwakhor Prashahi", "Nunpatti", "Pachaharwa", "Papikleshwar", "Patanuka", "Paterwa", "Paudeshwar", "Phulgama", "Pushpawlpur", "Raghunathpur", "Rampur Birta", "Sapahi", "Shantipur", "Siddha", "Singyahi Maidan", "Sinurjoda", "Sonigama", "Suga Madhukarahi", "Suganikash", "Tarapatti Sirsiya", "Thadi Jhijha", "Tulsi Chauda", "Tulsiyahi Nikas", "Tulsiyani Jabdi", "Yadukuha"],
+                    "Saptari": ["Tilathi Koiladi", "Belhi Chapena", "Chhinnamasta", "Mahadeva", "Aagnisaira Krishnasawaran", "Rupani", "Balan-Bihul", "Bishnupur", "Tirhut", "Rajbiraj", "Hanumannagar Kankalini", "Khadak", "Dakneshwari", "Surunga", "Bodebarsain", "Shambhunath", "Kanchanrup", "Saptakoshi", "Arnaha", "Aurahi", "Bainiya", "Bairawa", "Bakdhauwa", "Bamangamakatti", "Banarjhula", "Banaula", "Banauli", "Barhmapur", "Barsain", "Basbiti", "Bathnaha", "Belhi", "Belhi Chapena", "Bhagawatpur", "Bhardaha", "Bhutahi", "Birpur Barahi", "Bishariya", "Budebarsaien", "Boriya", "Brahmapur", "Chhinnamasta", "Dauda", "Daulatpur", "Deuri", "Deurimaruwa", "Dhanagadi", "Didhawa", "Diman", "Gamhariya Parwaha", "Goithi", "Hardiya", "Hariharpur", "Haripur", "Inarwa Phulbariya", "Itahari Bishnupur", "Jamuni Madhapura", "Jandaul", "Jhutaki", "Kabilash", "Kachan", "Kalyanpur", "Kataiya", "Khadgapur", "Khojpur", "Ko. Madhepura", "Kochabakhari", "Koiladi", "Kushaha", "Lalapati", "Launiya", "Lohajara", "Madhawapur", "Madhupati", "Mahadeva", "Maina Kaderi", "Maina Sahasrabahu", "Malekpur", "Maleth", "Malhanama", "Malhaniya", "Manraja", "Mauwaha", "Nargho", "Negada", "Pakari", "Pansera", "Parasbani", "Paterwa", "Pato", "Patthargada", "Phakira", "Pharseth", "Phulkahi", "Pipra (West)", "Portaha", "Ramnagar", "Rampur Malhaniya", "Rautahat", "Rayapur", "Sankarpura", "Sarashwar", "Simraha Sigiyaun", "Siswa Beihi", "Sitapur", "Tarahi", "Terahota", "Tikuliya", "Tilathi", "Trikola"],
+                    "Mahottari": ["Sonama", "Pipara", "Samsi", "Ekdara", "Mahottari", "Gaushala", "Bardibas", "Jaleshwar", "Manara Shisawa", "Bhangaha", "Balawa", "Loharpatti", "Aurahi", "Matihani", "Ramgopalpur", "Anakar", "Aurahi", "Bagada", "Bagiya Banchauri", "Bairjiya Lakshminiya", "Balawa", "Banauli Donauli", "Banauta", "Basabitti", "Bathnaha", "Belgachhi", "Bharatpur", "Bhatauliya", "Bijayalpura", "Bramarpura", "Damhi Marai", "Dhamaura", "Dharmapur", "Dhirapur", "Ekadarabela", "Ekarahiya", "Etaharwakatti", "Gaidaha Bhelpur", "Gonarpura", "Halkhori", "Hariharpur Harinagari", "Hathilet", "Hatisarwa", "Khairbanni", "Khakhana", "Khaya Mara", "Khopi", "Khuttapipradhi", "Kolhusa Bagaiya", "Lakshminiya", "Loharpatti", "Mahadaiyatapanpur", "Majhora Bishnupur", "Manara", "Matihani", "Meghanath Gorhanna", "Nainhi", "Padaul", "Parsa Pateli", "Parsadewadh", "Pashupatinagar", "Phulahatta Parikauli", "Phulakaha", "Pigauna", "Pipra", "Pokharibhinda Samgrampur", "Raghunathpur", "Ramgopalpur", "Ratauli", "Sahasaula", "Sahorawa", "Samdha", "Sarpallo", "Shamsi", "Sripur", "Simardahi", "Singyahi", "Sisawakataiya", "Sonama", "Sonamar", "Sonaum", "Suga Bhawani", "Sundarpur", "Vangaha pariya"],
+},
+
+}
 
 
 window.onload = function () {
@@ -59,3 +74,551 @@ window.onload = function () {
         }
     }
 }
+
+function ptoggle1() {
+    var status=document.getElementById('password1');
+    if (status.type=="password"){
+        status.type="text";
+        document.getElementById('pshow').style="display: none;";
+        document.getElementById('phide').style="display: inline;"
+    }
+    else {
+        status.type="password";
+        document.getElementById('pshow').style="display: inline;";
+        document.getElementById('phide').style="display: none;"
+    }
+}
+
+function ptoggle2() {
+    var status=document.getElementById('password2');
+    if (status.type=="password"){
+        status.type="text";
+        document.getElementById('p2show').style="display: none;";
+        document.getElementById('p2hide').style="display: inline;"
+    }
+    else {
+        status.type="password";
+        document.getElementById('p2show').style="display: inline;";
+        document.getElementById('p2hide').style="display: none;"
+    }
+}
+
+var ffile,rfile,pfile;
+function FileUpPhoto() {
+
+    var ipt=document.getElementById('photo');
+    pfile=ipt.files[0].name;
+    document.getElementById('ptxt').innerText="Selected: "+pfile;
+
+    photo_Validate();
+
+}
+
+function FileUpFront() {
+
+    var ipt = document.getElementById('front');
+    ffile = ipt.files[0].name;
+    document.getElementById('ftxt').innerText = "Selected: " + ffile;
+    front_Validate();
+}
+
+function FileUpRare() {
+
+    var ipt = document.getElementById('rare');
+    rfile = ipt.files[0].name;
+    document.getElementById('rtxt').innerText = "Selected: " + rfile;
+    rare_Validate();
+}
+
+
+
+function validate() {
+    if(!(username_validate()&email_validate()&password1_validate()&password2_validate()&dob_validate()&gender_validate()
+    &phone_number_validate()&doc_num_validate()&term_con()&vdc_validate()&tole_validate()&ward_validate()&postal_validate()
+    &photo_Validate()&front_Validate()&rare_Validate()&Dtype_validate()))
+    {
+        return false;
+    }
+    else
+    {
+        PopConfirm();
+        true;
+    }
+}
+
+function username_validate() {
+    var username=document.getElementById('full_name').value;
+    var user_regx=/^([a-zA-Z0-9]+|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{1,}|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{3,}\s{1}[a-zA-Z0-9]{1,})$/;
+    if(!(user_regx.test(username)))
+    {
+        document.getElementById('username_error').style.display='block';
+        return false;
+    }
+    else {
+        document.getElementById('username_error').style.display='none';
+        return true;
+    }
+}
+
+function email_validate() {
+    var email=document.getElementById('email').value;
+    var email_regx=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    if(!(email_regx.test(email)))
+    {
+        document.getElementById('email_error').style.display='block';
+        return false;
+    }
+    else {
+        document.getElementById('email_error').style.display='none';
+        return true;
+    }
+}
+function password1_validate() {
+    var password1=document.getElementById('password1').value;
+    var password1_regx=/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,15}$/;
+    if(!(password1_regx.test(password1)))
+    {
+        document.getElementById('password1_error').style.display='block';
+        return false;
+    }
+    else {
+        document.getElementById('password1_error').style.display='none';
+        return true;
+    }
+}
+function password2_validate() {
+     var password2=document.getElementById('password2').value;
+     var password1=document.getElementById('password1').value;
+    if(!(password1==password2))
+    {
+        document.getElementById('password2_error').style.display='block';
+        return false;
+    }
+    else {
+        document.getElementById('password2_error').style.display='none';
+        return true;
+    }
+}
+
+function phone_number_validate() {
+    var number=document.getElementById('mobile').value;
+    var number_regx=/^(\+([0-9]{3}))?[-. ]?([0-9]{2})([0-9]{4})[-. ]?([0-9]{4})$/;
+    if(!(number_regx.test(number)))
+    {
+        document.getElementById('phone_error').style.display='block';
+        return false;
+    }
+    else {
+        document.getElementById('phone_error').style.display='none';
+        return true;
+    }
+}
+
+function gender_validate() {
+    var gender=document.querySelector('input[name="gender"]:checked');
+    if (gender==null){
+        document.getElementById('gender_error').style.display="block";
+        return false;
+    }
+    else {
+        document.getElementById('gender_error').style.display="none";
+        return true;
+    }
+
+}
+function gndhid() {
+    document.getElementById('gender_error').style.display="none";
+}
+
+function dob_validate() {
+    var dob=document.getElementById('dob').value;
+    if (dob==''){
+        document.getElementById('dob_error').style.display="block";
+        return false;
+    }
+    else {
+        document.getElementById('dob_error').style.display="none";
+        return true;
+    }
+}
+function dhid() {
+    document.getElementById('dob_error').style.display="none";
+}
+
+function doc_num_validate() {
+    var dob=document.getElementById('dnum').value.trim();
+    var doc=document.getElementById('document').value;
+    if (doc=='null'){
+        document.getElementById('doc_error').style.display="block";
+        return false;
+    }
+    else if(dob==''){
+        document.getElementById('dnum_error').style.display="block";
+        return false;
+    }
+    else {
+        document.getElementById('dnum_error').style.display="none";
+        return true;
+    }
+}
+
+function term_con() {
+    var chk=document.getElementById('agrrmt').checked;
+    if(chk){
+        document.getElementById('terms_error').style.display="none";
+        return true
+    }
+    else {
+        document.getElementById('terms_error').style.display="block";
+        return false;
+    }
+}
+
+function vdc_validate() {
+    var vdc=document.getElementById('districtSel').value;
+    if (vdc=='null'){
+        document.getElementById('vdc_error').style.display="block";
+        return false;
+    }
+    else {
+        document.getElementById('vdc_error').style.display="none";
+        return true;
+    }
+}
+
+function tole_validate() {
+    var username=document.getElementById('chowk').value;
+    var user_regx=/^([a-zA-Z0-9]+|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{1,}|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{3,}\s{1}[a-zA-Z0-9]{1,})$/;
+    if(!(user_regx.test(username)))
+    {
+        document.getElementById('tole_error').style.display='block';
+        return false;
+    }
+    else {
+        document.getElementById('tole_error').style.display='none';
+        return true;
+    }
+}
+
+function ward_validate() {
+    var vdc=document.getElementById('ward').value;
+    if (vdc=='null'){
+        document.getElementById('ward_error').style.display="block";
+        return false;
+    }
+    else {
+        document.getElementById('ward_error').style.display="none";
+        return true;
+    }
+}
+
+
+function postal_validate() {
+    var username=document.getElementById('pcode').value;
+    var user_regx=/^([0-9]{5})$/;
+    if(!(user_regx.test(username)))
+    {
+        document.getElementById('postal_error').style.display='block';
+        return false;
+    }
+    else {
+        document.getElementById('postal_error').style.display='none';
+        return true;
+    }
+}
+
+function photo_Validate() {
+    var ipt=document.getElementById('photo');
+    if(ipt.files[0]==undefined){
+        document.getElementById('photo_error').style.display='block';
+        return false;
+    }
+    else {
+        document.getElementById('photo_error').style.display='none';
+        return true;
+    }
+
+}
+
+function front_Validate() {
+    var ipt=document.getElementById('front');
+    if(ipt.files[0]==undefined){
+        document.getElementById('front_error').style.display='block';
+        return false;
+    }
+    else {
+        document.getElementById('front_error').style.display='none';
+        return true;
+    }
+
+}
+
+function rare_Validate() {
+    var ipt=document.getElementById('rare');
+    if(ipt.files[0]==undefined){
+        document.getElementById('rare_error').style.display='block';
+        return false;
+    }
+    else {
+        document.getElementById('rare_error').style.display='none';
+        return true;
+    }
+
+}
+ function Dtype_validate() {
+    var doc=document.getElementById('document').value;
+    if (doc=='null'){
+        document.getElementById('doc_error').style.display="block";
+        return false;
+    }
+    else {
+        document.getElementById('doc_error').style.display="none";
+        return true;
+    }
+ }
+
+function PopConfirm() {
+
+    document.getElementById('popConfirm').style.display="block";
+
+    var name=document.getElementById('full_name').value;
+    var email=document.getElementById('email').value;
+    var dob=document.getElementById('dob').value;
+    var gender=document.querySelector('input[name="gender"]:checked').value;
+    var mobile=document.getElementById('mobile').value;
+    var country=document.getElementById('country').value;
+    var provience=document.getElementById('countySel').value;
+    var district=document.getElementById('stateSel').value;
+    var vdc=document.getElementById('districtSel').value;
+    var tole=document.getElementById('chowk').value;
+    var ward=document.getElementById('ward').value;
+    var pcode=document.getElementById('pcode').value;
+    var photo=document.getElementById('photo').value;
+    var documentt=document.getElementById('document').value;
+    var front=document.getElementById('front').value;
+    var rare=document.getElementById('rare').value;
+    var docnum=document.getElementById('dnum').value;
+
+    // var datalist=[name,email,dob,gender,mobile,country,provience,district,vdc,tole,ward,pcode]
+    var popData=document.getElementById('popData');
+
+    popData.innerHTML='';
+
+    // var itm;
+    // for(itm of datalist ){
+    //     var ptag=document.createElement('p');
+    //     var txt=document.createTextNode()
+    // }
+
+    var ptag=document.createElement('br');
+    popData.appendChild(ptag);
+    var ptag=document.createElement('p');
+    var txt=document.createTextNode("Document No:/User ID:  "+docnum);
+    ptag.appendChild(txt);
+    popData.appendChild(ptag);
+
+    var ptag=document.createElement('p');
+    var txt=document.createTextNode("Full Name: "+name);
+    ptag.appendChild(txt);
+    popData.appendChild(ptag);
+
+    var ptag=document.createElement('p');
+    var txt=document.createTextNode("Email: "+email);
+    ptag.appendChild(txt);
+    popData.appendChild(ptag);
+
+    var ptag=document.createElement('p');
+    var txt=document.createTextNode("Date of Birth: "+dob);
+    ptag.appendChild(txt);
+    popData.appendChild(ptag);
+
+    var ptag=document.createElement('p');
+    var txt=document.createTextNode("Gender: "+gender);
+    ptag.appendChild(txt);
+    popData.appendChild(ptag);
+
+    var ptag=document.createElement('p');
+    var txt=document.createTextNode("Mobile: "+mobile);
+    ptag.appendChild(txt);
+    popData.appendChild(ptag);
+
+    var ptag=document.createElement('p');
+    var txt=document.createTextNode("Country: "+country);
+    ptag.appendChild(txt);
+    popData.appendChild(ptag);
+
+    var ptag=document.createElement('p');
+    var txt=document.createTextNode("Provience: "+provience);
+    ptag.appendChild(txt);
+    popData.appendChild(ptag);
+
+    var ptag=document.createElement('p');
+    var txt=document.createTextNode("District: "+district);
+    ptag.appendChild(txt);
+    popData.appendChild(ptag);
+
+    var ptag=document.createElement('p');
+    var txt=document.createTextNode("Muncipal/VDC: "+vdc);
+    ptag.appendChild(txt);
+    popData.appendChild(ptag);
+
+    var ptag=document.createElement('p');
+    var txt=document.createTextNode("Tole/Chowk: "+tole);
+    ptag.appendChild(txt);
+    popData.appendChild(ptag);
+
+    var ptag=document.createElement('p');
+    var txt=document.createTextNode("Ward No.: "+ward);
+    ptag.appendChild(txt);
+    popData.appendChild(ptag);
+
+    var ptag=document.createElement('p');
+    var txt=document.createTextNode("Postal Code: "+pcode);
+    ptag.appendChild(txt);
+    popData.appendChild(ptag);
+
+    var ptag=document.createElement('p');
+    var txt=document.createTextNode("Document Type: "+documentt);
+    ptag.appendChild(txt);
+    popData.appendChild(ptag);
+
+    var lin=document.createElement('hr');
+    popData.appendChild(lin)
+
+    var ptag=document.createElement('p');
+    var txt=document.createTextNode("Photo: "+pfile);
+    ptag.appendChild(txt);
+    popData.appendChild(ptag);
+
+    var ptag=document.createElement('p');
+    var txt=document.createTextNode("Document Front: "+ffile);
+    ptag.appendChild(txt);
+    popData.appendChild(ptag);
+
+    var ptag=document.createElement('p');
+    var txt=document.createTextNode("Document Rare: "+rfile);
+    ptag.appendChild(txt);
+    popData.appendChild(ptag);
+
+
+
+
+
+
+}
+
+function SBack() {
+    document.getElementById('popConfirm').style.display="none";
+}
+
+
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+function SendData() {
+
+    // document.getElementById('main_pbar').style='display: block;';
+
+    var name=document.getElementById('full_name').value;
+    var email=document.getElementById('email').value;
+    var dob=document.getElementById('dob').value;
+    var gender=document.querySelector('input[name="gender"]:checked').value;
+    var mobile=document.getElementById('mobile').value;
+    var country=document.getElementById('country').value;
+    var provience=document.getElementById('countySel').value;
+    var district=document.getElementById('stateSel').value;
+    var vdc=document.getElementById('districtSel').value;
+    var tole=document.getElementById('chowk').value;
+    var ward=document.getElementById('ward').value;
+    var pcode=document.getElementById('pcode').value;
+    var documentt=document.getElementById('document').value;
+    var docnum=document.getElementById('dnum').value;
+    var pass1=document.getElementById('password1').value;
+
+    var Files=[];
+    var ipt=document.getElementById('photo');
+    Files[0]=ipt.files[0];
+    ipt=document.getElementById('front');
+    Files[1]=ipt.files[0];
+    ipt=document.getElementById('rare');
+    Files[2]=ipt.files[0];
+    // alert(file);
+
+    var data = new FormData();
+
+    var req = new XMLHttpRequest();
+    var url='/SaveUser/';
+    var csrftoken = getCookie('csrftoken');
+
+    data.append('photo', Files[0]);
+    data.append('front', Files[1]);
+    data.append('rare', Files[2]);
+
+    data.append('name',name);
+    data.append('email',email);
+    data.append('dob',dob);
+    data.append('gender',gender);
+    data.append('mobile',mobile);
+    data.append('country',country);
+    data.append('provience',provience);
+    data.append('district',district);
+    data.append('vdc',vdc);
+    data.append('tole',tole);
+    data.append('ward',ward);
+    data.append('pcode',pcode);
+    data.append('dtype',documentt);
+    data.append('docnum',docnum);
+    data.append('pass1',pass1);
+
+    req.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+             // alert(document.getElementsByTagName('body')[0])
+             document.getElementsByTagName('body')[0].innerHTML=req.response;
+         }
+    };
+
+    req.open("post", url, true);
+    req.setRequestHeader("X-CSRFToken", csrftoken);
+
+    // req.upload.addEventListener('progress', function(e) {
+    //     var percent_complete = (e.loaded / e.total)*100;
+    //     // Percentage of upload completed
+    //     var p_sts=document.getElementsByClassName('p_status')[0];
+    //     var p_lbl=document.getElementById('p_lbl');
+    //     p_lbl.innerText='Uploading...'+Math.round(percent_complete).toPrecision()+'%';
+    //     p_sts.style='width: '+Math.round(percent_complete)+'%;font-size: 15px;';
+    //     // alert(p_sts);
+    //
+    //     // console.log(percent_complete);
+    // });
+
+    // req.addEventListener('load', function(e) {
+    //     // HTTP status message
+    //     // console.log(req.status);
+    //     document.getElementById('main_pbar').style='display: none';
+    //     var p_sts=document.getElementsByClassName('p_status')[0];
+    //     var p_lbl=document.getElementById('p_lbl');
+    //     p_lbl.innerText='';
+    //     p_sts.style='width: '+0+'%;font-size: 15px;';
+    //     // request.response will hold the response from the server
+    //     // console.log(req.response);
+    // });
+    req.send(data);
+
+
+}
+

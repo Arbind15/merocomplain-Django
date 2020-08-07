@@ -1,5 +1,5 @@
 {% load static %}
-<!doctype html>
+
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -10,66 +10,91 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'mainsite/signup.css' %}">
     <script type="text/javascript" src="{% static 'mainsite/signup.js' %}"></script>
+      <link href='https://fonts.googleapis.com/css?family=Sriracha' rel='stylesheet'>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
     <title>Mero Complain | Signup</title>
   </head>
   <body>
 
+  <div class="popConfirm" id="popConfirm">
+        <div class="popContent row">
+            <div class="col-sm-12 col-md-3">
+            </div>
+            <div class="col col-sm-12 col-md-6 mpopdiv">
+                <p class="btn_lbl" style="margin-top: 3px;text-decoration: underline;margin-bottom: 0!important;">Confirm your Information:</p>
+                <div id="popData">
+
+                </div>
+                <div class="row justify-content-between" style="padding-top: 10px;padding-left: 20px;padding-right: 20px">
+                    <button class="lgn_btn" onclick="SBack()">Back</button>
+                    <button class="lgn_btn" onclick="SendData()">Proceed</button>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-3" >
+
+            </div>
+        </div>
+  </div>
+
     <div class="container-fluid main_div">
+        <form>
             <div class="card main_card">
-                <div class="card-header">
+                <div class="card-header" style="color: #f4f4ff; font-size: 30px; font-weight: bold">
                     SignUp
-                    <p style="font-size: 40px;font-family: Aparajita;font-weight: bolder;color: red;"> Great Job Anushka Pokharel ❤❤👌👌</p>
-                    <img src="{% static 'mainsite/107824651_320499428967713_7041556214810714717_n.jpg' %}" style="height: 100px;width: 100px">
                 </div>
                 <div class="card inpt">
-                    <div class="card-header">
+                    <div class="card-header" style="color: #f4f4ff; font-size: 17px; font-weight: bold">
                         Personal Info:
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-4">
-                                <label class="lgn_lbl_txt">Full Name:</label>
+                                <label for="full_name"  class="lgn_lbl_txt">Full Name:</label>
                             </div>
                             <div class="col-sm-8">
-                                <input type="text" class="lgn_inpt">
+                                <input id="full_name" onkeyup="username_validate()" type="text" class="lgn_inpt">
+                                <div class="errorTxt" id="username_error" style="display:none;">Enter valid Full Name.</div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <label class="lgn_lbl_txt">Email:</label>
+                                <label for="email" class="lgn_lbl_txt">Email:</label>
                             </div>
                             <div class="col-sm-8">
-                                <input type="text" class="lgn_inpt">
+                                <input onkeyup="email_validate()" id="email" type="text" class="lgn_inpt">
+                                <div class="errorTxt" id="email_error" style="display:none;">Enter valid email.</div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <label class="lgn_lbl_txt">Date of Birth:</label>
+                                <label for="dob" class="lgn_lbl_txt">Date of Birth:</label>
                             </div>
                             <div class="col-sm-8">
-                                <input type="date" class="lgn_inpt">
+                                <input  onclick="dhid()" id="dob" type="date" class="lgn_inpt">
+                                <div class="errorTxt" id="dob_error" style="display:none;">Select Date.</div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <label class="lgn_lbl_txt">Gender:</label>
+                                <label for="gender" class="lgn_lbl_txt">Gender:</label>
                             </div>
                             <div class="col-sm-8">
-                                <input type="radio" id="male" name="gender" value="male">
-                                  <label for="male" class="lgn_lbl_txt">Male</label>
-                                  <input type="radio" id="female" name="gender" value="female">
+                                <input onclick="gndhid()" type="radio" id="gender" name="gender" value="Male">
+                                  <label for="gender" class="lgn_lbl_txt">Male</label>
+                                  <input onclick="gndhid()" type="radio" id="female" name="gender" value="Female">
                                   <label for="female" class="lgn_lbl_txt">Female</label>
-                                  <input type="radio" id="other" name="gender" value="other">
+                                  <input onclick="gndhid()" type="radio" id="other" name="gender" value="Other">
                                   <label for="other" class="lgn_lbl_txt">Other</label>
+                                <div class="errorTxt" id="gender_error" style="display:none;">Select Gender.</div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <label class="lgn_lbl_txt">Mobile No:</label>
+                                <label for="mobile" class="lgn_lbl_txt">Mobile No:</label>
                             </div>
                             <div class="col-sm-8">
-                                <input type="text" class="lgn_inpt">
+                                <input  onkeyup="phone_number_validate()" id="mobile" type="text" class="lgn_inpt">
+                                <div class="errorTxt" id="phone_error" style="display:none;">Please enter valid phone number.</div>
                             </div>
                         </div>
                     </div>
@@ -77,67 +102,89 @@
 
 
                 <div class="card inpt">
-                    <div class="card-header">
+                    <div class="card-header" style="color: #f4f4ff; font-size: 17px; font-weight: bold">
                         Address:
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-4">
-                                <label class="lgn_lbl_txt">Country:</label>
+                                <label for="country" class="lgn_lbl_txt">Country:</label>
                             </div>
                             <div class="col-sm-8">
-                                <select name="country" class="lgn_inpt">
-                                    <option value="" selected="selected">Nepal</option>
+                                <select id="country"  name="country" class="lgn_inpt">
+                                    <option value="Nepal" selected="selected">Nepal</option>
                                 </select>
+                                <div class="errorTxt" id="country_error" style="display:none;">Select Country.</div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <label class="lgn_lbl_txt">Provience:</label>
+                                <label for="countySel" class="lgn_lbl_txt">Provience:</label>
                             </div>
                             <div class="col-sm-8">
-                                 <select name="state" id="countySel" class="lgn_inpt" size="1">
+                                 <select  name="state" id="countySel" class="lgn_inpt" size="1">
                                     <option value="" selected="selected">Select Provience</option>
                                 </select>
+                                <div class="errorTxt" id="provience_error" style="display:none;">Select Provience.</div>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-sm-4">
-                                <label class="lgn_lbl_txt">District:</label>
+                                <label for="stateSel" class="lgn_lbl_txt">District:</label>
                             </div>
                             <div class="col-sm-8">
-                                <select name="countrya" class="lgn_inpt" id="stateSel" size="1">
+                                <select  name="countrya" class="lgn_inpt" id="stateSel" size="1">
                                     <option value="" selected="selected">Please select provience first</option>
                                 </select>
+                                <div class="errorTxt" id="district_error" style="display:none;">Select District.</div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <label class="lgn_lbl_txt">Muncipal/VDC:</label>
+                                <label for="districtSel" class="lgn_lbl_txt">Muncipal/VDC:</label>
                             </div>
                             <div class="col-sm-8">
-                                <select name="district" class="lgn_inpt" id="districtSel" size="1">
-                                    <option value="" selected="selected">Please district first</option>
+                                <select  onmouseup="vdc_validate()" name="district" class="lgn_inpt" id="districtSel" size="1">
+                                    <option value="null" selected="selected">Please district first</option>
                                 </select>
+                                <div class="errorTxt" id="vdc_error" style="display:none;">Select Muncipal/VDC.</div>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-sm-4">
-                                <label class="lgn_lbl_txt">Chowk/Tole:</label>
+                                <label for="chowk" class="lgn_lbl_txt">Chowk/Tole:</label>
                             </div>
                             <div class="col-sm-8">
-                                <input name="tole" class="lgn_inpt">
+                                <input  name="tole" onkeyup="tole_validate()" id="chowk" class="lgn_inpt">
+                                <div class="errorTxt" id="tole_error" style="display:none;">Enter valid Chowk/Tole Name.</div>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-sm-4">
-                                <label class="lgn_lbl_txt">Postal Code:</label>
+                                <label for="ward" class="lgn_lbl_txt">Ward No:</label>
                             </div>
                             <div class="col-sm-8">
-                                <input name="postal" class="lgn_inpt">
+                                <select  onmouseup="ward_validate()" name="ward" id="ward" class="lgn_inpt">
+                                    <option selected value="null">Select Ward No.</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                                <div class="errorTxt" id="ward_error" style="display:none;">Select Ward No:.</div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label for="pcode" class="lgn_lbl_txt">Postal Code:</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input  onkeyup="postal_validate()" id="pcode" name="postal" class="lgn_inpt">
+                                <div class="errorTxt" id="postal_error" style="display:none;">Enter valid Postal Code.</div>
                             </div>
                         </div>
 
@@ -146,71 +193,139 @@
 
 
                 <div class="card inpt">
-                    <div class="card-header">
+                    <div class="card-header" style="color: #f4f4ff; font-size: 17px; font-weight: bold">
                         Documents:
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-4">
-                                <label class="lgn_lbl_txt">Documents Type:</label>
+                                <label for="photo" class="lgn_lbl_txt">Photo:</label>
                             </div>
                             <div class="col-sm-8">
-                                <select name="document" id="document" class="lgn_inpt">
-                                    <option value="ctzn">Citizenship Certificate</option>
-                                    <option value="lic">Driving Licence</option>
-                                    <option value="psprt">Passport</option>
-                                    <option value="vtr">Voter ID</option>
+                                 <label for="photo" class="file_lbl"><i class="fas fa-upload"></i></label>
+                                <input  id="photo" onchange="FileUpPhoto()" type="file" accept="image/png, image/jpeg" style="display: none;">
+                                <span id="ptxt"></span>
+                                <div class="errorTxt" id="photo_error" style="display:none;">Upload valid Photo.</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label for="document" class="lgn_lbl_txt">Documents Type:</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <select onmouseup="Dtype_validate()"  name="document" id="document" class="lgn_inpt">
+                                    <option value="null" selected>Select Document Type</option>
+                                    <option value="Citizenship Certificate">Citizenship Certificate</option>
+                                    <option value="Driving Licence">Driving Licence</option>
+                                    <option value="Passport">Passport</option>
+                                    <option value="Voter ID">Voter ID</option>
                                 </select>
+                                <div class="errorTxt" id="doc_error" style="display:none;">Select Valid Document type.</div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <label class="lgn_lbl_txt">Document No:</label>
+                                <label for="dnum" class="lgn_lbl_txt">Document No:</label>
                             </div>
                             <div class="col-sm-8">
-                                <input type="text" class="lgn_inpt">
+                                <input  id="dnum" onkeyup="doc_num_validate()" type="text" class="lgn_inpt">
+                                <div class="errorTxt" id="dnum_error" style="display:none;">Enter valid Document Number.</div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <label class="lgn_lbl_txt">Document Front:</label>
+                                <label for="front" class="lgn_lbl_txt">Document Front:</label>
                             </div>
                             <div class="col-sm-8">
-                                 <label for="front" class="file_lbl">Upload File</label>
-                                <input id="front" type="file" style="display: none;">
+                                 <label for="front" class="file_lbl"><i class="fas fa-upload"></i></label>
+                                <input  id="front" onchange="FileUpFront()" type="file" accept="image/png, image/jpeg" style="display: none;">
+                                <span id="ftxt"></span>
+                                <div class="errorTxt" id="front_error" style="display:none;">Upload valid Photo.</div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <label class="lgn_lbl_txt">Document Rare:</label>
+                                <label for="rare" class="lgn_lbl_txt">Document Rare:</label>
                             </div>
                             <div class="col-sm-8">
-                                <label for="rare" class="file_lbl">Upload File</label>
-                                <input id="rare" type="file"  style="display: none;">
+                                <label for="rare" class="file_lbl"><i class="fas fa-upload"></i></label>
+                                <input  id="rare" type="file" accept="image/png, image/jpeg" onchange="FileUpRare()" style="display: none;">
+                                <span id="rtxt"></span>
+                                <div class="errorTxt" id="rare_error" style="display:none;">Upload valid Photo.</div>
                             </div>
                         </div>
                     </div>
                 </div>
 
+
+                <div class="card inpt">
+                    <div class="card-header" style="color: #f4f4ff; font-size: 17px; font-weight: bold">
+                        Security:
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="lgn_lbl_txt">Password:</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input  id="password1" onkeyup="password1_validate()" type="password" class="lgn_inpt">
+                                <span onclick="ptoggle1()">
+                                     <span id="pshow" style="display: inline"><i class="far fa-eye"></i></span>
+                                     <span id="phide" style="display: none"><i class="far fa-eye-slash"></i></span>
+                                </span>
+                                <div class="errorTxt" id="password1_error" style="display:none;">Password must contain 8 to 20 characters, at least one numeric digit and a special character.</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="lgn_lbl_txt">Confirm Password:</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input  id="password2" onkeyup="password2_validate()" type="password" class="lgn_inpt">
+                                <span onclick="ptoggle2()">
+                                     <span id="p2show" style="display: inline"><i class="far fa-eye"></i></span>
+                                     <span id="p2hide" style="display: none"><i class="far fa-eye-slash"></i></span>
+                                </span>
+                                <div class="errorTxt" id="password2_error" style="display:none;">Two password must be same.</div>
+                            </div>
+                        </div>
+<!--                        <div class="row">-->
+<!--                            <div class="col-sm-4">-->
+<!--                                <label class="lgn_lbl_txt">Recapthe:</label>-->
+<!--                            </div>-->
+<!--                            <div class="col-sm-8">-->
+<!--                                <input type="password" class="lgn_inpt">-->
+<!--                            </div>-->
+<!--                        </div>-->
+                    </div>
+                </div>
+
                 <div class="card-body">
                     <div class="agrmnt">
-                         <input type="checkbox" id="agrrmt">
-                        <label for="agrrmt" class="lgn_lbl_txt">Agree our terms and conditions.</label>
+                         <input type="checkbox" onclick="term_con()" id="agrrmt" value="checked" style="font-size: 11px!important;">
+                        <label for="agrrmt" onclick="term_con()" class="lgn_lbl_txt" style="font-size: 11px!important;"><a href="#" class="lnk_lbl">Agree our terms and conditions.</a></label>
+                        <div class="errorTxt" id="terms_error" style="display:none;">Terms and Conditions must be agreed.</div>
                     </div>
                 </div>
 
                 <div class="card-footer">
                     <div class="row justify-content-center">
                         <div class="col-4">
-                            <button class="lgn_btn">Cancel</button>
+                            <button class="lgn_btn" type="reset">Cancel</button>
                         </div>
                         <div class="col-3">
-                            <button class="lgn_btn">Signup</button>
+                            <button class="lgn_btn" type="button" onclick="validate()">Signup</button>
                         </div>
+                    </div>
+                    <div style="text-align: right;">
+                      <label for="lbtn" class="lgn_lbl_txt" style="font-size: 10px">Already have an account? <a id="lbtn" href="{%url 'login'%}" style="font-size: 12px" class="lnk_lbl">Login</a></label>
                     </div>
                 </div>
             </div>
+        </form>
     </div>
+
+
 
 
     <!-- Optional JavaScript -->

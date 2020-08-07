@@ -1,3 +1,6 @@
+*{
+    font-family: 'Sriracha';
+}
 .main_div{
     background-color: #3b6978;
     display: flex;
@@ -48,4 +51,23 @@
 .lgn_inpt{
   border: none;
   border-radius: 3px;
+}
+.lnk_lbl{
+    text-decoration: none;
+    color: #f4f6ff;
+}
+.lnk_lbl:hover{
+    text-decoration: underline;
+    color: #f4f6ff;
+}
+.fa-eye{
+    margin-left: -25px;
+}
+.fa-eye-slash{
+    margin-left: -25px;
+}
+
+.errorTxt{
+    color: rgba(218,33,83,0.95);
+    font-size: 13px;
 }

@@ -1,5 +1,4 @@
 {% load static %}
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Home | Mero Complain</title>
@@ -12,6 +11,8 @@
           integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Sriracha' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Bree Serif' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -44,15 +45,25 @@
             <table class="pro_tbl">
                 <tr>
                     <td>
-                        Arbind Kumar Mehta
+                        {{user.get_full_name}}
                     </td>
                     <td rowspan="2">
-                        <img src="{% static 'mainsite/a.jpg' %}" class="pro_pic">
+                        <img src="{{user.profile.Profile_Picture.url}}" class="pro_pic dropdown">
+<!--                        <div class="dropdown-content">-->
+<!--                            dfnhpsgndan-->
+<!--                            gfds-->
+<!--                        </div>-->
+
+                    </td>
+                    <td rowspan="2">
+                        <a href="{% url 'logout'%}"><span data-toggle="tooltip"  class="signoutlogo" data-placement="left" title="Logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </span></a>
                     </td>
                 </tr>
-                <tr>
+                <tr >
                     <td>
-                        ID No: 06-06-0772-258
+                       <span style="margin-top: -10px!important;"> User ID: {{user.username}}</span>
                     </td>
                 </tr>
             </table>

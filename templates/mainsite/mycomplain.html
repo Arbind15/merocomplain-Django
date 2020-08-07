@@ -1,37 +1,172 @@
-<div class="compln" id="com_cont">
-    <div class="new_cmp">
-        <button onclick="newComplain()" data-toggle="tooltip" data-placement="bottom"
-                title="New Comment"
-                class="addc"><i class="fas fa-plus-circle"></i></button>
-    </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 col-sm-1 col-md-2 align-self-start">
-            </div>
-            <div class="col-12 col-sm-10 col-md-8 align-self-center">
+<div class="compln">
+    <div class="row">
+        <div class="col-sm-12 col-md-3">
 
+        </div>
+        <div class="col-sm-12 col-md-6 coms">
+            {%for Com in complain%}
+            <div class="card complns">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            Submitted on:
+                        </div>
+                        <div class="col com_lbl">
+                            {{Com.DateTime}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Subject:
+                        </div>
+                        <div class="col com_lbl">
+                            {{Com.Subject}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Department:
+                        </div>
+                        <div class="col com_lbl">
+                            {{Com.Department}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Seen Status:
+                        </div>
+                        <div class="col com_lbl ">
+                            {{Com.Seen_Status}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Seen Date:
+                        </div>
+                        <div class="col com_lbl">
+                            {{Com.Seen_Date}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Seen By:
+                        </div>
+                        <div class="col com_lbl">
+                            {{Com.Seen_By}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Replies:
+                        </div>
+                        <div class="col com_lbl">
+                            {{Com.Replies}}
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <div class="row justify-content-center">
+                        <div class="col ">
+                            <button class="g-button">Report</button>
+                        </div>
+                        <div class="col ">
+                            <button class="g-button"><i class="far fa-share-square"></i>&nbsp;Share</button>
+                        </div>
+                        <div class="col ">
+                            <button class="g-button">View</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-12 col-sm-1 col-md-2 align-self-end">
-            </div>
+            {% endfor %}
+        </div>
+        <div class="col-sm-12 col-md-3 new_cmp">
+            <button onclick="newComplain()" data-toggle="tooltip" data-placement="bottom"
+                title="New Comment"
+                class="addc">
+                <i class="fas fa-plus-circle"></i>&nbsp;New Complain
+            </button>
         </div>
     </div>
 </div>
 
-<style>
-    .addc {
-        border: 0;
-        color: #f4f4ff;
-        border-radius: 3px;
-        background-color: #84a9ac;
-    }
 
-    .addc:hover {
-        background-color: #84b9ac;
-        cursor: pointer;
-    }
+<!--<div class="compln" id="com_cont">-->
+<!--    <div class="new_cmp">-->
+<!--        <button onclick="newComplain()" data-toggle="tooltip" data-placement="bottom"-->
+<!--                title="New Comment"-->
+<!--                class="addc"><i class="fas fa-plus-circle"></i>&nbsp;New Complain</button>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <div class="container-fluid" style="margin-top: -30px">-->
+<!--            <div class="row">-->
+<!--                <div class="col-sm-1 col-md-3 align-self-start">-->
+<!--                </div>-->
+<!--                <div class="col-sm-10 col-md-6 align-self-center coms">-->
+<!--                    {%for Com in complain%}-->
+<!--                    <div class="card complns">-->
+<!--                        <div class="card-header">-->
+<!--                            Subject:&nbsp;{{Com.Subject}}-->
+<!--                            Department:&nbsp;{{Com.Department}}-->
+<!--                        </div>-->
+<!--                        <div class="card-body">-->
+<!--                            Status:-->
+<!--                            <div class="row">-->
+<!--                                <div class="col">-->
+<!--                                    Submitted on:-->
+<!--                                </div>-->
+<!--                                <div class="col">-->
+<!--                                    {{Com.DateTime}}-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="row">-->
+<!--                                <div class="col">-->
+<!--                                    Seen Status:-->
+<!--                                </div>-->
+<!--                                <div class="col">-->
+<!--                                    S-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="row">-->
+<!--                                <div class="col">-->
+<!--                                    Seen Date:-->
+<!--                                </div>-->
+<!--                                <div class="col">-->
+<!--                                    S-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="row">-->
+<!--                                <div class="col">-->
+<!--                                    Seen By:-->
+<!--                                </div>-->
+<!--                                <div class="col">-->
+<!--                                    S-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="card-footer text-center">-->
+<!--                            <div class="row justify-content-center">-->
+<!--                                <div class="col ">-->
+<!--                                    <button class="g-button">Report</button>-->
+<!--                                </div>-->
+<!--                                <div class="col ">-->
+<!--                                    <button class="g-button"><i class="far fa-share-square"></i>&nbsp;Share</button>-->
+<!--                                </div>-->
+<!--                                <div class="col ">-->
+<!--                                    <button class="g-button">View</button>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    {% endfor %}-->
+<!--                </div>-->
+<!--                <div class="col-sm-1 col-md-3 align-self-end">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 
-    .compln {
-        margin: 10px;
-    }
+<!--</div>-->
 
-</style>
+
+

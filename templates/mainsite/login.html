@@ -1,5 +1,4 @@
 {% load static %}
-<!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -8,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link href='https://fonts.googleapis.com/css?family=Sriracha' rel='stylesheet'>
     <link rel="stylesheet" href="{% static 'mainsite/login.css' %}">
     <script type="text/javascript" src="{% static 'mainsite/login.js' %}"></script>
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
@@ -24,14 +23,34 @@
                     <div class="login_main_lable">
                         Mero Complain
                     </div>
-                    <form>
+                    {% if messages %}
+                        <div class="alert alert-danger">
+                            {% for message in messages %}
+                                {{ message }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <form method="POST" enctype="multipart/form-data" role="form" >
+                        {% csrf_token %}
                         <table>
+                            <tr>
+                                <td>
+                                    <label class="lgn_lbl_txt">Account Type:</label>
+                                </td>
+                                <td>
+                                    <select type="text" id="ac_type" name="ac_type" class="lgn_inpt">
+                                        <option selected value="user">User</option>
+                                        <option value="staff">Staff</option>
+                                        <option value="admin">Administrator</option>
+                                    </select>
+                                </td>
+                            </tr>
                             <tr>
                                 <td>
                                     <label class="lgn_lbl_txt">User ID:</label>
                                 </td>
                                 <td>
-                                    <input type="text" class="lgn_inpt">
+                                    <input type="text" name="username" class="lgn_inpt">
                                 </td>
                             </tr>
                             <tr>
@@ -39,12 +58,18 @@
                                     <label class="lgn_lbl_txt">Password:</label>
                                 </td>
                                 <td>
-                                    <input type="password" class="lgn_inpt">
+                                    <input type="password" id="password" name="password" class="lgn_inpt">
+                                </td>
+                                <td>
+                                    <span onclick="ptoggle()">
+                                         <span id="pshow" style="display: inline"><i class="far fa-eye"></i></span>
+                                         <span id="phide" style="display: none"><i class="far fa-eye-slash"></i></span>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <input id="remember" type="checkbox">
+                                    <input id="remember" name="remember" type="checkbox">
                                     <label class="lgn_lbl_txt" for="remember">Remember me.</label>
                                 </td>
                             </tr>
@@ -58,10 +83,10 @@
                             </tr>
                         </table>
                         <div>
-                            <a href="#" class="lgn_lnk">Forget Password</a>
+                            <a href="{%url 'password_reset_request'%}" class="lgn_lnk">Forget Password</a>
                         </div>
                         <div>
-                            <a href="{% url 'signup' %}" class="lgn_lnk">Don't have an account? SignUP</a>
+                            <label for="sbtn" class="lgn_lnk">Don't have an account? <a href="{% url 'signup' %}" id="sbtn" style="font-size: 12px" class="lnk_lbl">SignUP</a></label>
                         </div>
                     </form>
                 </div>
