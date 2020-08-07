@@ -162,6 +162,8 @@ def SaveUser(request):
         pass1 = data['pass1']
 
         user = User.objects.create_user(username=docnum, email=email,password=pass1)
+        user.save()
+        User.refresh_from_db(user)
         user.first_name=name
         user.is_active=False
         user.save()
