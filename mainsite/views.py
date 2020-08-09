@@ -154,6 +154,13 @@ def newComplain(request):
     return render(request,'mainsite/newcomplain.html',{'today':today})
 
 @login_required(login_url='login')
+def viewcomplain(request):
+    complain_id = request.GET.get('complain_id')
+    complain = Complain.objects.get(id=complain_id)
+    contex = {'complain': complain}
+    return render(request, 'mainsite/viewcomplain.html', contex)
+
+@login_required(login_url='login')
 def SaveComplain(request):
     print(request.POST)
     user=request.user

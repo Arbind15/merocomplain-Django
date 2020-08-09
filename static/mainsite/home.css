@@ -270,6 +270,15 @@
 }
 
 
+.g-logo{
+    font-size: 25px;
+}
+.g-logo:hover{
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+
 /*---------------------------end of mycomplain------------------*/
 /*---------------------------new complain------------------*/
 

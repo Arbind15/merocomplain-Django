@@ -78,7 +78,7 @@ function myComplain() {
 
   var div=document.getElementById('chng_cnt')
   // div.innerHTML='<p>Hi from Mycomplain</p>';
-  var div=document.getElementById('chng_cnt')
+  var modal_div = document.getElementById('model_div');
   // div.innerHTML='<p>Hi from Dashboard</p>';
 
   var xhttp = new XMLHttpRequest();
@@ -87,7 +87,13 @@ function myComplain() {
     if (this.readyState == 4 && this.status == 200) {
       var rtxt = (xhttp.responseText);
       // console.log(rtxt);
-      div.innerHTML=rtxt;
+      div.innerHTML = rtxt;
+      var mdl,mn_cnt;
+      mdl=rtxt.indexOf('<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">');
+      mn_cnt=rtxt.slice(0,mdl)
+      mdl=rtxt.slice(mdl);
+      div.innerHTML=mn_cnt;
+      modal_div.innerHTML=mdl;
     }
   };
   xhttp.open("GET", url, true);
@@ -95,6 +101,32 @@ function myComplain() {
 
 
 }
+
+function viewcomplain(complain_id) {
+  var div = document.getElementById('chng_cnt');
+   var modal_div = document.getElementById('model_div');
+   // alert(modal_div);
+  // div.innerHTML='<p>Hi from Dashboard</p>';
+
+  var xhttp = new XMLHttpRequest();
+  var url = '/viewcomplain?complain_id='+complain_id;
+  xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+          var rtxt = (xhttp.responseText);
+          // console.log(rtxt);
+          div.innerHTML = rtxt;
+          var mdl,mn_cnt;
+          mdl=rtxt.indexOf('<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">');
+          mn_cnt=rtxt.slice(0,mdl)
+          mdl=rtxt.slice(mdl);
+          div.innerHTML=mn_cnt;
+          modal_div.innerHTML=mdl;
+      }
+  };
+  xhttp.open("GET", url, true);
+  xhttp.send();
+}
+
 
 function reports() {
   // console.log('reports');
@@ -266,4 +298,38 @@ function FileUp() {
     var ipt = document.getElementById('cfl');
     rfile = ipt.files[0].name;
     document.getElementById('rtxt').innerText = "Selected: " + rfile;
+}
+
+
+var complain_ID;
+function Share_mdl(complain) {
+    complain_ID=complain
+}
+
+function GeneratePdf() {
+  var url = '/pdf_generator?complain_id='+complain_ID;
+  window.open(url,'_blank');
+}
+
+function Send_Email() {
+  var lnk = document.getElementById('share_eml');
+
+  var xhttp = new XMLHttpRequest();
+  var url = '/email_complain?complain_id='+complain_ID;
+  xhttp.responseType='json';
+  xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+          var rtxt = (xhttp.response);
+          // alert(rtxt[2])
+          document.location.href = "mailto:?subject="
+                + encodeURIComponent('New Complain')
+                + "&body=" +"Date of Submission: "+rtxt[4]+"%0d%0a"+"User_ID: " +rtxt[0]+"%0d%0a"+
+              "Full Name: "+rtxt[1]+"%0d%0a"+"Subject of Original Complain: "+rtxt[2]+"%0d%0a%0d%0a"+
+              "Body of Complain: "+"%0d%0a%0d%0a         "+rtxt[3]+"%0d%0a %0d%0a"+
+              "--End of Body--"+"%0d%0a %0d%0a %0d%0a %0d%0a";
+      }
+  };
+  xhttp.open("GET", url, true);
+  xhttp.send();
+
 }
