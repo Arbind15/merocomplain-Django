@@ -4,6 +4,13 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 import csv, json, itertools, re
 import os,datetime
+import io
+from json import dumps
+from django.http import JsonResponse
+from django.http import FileResponse
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import A4
+from reportlab.lib.pagesizes import portrait
 from django.contrib import messages
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
@@ -23,6 +30,7 @@ from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.views.generic import View
 from django.contrib.auth.decorators import login_required
 
+from reportlab.platypus import paragraph
 
 import re
 from django.conf import settings
@@ -110,7 +118,29 @@ def myComplain(request):
     #     print(x)
     contex={'complain':coms}
     return render(request,'mainsite/mycomplain.html',contex)
+@login_required(login_url='login')
+def complains(request):
+    coms = Complain.objects.all()
+    # for x in coms:
+    #     print(x)
+    contex = {'complain': coms}
+    return render(request, 'mainsite/complains_staff.html', contex)
 
+@login_required(login_url='login')
+def Users_Admin(request):
+    users = User.objects.all()
+    # for x in coms:
+    #     print(x)
+    contex = {'users': users}
+    return render(request, 'mainsite/users_admin.html', contex)
+
+@login_required(login_url='login')
+def viewcomplainstaff(request):
+    # print(request)
+    complain_id=request.GET.get('complain_id')
+    complain=Complain.objects.get(id=complain_id)
+    contex = {'complain':complain}
+    return render(request, 'mainsite/view_complain_staff.html', contex)
 def report(request):
 
     return render(request,'mainsite/report.html')
@@ -320,3 +350,59 @@ def remember_me_login(request, template_name='mainsite/login.html',
         'site': current_site,
         'site_name': current_site.name,
     }, context_instance=RequestContext(request))
+
+
+def GeneratePdf(request):
+    com_id=request.GET.get('complain_id')
+    com=Complain.objects.get(id=com_id)
+    buffer = io.BytesIO()
+    # Create the PDF object, using the buffer as its "file."
+    c = canvas.Canvas(buffer,pagesize=portrait(A4))
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+    c.rect(20, 50, 550, 750)
+    c.drawString(345, 780, "Date, Time: "+str(com.DateTime.strftime('%b. %d, %Y, %I:%M %p')))
+    c.drawString(35, 765, "User Id/Document Number: "+com.User_ID.username)
+    c.drawString(35, 750, "Full Name: "+str(com.User_ID.first_name)+' '+str(com.User_ID.last_name))
+    c.drawString(35, 735, "Department: "+com.Department)
+    c.drawString(35, 720, "Subject: "+com.Subject)
+
+    message_style = paragraph.ParagraphStyle('Normal')
+    # message = com.Subject.replace('\n', '<br />')
+    # message = paragraph.Paragraph(message, style=message_style)
+    # w, h = message.wrap(100, 100)
+    # message.drawOn(c, 40, 565 - h)
+
+    c.drawString(35, 705, "Body: ")
+    message = com.Body.replace('\n', '<br />')
+    message = paragraph.Paragraph(message, style=message_style)
+    w, h = message.wrap(490, 540)
+    message.drawOn(c, 50, 690 - h)
+    c.rect(45, 150,500 , 550)
+
+    # phon = "Phone Number: " + str(data[5])
+    # c.drawString(35, 550, phon)
+    # add = "Address: " + str(data[6])
+    # c.drawString(35, 535, add)
+    # c.drawString(35, 520, "Province: " + str(data[10]))
+    # c.drawString(35, 505, "Remark: " + str(data[9]))
+    # c.drawString(35, 490, "Vote Status: " + str(data[14]))
+    # Close the PDF object cleanly, and we're done.
+    c.showPage()
+    c.save()
+    # FileResponse sets the Content-Disposition header so that browsers
+    # present the option to save the file.
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename=str(com.User_ID)+".pdf")
+
+def email_complain(request):
+        com_id=request.GET.get('complain_id')
+        com = Complain.objects.get(id=com_id)
+        user_id=com.User_ID.username
+        full_name=com.User_ID.first_name+' '+com.User_ID.last_name
+        sub=com.Subject
+        bdy=com.Body
+        dt=com.DateTime.strftime('%b. %d, %Y, %I:%M %p')
+        cont=[user_id,full_name,sub,bdy,dt]
+        # cont=dumps(cont)
+        return JsonResponse(cont,safe=False)

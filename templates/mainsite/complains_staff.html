@@ -1,0 +1,116 @@
+<div class="compln">
+    <div class="row">
+        <div class="col-sm-12 col-md-3">
+
+        </div>
+        <div class="col-sm-12 col-md-6 coms">
+            {%for Com in complain%}
+            <div class="card complns">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            Submitted on:
+                        </div>
+                        <div class="col com_lbl">
+                            {{Com.DateTime}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Subject:
+                        </div>
+                        <div class="col com_lbl">
+                            {{Com.Subject}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Department:
+                        </div>
+                        <div class="col com_lbl">
+                            {{Com.Department}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Seen Status:
+                        </div>
+                        <div class="col com_lbl ">
+                            {{Com.Seen_Status}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Seen Date:
+                        </div>
+                        <div class="col com_lbl">
+                            {{Com.Seen_Date}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Seen By:
+                        </div>
+                        <div class="col com_lbl">
+                            {{Com.Seen_By}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Replies:
+                        </div>
+                        <div class="col com_lbl">
+                            {{Com.Replies}}
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <div class="row justify-content-center">
+                        <div class="col ">
+                            <button class="g-button">Report</button>
+                        </div>
+                        <div class="col ">
+                            <button class="g-button"
+                            data-toggle="modal" data-target="#exampleModalCenter" type="button" onclick="Share_mdl('{{Com.id}}')"><i class="far fa-share-square"></i>&nbsp;Share</button>
+                        </div>
+                        <div class="col ">
+                            <button class="g-button" onclick="viewcomplain('{{Com.id}}')">View</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-sm-12 col-md-3 new_cmp">
+
+        </div>
+    </div>
+
+</div>
+
+ <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered"  role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Share</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="row">
+              <div class="col">Share via Email:</div>
+              <div class="col">
+                  <i onclick="Send_Email()" class="far fa-share-square g-logo"></i>
+              </div>
+          </div>
+          <br>
+          <div class="row">
+              <div class="col">Download Pdf:</div>
+              <div class="col"><i onclick="GeneratePdf()" id="mdl_pdf_btn" class="far fa-file-pdf g-logo"></i></div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -32,6 +32,7 @@ class Profile(models.Model):
 
 
 class Complain(models.Model):
+    # Complain_ID=models.
     User_ID = models.ForeignKey(User, on_delete=models.CASCADE)
     DateTime=models.DateTimeField(default=datetime.datetime.now())
     Department=models.CharField(max_length=500)
@@ -44,4 +45,4 @@ class Complain(models.Model):
     Seen_By=models.CharField(max_length=100,default="Unseen")
     Replies=models.CharField(max_length=50,default="0")
     def __str__(self):
-        return f'{self.User_ID.first_name} -Profile'
+        return f'{self.User_ID.first_name} -Complain'

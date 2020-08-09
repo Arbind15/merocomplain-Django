@@ -1,0 +1,58 @@
+<div class="compln">
+    <div class="row">
+
+        <div class="col-sm-12 col-md-3">
+
+        </div>
+
+        <div class="col-sm-12 col-md-6 coms">
+
+            <div class="card complns">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            User Id.
+                        </div>
+                        <div class="col">
+                            Username
+                        </div>
+                        <div class="col">
+                            Status
+                        </div>
+                        <div class="col">
+                            Actions
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {%for user in users%}
+            <div class="card complns">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            {{user.username}}
+                        </div>
+                        <div class="col">
+                            {{user.get_full_name}}
+                        </div>
+
+                        <div class="col">
+                            {{user.profile.Status}}
+                        </div>
+
+                        <div class="col com_lbl">
+                            <button class="g-button">Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="col-sm-12 col-md-3 new_cmp">
+        </div>
+
+    </div>
+</div>
+

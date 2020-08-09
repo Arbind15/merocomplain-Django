@@ -1,0 +1,91 @@
+{% load static %}
+<html lang="en">
+<head>
+    <title>Home | Mero Complain</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'mainsite/admin.css' %}">
+{#    <link rel="stylesheet" href="{% static 'mainsite/dashboard.css' %}">#}
+    <script type="text/javascript" src="{% static 'mainsite/admin.js' %}"></script>
+{#    <script type="text/javascript" src="{% static 'mainsite/dashboard.js' %}"></script>#}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
+          integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Sriracha' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Bree Serif' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="main_container">
+
+    <div id="mySidenav" class="sidenav">
+
+        <a href="javascript:void(0)" class="closebtn_sm" onclick="closeNavSm()">&times;</a>
+
+        <a href="javascript:void(0)" onclick="toggleNav()" class="closebtn">
+            <span style="font-size:30px;cursor:pointer; color: rgba(1,1,1,0.8)">&#9776;</span>
+        </a>
+        <a href="javascript:void(0)" id="dashboard" onclick="dashBoard()" class="nav_itm"> <i class="fas fa-home icn"></i> <span>Dashboard</span></a>
+        <a href="javascript:void(0)" id="mycomplain" onclick="Users_Admin()" class="nav_itm"><i class="fas fa-bug icn"></i> <span>Users</span></a>
+        <a href="javascript:void(0)" id="report" onclick="reports()" class="nav_itm"><i class="far fa-flag icn"></i>
+            <span>Add Staff</span></a>
+        <a href="{%url 'signup' %}" class="nav_itm" id="faq" onclick="faq()"><i
+                class="far fa-question-circle icn"></i><span>Add User</span> </a>
+    </div>
+
+    <div class="main_content" id="main_content">
+        <a href="javascript:void(0)" onclick="openNavSm()" class="toggler_sm">
+            <span style="font-size:30px;cursor:pointer; color: rgba(1,1,1,0.8)">&#9776;</span>
+        </a>
+        <div class="hom_nav container-fluid">
+            <table class="pro_tbl">
+                <tr>
+                    <td>
+                        {{user.get_full_name}}
+                    </td>
+                    <td rowspan="2">
+                        <img src="{{user.profile.Profile_Picture.url}}" class="pro_pic dropdown">
+<!--                        <div class="dropdown-content">-->
+<!--                            dfnhpsgndan-->
+<!--                            gfds-->
+<!--                        </div>-->
+
+                    </td>
+                    <td rowspan="2">
+                        <a href="{% url 'logout'%}"><span data-toggle="tooltip"  class="signoutlogo" data-placement="left" title="Logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </span></a>
+                    </td>
+                </tr>
+                <tr >
+                    <td>
+                       <span style="margin-top: -10px!important;"> User ID: {{user.username}}</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="container-fluid chng_cnt" id="chng_cnt">
+
+        </div>
+    </div>
+
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

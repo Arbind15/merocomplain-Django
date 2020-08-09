@@ -1,0 +1,108 @@
+<div class="m_new_c">
+
+    <div class="row">
+        <div class="col-sm-12 col-md-3">
+
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+            <div class="card newcomplain">
+                <div class="card-header">
+                    <div style="font-size: 12px;margin-left: 3px">
+                        Date, Time: {{complain.DateTime}}
+                    </div>
+                    <div class="sel_dep">
+                        Department:  {{complain.Department}}
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="com-bdy">
+                        <label for="sub" style="font-size: 15px;">Subject:</label>
+                        <div id="sub" class="semmis_sub">{{complain.Subject}}</div>
+                    </div>
+                    <br>
+                    <div class="com-bdy">
+                        <label for="bdy" style="font-size: 15px;">Complain Body:</label>
+                        <div id="bdy" class="semmis_bdy">{{complain.Body}}</div>
+                    </div>
+                    <br>
+                    <div class="com-attach">
+                        <label style="font-size: 15px;">Attachments(Optional):</label>
+                        <span id="rtxt">{{complain.Attachments}}</span>
+                    </div>
+                    <div class="com-attach">
+                        <label style="font-size: 15px;">Priority:</label>
+                        <label>{{complain.Priority}}</label>
+                    </div>
+                    <div class="com-attach">
+                        <label style="font-size: 15px;">Seen By:</label>
+                        <label>{{complain.Seen_By}}</label>
+                    </div>
+                    <div class="com-attach">
+                        <label style="font-size: 15px;">Seen Date:</label>
+                        <label>{{complain.Seen_Date}}</label>
+                    </div>
+                    <div class="com-attach">
+                        <label style="font-size: 15px;">Replies:</label>
+                        <label>{{complain.Replies}}</label>
+                    </div>
+
+                    <div class="com-attach">
+                        <label style="font-size: 15px;">Shares:</label>
+<!--                        <label>{{complain.Priority}}</label>-->
+                    </div>
+
+                </div>
+                <div class="card-footer text-center">
+                    <div class="row justify-content-center">
+                        <div class="col">
+                            <button class="g-button">Report</button>
+                        </div>
+                        <div class="col">
+                            <button class="g-button" onclick="Share_mdl('{{complain.id}}')"
+                            data-toggle="modal" data-target="#exampleModalCenter" type="button"><i class="far fa-share-square">
+                                </i>Share</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-3">
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered"  role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Share</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="row">
+              <div class="col">Share via Email:</div>
+              <div class="col">
+                      <i onclick="Send_Email()" class="far fa-share-square g-logo"></i>
+              </div>
+          </div>
+          <br>
+          <div class="row">
+              <div class="col">Download Pdf:</div>
+              <div class="col"><i onclick="GeneratePdf()" class="far fa-file-pdf g-logo"></i></div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
