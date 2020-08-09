@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
 import csv, json, itertools, re
 import os,datetime
@@ -113,14 +113,18 @@ def dashboard(request):
 
 @login_required(login_url='login')
 def myComplain(request):
-    coms=Complain.objects.all()
+    # coms=Complain.objects.all().order_by('-DateTime')
+    # u=User.objects.get(username=user_id)
+    coms=Complain.objects.filter(User_ID=request.user).order_by('-DateTime')
+    # print(request.user)
+    # coms=get_object_or_404(Complain,User_ID=user_id)
     # for x in coms:
     #     print(x)
     contex={'complain':coms}
     return render(request,'mainsite/mycomplain.html',contex)
 @login_required(login_url='login')
 def complains(request):
-    coms = Complain.objects.all()
+    coms = Complain.objects.all().order_by('-DateTime')
     # for x in coms:
     #     print(x)
     contex = {'complain': coms}

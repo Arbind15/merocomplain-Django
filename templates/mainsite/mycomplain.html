@@ -7,6 +7,15 @@
             {%for Com in complain%}
             <div class="card complns">
                 <div class="card-body">
+                     <div class="row">
+                        <div class="col">
+                            User ID:
+                        </div>
+                        <div class="col com_lbl">
+                            {{Com.User_ID}}
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="col">
                             Submitted on:

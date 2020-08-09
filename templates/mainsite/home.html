@@ -30,7 +30,7 @@
             <span style="font-size:30px;cursor:pointer; color: rgba(1,1,1,0.8)">&#9776;</span>
         </a>
         <a href="javascript:void(0)" id="dashboard" onclick="dashBoard()" class="nav_itm"> <i class="fas fa-home icn"></i> <span>Dashboard</span></a>
-        <a href="javascript:void(0)" id="mycomplain" onclick="myComplain()" class="nav_itm"><i class="fas fa-bug icn"></i> <span>My Complain</span></a>
+        <a href="javascript:void(0)" id="mycomplain" onclick="myComplain('{{user.username}}')" class="nav_itm"><i class="fas fa-bug icn"></i> <span>My Complain</span></a>
         <a href="javascript:void(0)" id="report" onclick="reports()" class="nav_itm"><i class="far fa-flag icn"></i>
             <span>Reports</span></a>
         <a href="javascript:void(0)" class="nav_itm" id="faq" onclick="faq()"><i
@@ -69,6 +69,13 @@
             </table>
         </div>
         <div class="container-fluid chng_cnt" id="chng_cnt">
+
+            <div class="spinner_div">
+                <div class="my_spinner">
+
+                </div>
+            </div>
+
 
         </div>
     </div>

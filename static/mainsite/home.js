@@ -68,7 +68,7 @@ function dashBoard() {
 }
 
 
-function myComplain() {
+function myComplain(user_id) {
   // console.log('mycomplain');
   document.getElementById('mycomplain').style='border-left: 3px solid rgba(182,2,33,0.9);' +
       'color: white;background-color: rgba(1,1,1,0.3);';
@@ -82,7 +82,7 @@ function myComplain() {
   // div.innerHTML='<p>Hi from Dashboard</p>';
 
   var xhttp = new XMLHttpRequest();
-  var url = '/mycomplain' ;
+  var url = '/mycomplain?user_id='+user_id ;
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       var rtxt = (xhttp.responseText);

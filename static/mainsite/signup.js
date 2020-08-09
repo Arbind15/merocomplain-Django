@@ -619,6 +619,5 @@ function SendData() {
     // });
     req.send(data);
 
-
 }
 
