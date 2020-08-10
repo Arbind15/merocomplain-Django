@@ -30,7 +30,7 @@
                             {% endfor %}
                         </div>
                     {% endif %}
-                    <form method="POST" enctype="multipart/form-data" role="form" >
+                    <form method="POST" onsubmit="return OnLogin()" enctype="multipart/form-data" role="form" >
                         {% csrf_token %}
                         <table>
                             <tr>
@@ -78,7 +78,7 @@
                                     <button type="reset" class="lgn_btn" >Cancel</button>
                                 </td>
                                 <td>
-                                    <button type="submit" class="lgn_btn">Login</button>
+                                    <button type="submit" id="login_btn" class="lgn_btn">Login</button>
                                 </td>
                             </tr>
                         </table>
@@ -93,6 +93,9 @@
             </div>
         </div>
   </div>
+
+<!--  <div class="btn_spinner">-->
+<!--  </div>-->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

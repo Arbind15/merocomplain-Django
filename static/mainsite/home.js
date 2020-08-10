@@ -1,4 +1,5 @@
 var nav = true;
+import (m_s_div)
 
 
 function openNav() {
@@ -42,8 +43,32 @@ function openNavSm() {
 
 }
 
+//------------Spinner-------------------------------------------
+
+var m_s_div=document.createElement('div');
+m_s_div.className='spinner_container';
+m_s_div.id='spinner_con';
+var s_div=document.createElement('div');
+s_div.className='spinner_div';
+var spnr=document.createElement('div');
+spnr.className='my_spinner';
+
+s_div.appendChild(spnr);
+
+m_s_div.appendChild(s_div)
+
+
+//------------end ofSpinner-------------------------------------------
+
 
 function dashBoard() {
+
+  // document.getElementById('spinner_con').style.display='flex';
+
+  var div=document.getElementById('chng_cnt');
+  div.innerHTML=''
+  div.appendChild(m_s_div);
+
   document.getElementById('dashboard').style='border-left: 3px solid rgba(182,2,33,0.9);' +
       'color: white;background-color: rgba(1,1,1,0.3);';
   document.getElementById('mycomplain').style='';
@@ -60,6 +85,7 @@ function dashBoard() {
       var rtxt = (xhttp.responseText);
       // console.log(rtxt);
       div.innerHTML=rtxt;
+      document.getElementById('spinner_con').style.display='none';
     }
   };
   xhttp.open("GET", url, true);
@@ -68,15 +94,20 @@ function dashBoard() {
 }
 
 
+
 function myComplain(user_id) {
-  // console.log('mycomplain');
+
+  var div=document.getElementById('chng_cnt');
+  div.innerHTML=''
+  div.appendChild(m_s_div);
+
   document.getElementById('mycomplain').style='border-left: 3px solid rgba(182,2,33,0.9);' +
       'color: white;background-color: rgba(1,1,1,0.3);';
   document.getElementById('report').style='';
   document.getElementById('dashboard').style='';
   document.getElementById('faq').style='';
 
-  var div=document.getElementById('chng_cnt')
+
   // div.innerHTML='<p>Hi from Mycomplain</p>';
   var modal_div = document.getElementById('model_div');
   // div.innerHTML='<p>Hi from Dashboard</p>';
@@ -105,8 +136,14 @@ function myComplain(user_id) {
 function viewcomplain(complain_id) {
   var div = document.getElementById('chng_cnt');
    var modal_div = document.getElementById('model_div');
-   // alert(modal_div);
-  // div.innerHTML='<p>Hi from Dashboard</p>';
+
+   var btn=document.getElementById('my_com_view_btn'+complain_id);
+    btn.setAttribute('disabled','true');
+    // btn.innerHTML='';
+    var spnr=document.createElement('div');
+    spnr.className='btn_spinner';
+    spnr.style='margin-top: -20px;'
+    btn.appendChild(spnr);
 
   var xhttp = new XMLHttpRequest();
   var url = '/viewcomplain?complain_id='+complain_id;
@@ -129,7 +166,12 @@ function viewcomplain(complain_id) {
 
 
 function reports() {
-  // console.log('reports');
+
+  // document.getElementById('spinner_con').style.display='flex';
+  var div=document.getElementById('chng_cnt');
+  div.innerHTML=''
+  div.appendChild(m_s_div);
+
   document.getElementById('report').style='border-left: 3px solid rgba(182,2,33,0.9);' +
       'color: white;background-color: rgba(1,1,1,0.3);';
   document.getElementById('mycomplain').style='';
@@ -156,7 +198,11 @@ function reports() {
 }
 
 function faq() {
-  // console.log('faq');
+
+  var div=document.getElementById('chng_cnt');
+  div.innerHTML=''
+  div.appendChild(m_s_div);
+
   document.getElementById('faq').style='border-left: 3px solid rgba(182,2,33,0.9);' +
       'color: white;background-color: rgba(1,1,1,0.3);';
   document.getElementById('mycomplain').style='';
@@ -175,6 +221,7 @@ function faq() {
       var rtxt = (xhttp.responseText);
       // console.log(rtxt);
       div.innerHTML=rtxt;
+      document.getElementById('spinner_con').style.display='none';
     }
   };
   xhttp.open("GET", url, true);
@@ -186,6 +233,10 @@ function faq() {
 function newComplain() {
         var div = document.getElementById('chng_cnt');
         // div.innerHTML='<p>Hi from Dashboard</p>';
+
+        var div=document.getElementById('chng_cnt');
+        div.innerHTML=''
+        div.appendChild(m_s_div);
 
         var xhttp = new XMLHttpRequest();
         var url = '/newcomplain';
@@ -217,6 +268,10 @@ function getCookie(name) {
 }
 
 function SaveComplain() {
+
+  var div=document.getElementById('chng_cnt');
+  div.innerHTML=''
+  div.appendChild(m_s_div);
 
   var data = new FormData();
   var req = new XMLHttpRequest();
@@ -256,7 +311,17 @@ function SaveComplain() {
 
 function NewComplain() {
   if(Dep()&Subj()&Bdy()){
+
+    var btn=document.getElementById('proceed_btn');
+    btn.setAttribute('disabled','true');
+    // btn.innerHTML='';
+    var spnr=document.createElement('div');
+    spnr.className='btn_spinner';
+    spnr.style='margin-top: -20px;'
+    btn.appendChild(spnr);
+
     SaveComplain()
+
   }
 
 }
@@ -331,5 +396,18 @@ function Send_Email() {
   };
   xhttp.open("GET", url, true);
   xhttp.send();
+
+}
+
+function OnLogin() {
+    var btn=document.getElementById('login_btn');
+    btn.setAttribute('disabled','true');
+    // btn.innerHTML='';
+    var spnr=document.createElement('div');
+    spnr.className='btn_spinner';
+    spnr.style='margin-top: -20px;'
+    btn.appendChild(spnr);
+
+    return true;
 
 }

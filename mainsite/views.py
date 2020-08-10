@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.shortcuts import render,redirect,get_object_or_404
+from django.shortcuts import render,redirect,get_object_or_404,Http404
 from django.http import HttpResponse
 import csv, json, itertools, re
 import os,datetime
@@ -54,7 +54,7 @@ def home(request):
     return render(request,'mainsite/home.html',contex)
 
 def login(request):
-    print(request)
+    # print(request)
     if request.method=="POST":
         ac_type=request.POST.get('ac_type')
         username = request.POST.get('username')
@@ -107,8 +107,28 @@ def signup(request):
 
     return render(request,'mainsite/Signup.html')
 
-def dashboard(request):
 
+def email_validate(request):
+    try:
+        get_object_or_404(User,email=request.GET.get('email'))
+        return HttpResponse('false')
+    except Http404:
+        return HttpResponse('true')
+
+def user_validate(request):
+    try:
+        get_object_or_404(User, username=request.GET.get('num'))
+        return HttpResponse('false')
+    except Http404:
+        return HttpResponse('true')
+
+def dashboard(request):
+    # i = 1
+    # while (1):
+    #     i = i + 1
+    #     print(i)
+    #     if (i == 10000):
+    #         break
     return render(request,'mainsite/Dashboard.html')
 
 @login_required(login_url='login')
@@ -141,6 +161,8 @@ def Users_Admin(request):
 @login_required(login_url='login')
 def viewcomplainstaff(request):
     # print(request)
+    # while 1:
+    #     pass
     complain_id=request.GET.get('complain_id')
     complain=Complain.objects.get(id=complain_id)
     contex = {'complain':complain}

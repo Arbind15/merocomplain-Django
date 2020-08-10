@@ -130,19 +130,34 @@ function FileUpRare() {
     rare_Validate();
 }
 
-
+var e_flg=false;
+var u_flg=false;
 
 function validate() {
+    Is_Unique_Username();
+    Is_Unique_Email();
+    console.log(u_flg);
+    console.log(e_flg);
+
+
     if(!(username_validate()&email_validate()&password1_validate()&password2_validate()&dob_validate()&gender_validate()
     &phone_number_validate()&doc_num_validate()&term_con()&vdc_validate()&tole_validate()&ward_validate()&postal_validate()
-    &photo_Validate()&front_Validate()&rare_Validate()&Dtype_validate()))
+    &photo_Validate()&front_Validate()&rare_Validate()&Dtype_validate()&e_flg&u_flg))
     {
         return false;
     }
     else
     {
+        var btn=document.getElementById('signup_btn');
+        btn.setAttribute('disabled','true');
+        var spnr=document.createElement('div');
+        spnr.className='btn_spinner';
+        spnr.id='div_spinner_signup';
+        spnr.style='margin-top: -20px;'
+        btn.appendChild(spnr);
+
         PopConfirm();
-        true;
+        return true;
     }
 }
 
@@ -166,14 +181,66 @@ function email_validate() {
 
     if(!(email_regx.test(email)))
     {
-        document.getElementById('email_error').style.display='block';
+        document.getElementById('email_error').style.display='block;';
         return false;
     }
     else {
         document.getElementById('email_error').style.display='none';
         return true;
     }
+
 }
+function Is_Unique_Email() {
+
+  var eml=document.getElementById('email').value;
+  var xhttp = new XMLHttpRequest();
+  var url = '/email_validate?email='+eml ;
+  xhttp.open("GET", url, true);
+  xhttp.send();
+
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      var rtxt = (xhttp.responseText);
+      // console.log(rtxt);
+      if(rtxt=='false'){
+          document.getElementById('same_email_error').style.display='block';
+          e_flg=false;
+      }
+      else {
+          document.getElementById('same_email_error').style.display='none';
+          e_flg=true;
+      }
+    }
+  };
+
+
+}
+
+function Is_Unique_Username() {
+  var num=document.getElementById('dnum').value;
+  var xhttp = new XMLHttpRequest();
+  var url = '/user_validate?num='+num ;
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      var rtxt = (xhttp.responseText);
+      // console.log(rtxt);
+      if(rtxt=='false'){
+          document.getElementById('same_dnum_error').style.display='block';
+          // document.getElementById('signup_btn').setAttribute('disabled','true');
+          u_flg=false;
+      }
+      else {
+          document.getElementById('same_dnum_error').style.display='none';
+          // document.getElementById('signup_btn').removeAttribute('disabled');
+          u_flg=true;
+      }
+    }
+  };
+  xhttp.open("GET", url, true);
+  xhttp.send();
+}
+
+
 function password1_validate() {
     var password1=document.getElementById('password1').value;
     var password1_regx=/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,15}$/;
@@ -510,6 +577,10 @@ function PopConfirm() {
 
 function SBack() {
     document.getElementById('popConfirm').style.display="none";
+    var btn=document.getElementById('signup_btn');
+    btn.removeAttribute('disabled');
+    var spnr=document.getElementById('div_spinner_signup');
+    btn.removeChild(spnr);
 }
 
 
@@ -532,6 +603,13 @@ function getCookie(name) {
 function SendData() {
 
     // document.getElementById('main_pbar').style='display: block;';
+
+    var btn=document.getElementById('proceed_btn');
+    btn.setAttribute('disabled','true');
+    var spnr=document.createElement('div');
+    spnr.className='btn_spinner';
+    spnr.style='margin-top: -20px;'
+    btn.appendChild(spnr);
 
     var name=document.getElementById('full_name').value;
     var email=document.getElementById('email').value;

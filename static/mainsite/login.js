@@ -50,3 +50,17 @@ function password2_validate() {
     }
 }
 
+
+
+function OnLogin() {
+    var btn=document.getElementById('login_btn');
+    btn.setAttribute('disabled','true');
+    // btn.innerHTML='';
+    var spnr=document.createElement('div');
+    spnr.className='btn_spinner';
+    spnr.style='margin-top: -20px;'
+    btn.appendChild(spnr);
+
+    return true;
+
+}

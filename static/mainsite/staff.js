@@ -1,5 +1,23 @@
 var nav = true;
 
+//------------Spinner-------------------------------------------
+
+var m_s_div=document.createElement('div');
+m_s_div.className='spinner_container';
+m_s_div.id='spinner_con';
+var s_div=document.createElement('div');
+s_div.className='spinner_div';
+var spnr=document.createElement('div');
+spnr.className='my_spinner';
+
+s_div.appendChild(spnr);
+
+m_s_div.appendChild(s_div)
+
+
+//------------end ofSpinner-------------------------------------------
+
+
 
 function openNav() {
   document.getElementById("mySidenav").style.width = "200px";
@@ -44,6 +62,10 @@ function openNavSm() {
 
 
 function dashBoard() {
+
+  var div=document.getElementById('chng_cnt');
+  div.innerHTML=''
+  div.appendChild(m_s_div);
   document.getElementById('dashboard').style='border-left: 3px solid rgba(182,2,33,0.9);' +
       'color: white;background-color: rgba(1,1,1,0.3);';
   document.getElementById('mycomplain').style='';
@@ -70,6 +92,9 @@ function dashBoard() {
 
 function Complains() {
   // console.log('mycomplain');
+  var div=document.getElementById('chng_cnt');
+  div.innerHTML=''
+  div.appendChild(m_s_div);
   document.getElementById('mycomplain').style='border-left: 3px solid rgba(182,2,33,0.9);' +
       'color: white;background-color: rgba(1,1,1,0.3);';
   document.getElementById('report').style='';
@@ -104,6 +129,9 @@ function Complains() {
 
 function reports() {
   // console.log('reports');
+  var div=document.getElementById('chng_cnt');
+  div.innerHTML=''
+  div.appendChild(m_s_div);
   document.getElementById('report').style='border-left: 3px solid rgba(182,2,33,0.9);' +
       'color: white;background-color: rgba(1,1,1,0.3);';
   document.getElementById('mycomplain').style='';
@@ -131,6 +159,11 @@ function reports() {
 
 function faq() {
   // console.log('faq');
+
+  // var div=document.getElementById('chng_cnt');
+  // div.innerHTML=''
+  // div.appendChild(m_s_div);
+
   document.getElementById('faq').style='border-left: 3px solid rgba(182,2,33,0.9);' +
       'color: white;background-color: rgba(1,1,1,0.3);';
   document.getElementById('mycomplain').style='';
@@ -275,6 +308,15 @@ function FileUp() {
 }
 
 function viewcomplain(complain_id) {
+
+     var btn=document.getElementById('view_com_staff'+complain_id);
+    btn.setAttribute('disabled','true');
+    // btn.innerHTML='';
+    var spnr=document.createElement('div');
+    spnr.className='btn_spinner';
+    spnr.style='margin-top: -20px;'
+    btn.appendChild(spnr);
+
   var div = document.getElementById('chng_cnt');
    var modal_div = document.getElementById('model_div');
    // alert(modal_div);

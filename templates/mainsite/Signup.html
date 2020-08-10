@@ -27,7 +27,7 @@
                 </div>
                 <div class="row justify-content-between" style="padding-top: 10px;padding-left: 20px;padding-right: 20px">
                     <button class="lgn_btn" onclick="SBack()">Back</button>
-                    <button class="lgn_btn" onclick="SendData()">Proceed</button>
+                    <button class="lgn_btn" id="proceed_btn" onclick="SendData()">Proceed</button>
                 </div>
             </div>
             <div class="col-sm-12 col-md-3" >
@@ -61,8 +61,9 @@
                                 <label for="email" class="lgn_lbl_txt">Email:</label>
                             </div>
                             <div class="col-sm-8">
-                                <input onkeyup="email_validate()" id="email" type="text" class="lgn_inpt">
+                                <input onkeyup="email_validate()" id="email" onfocusout="Is_Unique_Email()" type="email" class="lgn_inpt">
                                 <div class="errorTxt" id="email_error" style="display:none;">Enter valid email.</div>
+                                <div class="errorTxt" id="same_email_error" style="display:none;">User with this email already exists.</div>
                             </div>
                         </div>
                         <div class="row">
@@ -228,8 +229,9 @@
                                 <label for="dnum" class="lgn_lbl_txt">Document No:</label>
                             </div>
                             <div class="col-sm-8">
-                                <input  id="dnum" onkeyup="doc_num_validate()" type="text" class="lgn_inpt">
+                                <input  id="dnum" onkeyup="doc_num_validate()"  onfocusout="Is_Unique_Username()" type="text" class="lgn_inpt">
                                 <div class="errorTxt" id="dnum_error" style="display:none;">Enter valid Document Number.</div>
+                                <div class="errorTxt" id="same_dnum_error" style="display:none;">User with this document number already exists.</div>
                             </div>
                         </div>
                         <div class="row">
@@ -314,7 +316,7 @@
                             <button class="lgn_btn" type="reset">Cancel</button>
                         </div>
                         <div class="col-3">
-                            <button class="lgn_btn" type="button" onclick="validate()">Signup</button>
+                            <button class="lgn_btn" id="signup_btn" type="button" onclick="validate()">Signup</button>
                         </div>
                     </div>
                     <div style="text-align: right;">
