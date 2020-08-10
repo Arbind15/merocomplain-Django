@@ -269,10 +269,6 @@ function getCookie(name) {
 
 function SaveComplain() {
 
-  var div=document.getElementById('chng_cnt');
-  div.innerHTML=''
-  div.appendChild(m_s_div);
-
   var data = new FormData();
   var req = new XMLHttpRequest();
   var url='/SaveComplain/';
@@ -283,6 +279,11 @@ function SaveComplain() {
   var dep=document.getElementById('dep').value;
   var attch=document.getElementById('cfl');
   var pri=document.getElementById('pri').value;
+
+  var div=document.getElementById('chng_cnt');
+  div.innerHTML=''
+  div.appendChild(m_s_div);
+
   if(attch.files[0]==undefined){
     attch='';
     data.append('attch', attch);

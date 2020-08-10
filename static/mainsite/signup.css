@@ -39,10 +39,10 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 #popData{
-    height: 83vh;
-    margin-top: 5px;
-    overflow-x: scroll;
-    overflow-y: scroll;
+    /*height: 83vh;*/
+    /*margin-top: 5px;*/
+    /*overflow-x: scroll;*/
+    /*overflow-y: scroll;*/
 }
 @media(max-width: 720px){
     #popData{

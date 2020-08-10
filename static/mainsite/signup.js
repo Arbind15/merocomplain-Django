@@ -444,7 +444,9 @@ function rare_Validate() {
 
 function PopConfirm() {
 
-    document.getElementById('popConfirm').style.display="block";
+    // document.getElementById('popConfirm').style.display="block";
+
+    $('#exampleModalLong').modal('show');
 
     var name=document.getElementById('full_name').value;
     var email=document.getElementById('email').value;
@@ -549,7 +551,8 @@ function PopConfirm() {
 
     var lin=document.createElement('hr');
     popData.appendChild(lin)
-
+    var lin=document.createElement('br');
+    popData.appendChild(lin)
     var ptag=document.createElement('p');
     var txt=document.createTextNode("Photo: "+pfile);
     ptag.appendChild(txt);
@@ -565,15 +568,19 @@ function PopConfirm() {
     ptag.appendChild(txt);
     popData.appendChild(ptag);
 
-
-
-
-
-
 }
 
+$('#exampleModalLong').on('hide.bs.modal', function (e) {
+    alert("here");
+  var btn=document.getElementById('signup_btn');
+    btn.removeAttribute('disabled');
+    var spnr=document.getElementById('div_spinner_signup');
+    btn.removeChild(spnr);
+})
+
 function SBack() {
-    document.getElementById('popConfirm').style.display="none";
+    // document.getElementById('popConfirm').style.display="none";
+    $('#exampleModalLong').modal('hide');
     var btn=document.getElementById('signup_btn');
     btn.removeAttribute('disabled');
     var spnr=document.getElementById('div_spinner_signup');
