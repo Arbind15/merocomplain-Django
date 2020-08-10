@@ -136,9 +136,6 @@ var u_flg=false;
 function validate() {
     Is_Unique_Username();
     Is_Unique_Email();
-    console.log(u_flg);
-    console.log(e_flg);
-
 
     if(!(username_validate()&email_validate()&password1_validate()&password2_validate()&dob_validate()&gender_validate()
     &phone_number_validate()&doc_num_validate()&term_con()&vdc_validate()&tole_validate()&ward_validate()&postal_validate()
@@ -178,10 +175,10 @@ function username_validate() {
 function email_validate() {
     var email=document.getElementById('email').value;
     var email_regx=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-
+    // console.log(email);
     if(!(email_regx.test(email)))
     {
-        document.getElementById('email_error').style.display='block;';
+        document.getElementById('email_error').style.display='block';
         return false;
     }
     else {
