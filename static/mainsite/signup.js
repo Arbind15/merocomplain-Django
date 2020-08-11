@@ -446,7 +446,7 @@ function PopConfirm() {
 
     // document.getElementById('popConfirm').style.display="block";
 
-    $('#exampleModalLong').modal('show');
+    $('#poppconfirm').modal('show');
 
     var name=document.getElementById('full_name').value;
     var email=document.getElementById('email').value;
@@ -569,18 +569,28 @@ function PopConfirm() {
     popData.appendChild(ptag);
 
 }
+//
+// $('#poppconfirm').on('hide.bs.modal', function (e) {
+//     alert("here");
+//   var btn=document.getElementById('signup_btn');
+//     btn.removeAttribute('disabled');
+//     var spnr=document.getElementById('div_spinner_signup');
+//     btn.removeChild(spnr);
+// })
 
-$('#exampleModalLong').on('hide.bs.modal', function (e) {
-    alert("here");
-  var btn=document.getElementById('signup_btn');
-    btn.removeAttribute('disabled');
-    var spnr=document.getElementById('div_spinner_signup');
-    btn.removeChild(spnr);
-})
+$(function(){ // let all dom elements are loaded
+    $('#poppconfirm').on('hide.bs.modal', function (e) {
+        // alert('')
+        var btn=document.getElementById('signup_btn');
+        btn.removeAttribute('disabled');
+        var spnr=document.getElementById('div_spinner_signup');
+        btn.removeChild(spnr);
+    });
+});
 
 function SBack() {
     // document.getElementById('popConfirm').style.display="none";
-    $('#exampleModalLong').modal('hide');
+    $('#poppconfirm').modal('hide');
     var btn=document.getElementById('signup_btn');
     btn.removeAttribute('disabled');
     var spnr=document.getElementById('div_spinner_signup');
