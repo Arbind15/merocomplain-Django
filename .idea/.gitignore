@@ -6,7 +6,7 @@
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
-MeroComplain/settings.py
-MeroComplain/media/
-
-/MeroComplain/mainsite/migrations/
+#MeroComplain/settings.py
+#MeroComplain/media/
+#
+#/MeroComplain/mainsite/migrations/
