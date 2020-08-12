@@ -1,27 +1,28 @@
+{% load mytags %}
 <div class="compln">
     <div class="row">
         <div class="col-sm-12 col-md-3">
 
         </div>
         <div class="col-sm-12 col-md-6 coms">
-            {%for Com in complain%}
+            {%for data in datas%}
             <div class="card complns">
                 <div class="card-body">
-                     <div class="row">
-                        <div class="col">
-                            User ID:
-                        </div>
-                        <div class="col com_lbl">
-                            {{Com.User_ID}}
-                        </div>
-                    </div>
+<!--                     <div class="row">-->
+<!--                        <div class="col">-->
+<!--                            User ID:-->
+<!--                        </div>-->
+<!--                        <div class="col com_lbl">-->
+<!--                            {{Com.User_ID}}-->
+<!--                        </div>-->
+<!--                    </div>-->
 
                     <div class="row">
                         <div class="col">
                             Submitted on:
                         </div>
                         <div class="col com_lbl">
-                            {{Com.DateTime}}
+                            {{data.0.DateTime}}
                         </div>
                     </div>
                     <div class="row">
@@ -29,7 +30,7 @@
                             Subject:
                         </div>
                         <div class="col com_lbl">
-                            {{Com.Subject}}
+                            {{data.0.Subject}}
                         </div>
                     </div>
                     <div class="row">
@@ -37,23 +38,7 @@
                             Department:
                         </div>
                         <div class="col com_lbl">
-                            {{Com.Department}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            Seen Status:
-                        </div>
-                        <div class="col com_lbl ">
-                            {{Com.Seen_Status}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            Seen Date:
-                        </div>
-                        <div class="col com_lbl">
-                            {{Com.Seen_Date}}
+                            {{data.0.Department}}
                         </div>
                     </div>
                     <div class="row">
@@ -61,15 +46,55 @@
                             Seen By:
                         </div>
                         <div class="col com_lbl">
-                            {{Com.Seen_By}}
+
+                            {% if data.0.Seen_By|evalutae|get_lenght == '0' %}
+                               Unseen
+                            {% else %}
+                                <select class="sel_dep">
+                                    {%for itm in data.0.Seen_By|evalutae|get_dict_value %}
+                                      <option>{{itm}}</option>
+                                    {% endfor %}
+                                </select>
+                            {% endif %}
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col">
+                            Shares:
+                        </div>
+                        <div class="col com_lbl">
+                            {% if data.0.Shares|evalutae|get_lenght == '0' %}
+                               No Share
+                            {% else %}
+                                <select class="sel_dep">
+                                    {%for itm in data.0.Shares|evalutae|get_dict_value %}
+                                      <option>{{itm}}</option>
+                                    {% endfor %}
+                                </select>
+                            {% endif %}
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="col">
                             Replies:
                         </div>
                         <div class="col com_lbl">
-                            {{Com.Replies}}
+
+                            {% if data.1|get_lenght == '0' %}
+                               No Replies
+                            {% else %}
+                                <select class="sel_dep" id="replies_sel_{{data.0.id}}" onchange="Onclick_Replies_Option('{{data.0.id}}')">
+                                    <option value="">{{data.1|get_lenght}}</option>
+                                    {%for itm in data.1%}
+                                      <option class="replies_optn") value="{{itm.id}}">
+                                          {{itm.Replied_By.get_full_name}}
+                                      </option>
+                                    {% endfor %}
+                                </select>
+                            {% endif %}
+
                         </div>
                     </div>
                 </div>
@@ -79,12 +104,15 @@
                             <button class="g-button">Report</button>
                         </div>
                         <div class="col ">
-                            <button class="g-button" onclick="Share_mdl('{{Com.id}}')"
+                            <button class="g-button" onclick="Reply_to_Comment('{{data.0.id}}')">Reply</button>
+                        </div>
+                        <div class="col ">
+                            <button class="g-button" onclick="Share_mdl('{{data.0.id}}')"
                             data-toggle="modal" data-target="#exampleModalCenter" type="button"><i class="far fa-share-square">
                                 </i>Share</button>
                         </div>
                         <div class="col ">
-                            <button class="g-button" disable id="my_com_view_btn{{Com.id}}" onclick="viewcomplain('{{Com.id}}')">View</button>
+                            <button class="g-button" disable id="my_com_view_btn{{data.0.id}}" onclick="viewcomplain('{{data.0.id}}')">View</button>
                         </div>
                     </div>
                 </div>

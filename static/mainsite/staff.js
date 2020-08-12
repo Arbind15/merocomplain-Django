@@ -335,6 +335,9 @@ function viewcomplain(complain_id) {
           mdl=rtxt.slice(mdl);
           div.innerHTML=mn_cnt;
           modal_div.innerHTML=mdl;
+
+          complain_viewed_staff(complain_id);
+
       }
   };
   xhttp.open("GET", url, true);
@@ -349,6 +352,9 @@ function Share_mdl(complain) {
 function GeneratePdf() {
   var url = '/pdf_generator?complain_id='+complain_ID;
   window.open(url,'_blank');
+
+  complain_shared_staff(complain_ID);
+
 }
 
 function Send_Email() {
@@ -367,9 +373,164 @@ function Send_Email() {
               "Full Name: "+rtxt[1]+"%0d%0a"+"Subject of Original Complain: "+rtxt[2]+"%0d%0a%0d%0a"+
               "Body of Complain: "+"%0d%0a%0d%0a         "+rtxt[3]+"%0d%0a %0d%0a"+
               "--End of Body--"+"%0d%0a %0d%0a %0d%0a %0d%0a";
+
+                complain_shared_staff(complain_ID);
       }
   };
   xhttp.open("GET", url, true);
   xhttp.send();
 
+}
+
+function complain_viewed_staff(complain_id) {
+  var xhttp = new XMLHttpRequest();
+  var url = '/increase_com_view?complain_id='+complain_id;
+  xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+          // var rtxt = (xhttp.response);
+          // alert(rtxt);
+      }
+  };
+  xhttp.open("GET", url, true);
+  xhttp.send();
+}
+
+function complain_shared_staff(complain_id) {
+  var xhttp = new XMLHttpRequest();
+  var url = '/increase_shared_view?complain_id='+complain_id;
+  xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+          // var rtxt = (xhttp.response);
+          // alert(rtxt);
+      }
+  };
+  xhttp.open("GET", url, true);
+  xhttp.send();
+}
+
+function complain_reported_staff(complain_id) {
+  var xhttp = new XMLHttpRequest();
+  var url = '/increase_reported_view?complain_id='+complain_id;
+  xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+          var rtxt = (xhttp.response);
+          alert(rtxt);
+      }
+  };
+  xhttp.open("GET", url, true);
+  xhttp.send();
+}
+
+function complain_replied(complain_id) {
+  var xhttp = new XMLHttpRequest();
+  var url = '/increase_replied_view?complain_id='+complain_id;
+  xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+          var rtxt = (xhttp.response);
+          // alert(rtxt);
+      }
+  };
+  xhttp.open("GET", url, true);
+  xhttp.send();
+}
+
+function Reply_to_Comment_Staff(comment_id) {
+
+    var div=document.getElementById('chng_cnt');
+    div.innerHTML=''
+    div.appendChild(m_s_div);
+
+    var xhttp = new XMLHttpRequest();
+    var url = '/reply_to_comment_staff?comment_id='+comment_id;
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var rtxt = (xhttp.responseText);
+            // console.log(rtxt);
+            div.innerHTML = rtxt;
+        }
+    };
+    xhttp.open("GET", url, true);
+    xhttp.send();
+
+
+    // alert("reply "+comment_id);
+    // complain_replied(comment_id);
+
+}
+function V_Comment_Replies(comment_id) {
+
+  var bdy=document.getElementById('bdy').innerText;
+  if(bdy==''||bdy=='Your Reply Here...'){
+    document.getElementById('bdy_error').style.display='block';
+  }else {
+    document.getElementById('bdy_error').style.display='none';
+    Save_Comment_Replies(comment_id);
+  }
+}
+
+
+function Save_Comment_Replies(comment_id) {
+    // alert("Saved")
+  var data = new FormData();
+  var req = new XMLHttpRequest();
+  var url='/Save_Comment_Replies/';
+  var csrftoken = getCookie('csrftoken');
+
+  var bdy=document.getElementById('bdy').innerText;
+  var attch=document.getElementById('cfl');
+  if(attch.files[0]==undefined){
+    attch='';
+    data.append('attch', attch);
+  }else {
+    attch=attch.files[0];
+    data.append('attch', attch);
+  }
+
+  data.append('bdy', bdy);
+  data.append('comment_id', comment_id);
+
+  req.onreadystatechange = function() {
+       if (this.readyState == 4 && this.status == 200) {
+           // alert(document.getElementsByTagName('body')[0])
+
+           complain_replied(comment_id);
+           document.getElementById('chng_cnt').innerHTML=req.response;
+       }
+  };
+
+  req.open("post", url, true);
+  req.setRequestHeader("X-CSRFToken", csrftoken);
+  req.send(data);
+
+}
+
+function viewcomplain_after_reply_discard_staff(complain_id) {
+
+  var div=document.getElementById('chng_cnt');
+  div.innerHTML=''
+  div.appendChild(m_s_div);
+
+  var div = document.getElementById('chng_cnt');
+   var modal_div = document.getElementById('model_div');
+   // alert(modal_div);
+  // div.innerHTML='<p>Hi from Dashboard</p>';
+
+  var xhttp = new XMLHttpRequest();
+  var url = '/viewcomplainstaff?complain_id='+complain_id;
+  xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+          var rtxt = (xhttp.responseText);
+          // console.log(rtxt);
+          div.innerHTML = rtxt;
+          var mdl,mn_cnt;
+          mdl=rtxt.indexOf('<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">');
+          mn_cnt=rtxt.slice(0,mdl)
+          mdl=rtxt.slice(mdl);
+          div.innerHTML=mn_cnt;
+          modal_div.innerHTML=mdl;
+
+      }
+  };
+  xhttp.open("GET", url, true);
+  xhttp.send();
 }

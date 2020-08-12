@@ -16,7 +16,7 @@ from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
 from django.conf import settings
 from .form import UserCreationForm,UserProfileForm
-from .models import Profile,Complain
+from .models import Profile,Complain,Replies,Re_Replies,Notifications
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,logout
 from django.contrib.auth import login as user_login
@@ -51,7 +51,41 @@ def home(request):
     # print(request.user.first_name)
     # print(request.user.profile.Profile_Picture)
     contex={'user':request.user}
+    ntfs=Notifications.objects.get(User_ID=request.user)
+    new_notifications=eval(ntfs.New_Notifications)
+
+    # print(new_notifications)
+
+    contex['total_noti']=str(len(new_notifications))
+    # print(total_ntfs)
     return render(request,'mainsite/home.html',contex)
+
+@login_required(login_url='login')
+def viewnotices(request):
+    contex = {'user': request.user}
+    ntfs = Notifications.objects.get(User_ID=request.user)
+    new_notifications = eval(ntfs.New_Notifications)
+    m_lst=[]
+    for notic in new_notifications:
+        if notic[0]=='new_user':
+            n_usr = User.objects.get(id=notic[1])
+            m_lst.append(['new_user',n_usr])
+
+        if notic[0] == 'new_complain':
+            n_usr = Complain.objects.get(id=notic[1])
+            m_lst.append(['new_complain', n_usr])
+
+        if notic[0]=='new_replies':
+            n_usr = Replies.objects.get(id=notic[1])
+            m_lst.append(['new_replies',n_usr])
+
+        if notic[0]=='new_re_replies':
+            n_usr = Re_Replies.objects.get(id=notic[1])
+            m_lst.append(['new_re_replies',n_usr])
+
+    contex['notices']=reversed(m_lst)
+    # print(m_lst)
+    return render(request, 'mainsite/view_notices.html', contex)
 
 def login(request):
     # print(request)
@@ -136,11 +170,18 @@ def myComplain(request):
     # coms=Complain.objects.all().order_by('-DateTime')
     # u=User.objects.get(username=user_id)
     coms=Complain.objects.filter(User_ID=request.user).order_by('-DateTime')
+    data=[]
+    for com in coms:
+        reps=Replies.objects.filter(Complain_ID=com).order_by('-DateTime')
+        if len(reps)==0:
+            data.append([com,[]])
+        else:
+            data.append([com, reps])
     # print(request.user)
     # coms=get_object_or_404(Complain,User_ID=user_id)
     # for x in coms:
     #     print(x)
-    contex={'complain':coms}
+    contex={'datas':data}
     return render(request,'mainsite/mycomplain.html',contex)
 @login_required(login_url='login')
 def complains(request):
@@ -183,12 +224,46 @@ def newComplain(request):
 def viewcomplain(request):
     complain_id = request.GET.get('complain_id')
     complain = Complain.objects.get(id=complain_id)
+    reps=Replies.objects.filter(Complain_ID=complain).order_by('-DateTime')
+
+    # for focusing to selected replies
+    try:
+        repl_id=request.GET.get('reply_id')
+        contex = {'complain': complain}
+        replies = []
+        for rep in reps:
+            re_rep = Re_Replies.objects.filter(Replies_ID=rep).order_by('-DateTime')
+            replies.append([rep, re_rep])
+
+        contex['replies'] = replies
+        contex['focus_to']=str(repl_id)
+        return render(request, 'mainsite/viewcomplain.html', contex)
+
+    except:
+        pass
+
+    # end of focusing
+
     contex = {'complain': complain}
+    replies=[]
+    for rep in reps:
+        re_rep=Re_Replies.objects.filter(Replies_ID=rep).order_by('-DateTime')
+        # try:
+        #     re_rep=get_object_or_404(Re_Replies, Replies_ID=rep)
+        # except Http404:
+        #     re_rep=[]
+        # print([rep,re_rep])
+        replies.append([rep,re_rep])
+
+    contex['replies']=replies
+    contex['focus_to']='None'
+    # print("reps",reps)
+    # print("re_rep",(re_rep))
     return render(request, 'mainsite/viewcomplain.html', contex)
 
 @login_required(login_url='login')
 def SaveComplain(request):
-    print(request.POST)
+    # print(request.POST)
     user=request.user
     dep=request.POST.get('dep')
     sub = request.POST.get('sub')
@@ -429,6 +504,7 @@ def GeneratePdf(request):
     return FileResponse(buffer, as_attachment=True, filename=str(com.User_ID)+".pdf")
 
 def email_complain(request):
+        # print('dbhh')
         com_id=request.GET.get('complain_id')
         com = Complain.objects.get(id=com_id)
         user_id=com.User_ID.username
@@ -439,3 +515,135 @@ def email_complain(request):
         cont=[user_id,full_name,sub,bdy,dt]
         # cont=dumps(cont)
         return JsonResponse(cont,safe=False)
+
+@login_required(login_url='login')
+def increase_com_view(request):
+    c_id=request.GET.get('complain_id')
+    com=Complain.objects.get(id=c_id)
+    # com.Seen_By=str(datetime.datetime.now().strftime('%b. %d, %Y, %I:%M %p'))
+    up_now=eval(com.Seen_By)
+    if request.user.username in up_now:
+        pass
+    else:
+        up_now[request.user.username]=(str(request.user.get_full_name())+": "+
+                      str(datetime.datetime.now().strftime('%b. %d, %Y, %I:%M %p')))
+        com.Seen_By=up_now
+        com.save()
+        Complain.refresh_from_db(com)
+    # print(Complain.objects.get(id=c_id).Seen_By)
+    return HttpResponse(request.GET.get('complain_id'))
+
+@login_required(login_url='login')
+def increase_shared_view(request):
+    c_id=request.GET.get('complain_id')
+    com=Complain.objects.get(id=c_id)
+    # com.Seen_By=str(datetime.datetime.now().strftime('%b. %d, %Y, %I:%M %p'))
+    up_now=eval(com.Shares)
+    up_now[request.user.username]=(str(request.user.get_full_name())+": "+
+                  str(datetime.datetime.now().strftime('%b. %d, %Y, %I:%M %p')))
+    com.Shares=up_now
+    com.save()
+    Complain.refresh_from_db(com)
+    # print(Complain.objects.get(id=c_id).Seen_By)
+    return HttpResponse(request.GET.get('complain_id'))
+
+@login_required(login_url='login')
+def increase_reported_view(request):
+    c_id=request.GET.get('complain_id')
+    com=Complain.objects.get(id=c_id)
+    # com.Seen_By=str(datetime.datetime.now().strftime('%b. %d, %Y, %I:%M %p'))
+    up_now=eval(com.Reports)
+    if request.user.username in up_now:
+        pass
+    else:
+        up_now[request.user.username]=(str(request.user.get_full_name())+": "+
+                      str(datetime.datetime.now().strftime('%b. %d, %Y, %I:%M %p')))
+        com.Reports=up_now
+        com.save()
+        Complain.refresh_from_db(com)
+    # print(Complain.objects.get(id=c_id).Seen_By)
+    return HttpResponse(request.GET.get('complain_id'))
+
+@login_required(login_url='login')
+def increase_replied_view(request):
+    c_id=request.GET.get('complain_id')
+    com=Complain.objects.get(id=c_id)
+    # com.Seen_By=str(datetime.datetime.now().strftime('%b. %d, %Y, %I:%M %p'))
+    up_now=eval(com.Replies)
+    # print("this after")
+    # print(up_now)
+    up_now[request.user.username]=(str(request.user.get_full_name())+": "+
+                  str(datetime.datetime.now().strftime('%b. %d, %Y, %I:%M %p')))
+    com.Replies=up_now
+    com.save()
+    Complain.refresh_from_db(com)
+    # print(Complain.objects.get(id=c_id).Seen_By)
+    return HttpResponse('done '+request.GET.get('complain_id'))
+
+@login_required(login_url='login')
+def reply_to_comment(request):
+    today=datetime.datetime.now().strftime("%B %d, %Y")
+    return render(request,'mainsite/reply.html',{'today':today,'user':request.user,
+                                                 'comment_id':request.GET.get('comment_id')})
+
+@login_required(login_url='login')
+def reply_to_comment_staff(request):
+    today=datetime.datetime.now().strftime("%B %d, %Y")
+    return render(request,'mainsite/reply_staff.html',{'today':today,'user':request.user,
+                                                 'comment_id':request.GET.get('comment_id')})
+
+
+
+@login_required(login_url='login')
+def Save_Comment_Replies(request):
+    # print(request.POST)
+    user=request.user
+    c_id = request.POST.get('comment_id')
+    c_id=Complain.objects.get(id=c_id)
+    bdy = request.POST.get('bdy')
+    attch=request.FILES
+    try:
+        attch=request.FILES['attch']
+    except:
+        attch=None
+    print(attch, user)
+    rep=Replies(Replied_By=user,Complain_ID=c_id,Body=bdy,Attachments=attch)
+    rep.save()
+    Replies.refresh_from_db(rep)
+    print(rep.id)
+    if str(request.user.username)==str(c_id.User_ID.username):
+        # print("done")
+        contex = {'complain': c_id}
+        return render(request, 'mainsite/viewcomplain.html', contex)
+    else:
+        contex = {'complain': c_id}
+        return render(request, 'mainsite/view_complain_staff.html', contex)
+
+
+
+@login_required(login_url='login')
+def Save_Re_Replies(request):
+    # print("Hhd",request.POST)
+    # print("Hhd", request.FILES)
+    user=request.user
+    re_id = request.POST.get('re_reply_id')
+    re_id=Replies.objects.get(id=re_id)
+    bdy = request.POST.get('bdy')
+    attch=request.FILES
+    try:
+        attch=request.FILES['attch']
+    except:
+        attch=None
+    print(attch, user)
+    re_rep=Re_Replies(Replies_ID=re_id,Complain_ID=re_id.Complain_ID,Body=bdy,Attachments=attch,Replied_By=user)
+    re_rep.save()
+    Replies.refresh_from_db(re_rep)
+    # if str(request.user.username)==str(c_id.User_ID.username):
+    #     # print("done")
+    #     contex = {'complain': c_id}
+    #     return render(request, 'mainsite/viewcomplain.html', contex)
+    # else:
+    #     contex = {'complain': c_id}
+    #     return render(request, 'mainsite/view_complain_staff.html', contex)
+
+    return HttpResponse('done')

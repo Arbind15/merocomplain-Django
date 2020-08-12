@@ -1,0 +1,67 @@
+<div class="m_new_c">
+
+    <div class="row">
+        <div class="col-sm-12 col-md-3">
+
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+            <div class="card newcomplain">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col">
+                            Date:
+                        </div>
+                        <div class="col">
+                            {{today}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Replying to:
+                        </div>
+                        <div class="col" id="usr_id">
+                            {{user.get_full_name}} ({{user.username}})
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="com-bdy">
+<!--                        <label for="bdy" style="font-size: 15px;">Complain Body:</label>-->
+                        <div id="bdy" contenteditable="true" class="semmis_bdy">Your Reply Here...</div>
+                        <div class="errorTxt" id="bdy_error" style="display:none;">Enter your reply.</div>
+                    </div>
+                    <br>
+                    <div class="com-attach">
+                        <label style="font-size: 15px;" for="cfl">Attachments(Optional):</label>
+                        <label for="cfl" class="lblbtn"
+                        data-toggle="tooltip" data-placement="bottom" title="Upload File"><i class="fas fa-upload"></i></label>
+                        <span id="rtxt"></span>
+                        <input type="file" onchange="FileUp()" id="cfl">
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <div class="row justify-content-center">
+                        <div class="col">
+                            <button class="g-button" onclick="viewcomplain_after_reply_discard_home('{{comment_id}}')">Discard</button>
+                        </div>
+                        <div class="col">
+                            <button class="g-button" id="proceed_btn" onclick="V_Comment_Replies('{{comment_id}}')">Reply</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-3">
+
+        </div>
+    </div>
+
+
+</div>
+
+
+

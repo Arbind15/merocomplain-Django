@@ -1,3 +1,4 @@
+{%load mytags%}
 <div class="m_new_c">
 
     <div class="row">
@@ -7,16 +8,25 @@
 
         <div class="col-sm-12 col-md-6">
             <div class="card newcomplain">
-                <div class="card-header">
-                    <div style="font-size: 12px;margin-left: 3px">
-                        Date, Time: {{complain.DateTime}}
-                    </div>
-                    <div class="sel_dep">
-                        Department:  {{complain.Department}}
-                    </div>
-                </div>
-
                 <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            Date, Time:
+                        </div>
+                        <div class="col">
+                         {{complain.DateTime}}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            Department:
+                        </div>
+                        <div class="col">
+                         {{complain.Department}}
+                        </div>
+                    </div>
+
                     <div class="com-bdy">
                         <label for="sub" style="font-size: 15px;">Subject:</label>
                         <div id="sub" class="semmis_sub">{{complain.Subject}}</div>
@@ -27,37 +37,88 @@
                         <div id="bdy" class="semmis_bdy">{{complain.Body}}</div>
                     </div>
                     <br>
-                    <div class="com-attach">
-                        <label style="font-size: 15px;">Attachments(Optional):</label>
-                        <span id="rtxt">{{complain.Attachments}}</span>
-                    </div>
-                    <div class="com-attach">
-                        <label style="font-size: 15px;">Priority:</label>
-                        <label>{{complain.Priority}}</label>
-                    </div>
-                    <div class="com-attach">
-                        <label style="font-size: 15px;">Seen By:</label>
-                        <label>{{complain.Seen_By}}</label>
-                    </div>
-                    <div class="com-attach">
-                        <label style="font-size: 15px;">Seen Date:</label>
-                        <label>{{complain.Seen_Date}}</label>
-                    </div>
-                    <div class="com-attach">
-                        <label style="font-size: 15px;">Replies:</label>
-                        <label>{{complain.Replies}}</label>
+                    <div class="row">
+                        <div class="col">
+                            Attachments:
+                        </div>
+                        <div class="col">
+                          <span>{{complain.Attachments}}</span>
+                        </div>
                     </div>
 
-                    <div class="com-attach">
-                        <label style="font-size: 15px;">Shares:</label>
-<!--                        <label>{{complain.Priority}}</label>-->
+                    <div class="row">
+                        <div class="col">
+                           Priority:
+                        </div>
+                        <div class="col">
+                          <label>{{complain.Priority}}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Seen By:
+                        </div>
+                        <div class="col com_lbl">
+
+                            {% if complain.Seen_By|evalutae|get_lenght == '0' %}
+                               Unseen
+                            {% else %}
+                                <select class="sel_dep">
+                                    {%for itm in complain.Seen_By|evalutae|get_dict_value %}
+                                      <option>{{itm}}</option>
+                                    {% endfor %}
+                                </select>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            Shares:
+                        </div>
+                        <div class="col com_lbl">
+                            {% if complain.Shares|evalutae|get_lenght == '0' %}
+                               No Share
+                            {% else %}
+                                <select class="sel_dep">
+                                    {%for itm in complain.Shares|evalutae|get_dict_value %}
+                                      <option>{{itm}}</option>
+                                    {% endfor %}
+                                </select>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            Replies:
+                        </div>
+                        <div class="col com_lbl">
+
+                            {% if complain.Replies|evalutae|get_lenght == '0' %}
+                               No Replies
+                            {% else %}
+                                <select class="sel_dep">
+                                    {%for itm in complain.Replies|evalutae|get_dict_value %}
+                                      <option>{{itm}}</option>
+                                    {% endfor %}
+                                </select>
+                            {% endif %}
+
+                        </div>
                     </div>
 
                 </div>
                 <div class="card-footer text-center">
                     <div class="row justify-content-center">
+                         <div class="col">
+                            <button class="g-button">Actions</button>
+                        </div>
                         <div class="col">
                             <button class="g-button">Report</button>
+                        </div>
+                        <div class="col ">
+                            <button class="g-button" onclick="Reply_to_Comment('{{complain.id}}')">Reply</button>
                         </div>
                         <div class="col">
                             <button class="g-button" onclick="Share_mdl('{{complain.id}}')"
@@ -68,6 +129,109 @@
                 </div>
 
             </div>
+
+
+            {%if focus_to != 'None' %}
+                <div content="{{focus_to}}" id="focus_to_card"></div>
+            {%endif%}
+
+            <h3>Replies:</h3>
+
+            <hr style="margin-top: -8px">
+
+            {% if replies|get_lenght == '0' %}
+            <div class="row" style="text-align: center;">
+                <div class="col">
+                    0 Replies
+                </div>
+            </div>
+            {% endif %}
+
+            {%for m_replies in replies %}
+            <div class="card newcomplain" id="re_card{{m_replies.0.id}}" style="padding: 0;">
+                <div class="card-header">
+                    <div class="row justify-content-center" style="text-align: center">
+                        <div class="col" style="text-align: left">
+                            <p>{{m_replies.0.Replied_By.get_full_name}} ( {{m_replies.0.Replied_By.username}})</p>
+                            <p style="font-size: 10px;margin-top: -20px;">{{m_replies.0.DateTime}}</p>
+                        </div>
+                        <div class="col" style="text-align: right">
+                            <button style="margin-top: 5px" class="g-button" onclick="Re_Reply_Share('{{m_replies.0.id}}')"
+                            data-toggle="modal" data-target="#exampleModalCenter" type="button"><i class="far fa-share-square">
+                                </i>Share</button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card-body" >
+                    <div class="semmis_bdy" style="min-height: 2vh;">{{m_replies.0.Body}}</div>
+                    {%if m_replies.0.Attachments != '' %}
+                        <p style="font-size: 13px;">Attachments: {{m_replies.0.Attachments}}</p>
+                    {%endif%}
+                </div>
+                <div class="card-footer">
+                    {%if m_replies.1|get_lenght != '0' %}
+                        <h6>Replies:</h6>
+                        <div id="re_replies_cnt">
+                            {%for re_replies in m_replies.1%}
+                                <div class="card" style="margin-bottom: 5px">
+                                    <div class="card-body" style="padding: 3px;">
+                                        <div class="com-attach" style="margin: 5px">
+                                            <p style="font-size: 12px;">{{re_replies.Replied_By.get_full_name}} ({{re_replies.Replied_By}})</p>
+                                            <p style="font-size: 10px;margin-top: -20px">{{re_replies.DateTime}}</p>
+                                        </div>
+                                        <div class="semmis_bdy_re_reply" style="min-height: 1vh;">
+                                            <p style="font-size: 11px;">{{re_replies.Body}}</p>
+                                        </div>
+
+                                        <div class="com-attach" style="margin: 5px">
+                                            {%if re_replies.Attachments != '' %}
+                                                <p style="font-size: 10px;">Attachments: {{re_replies.Attachments}}</p>
+                                            {%endif%}
+                                        </div>
+                                    </div>
+                                </div>
+                            {%endfor%}
+                        </div>
+
+                    {%endif%}
+
+
+                    <div class="re_reply_card card" style="display: none" id="re_reply_card{{m_replies.0.id}}">
+                        <div class="semmis_bdy_re_reply"
+                             contenteditable="true" id="re_reply_card{{m_replies.0.id}}value" >
+                            Your Reply Here...
+                        </div>
+
+                        <div class="com-attach" style="margin: 5px">
+                            <label style="font-size: 10px;" for="cfl">Attachments(Optional):</label>
+                            <label for="cfl" class="lblbtn"
+                            data-toggle="tooltip" data-placement="bottom" title="Upload File"><i style="font-size: 10px" class="fas fa-upload"></i></label>
+                            <span id="rtxt" style="font-size: 7px"></span>
+                            <input type="file" onchange="FileUp()" id="cfl">
+                        </div>
+
+                        <div class="row" style="margin: 3px;max-width:50%;text-align: left;font-size: 10px">
+                            <div class="col">
+                                <button class="g-button" onclick="Discard_Re_reply_Box('{{m_replies.0.id}}')">Discard</button>
+                            </div>
+                            <div class="col">
+                                <button class="g-button" value="{{complain.id}}" id="my_com_view_btn{{m_replies.0.id}}" onclick="Post_Re_reply_Box('{{m_replies.0.id}}')">Post</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row" style="width: 100%;text-align: left;margin-top: 5px;">
+                        <div class="col ">
+                            <button class="g-button" onclick="Re_Reply_Box('{{m_replies.0.id}}')">Reply</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+
         </div>
 
         <div class="col-sm-12 col-md-3">

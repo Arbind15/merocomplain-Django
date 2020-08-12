@@ -12,6 +12,7 @@
           integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Sriracha' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Bree Serif' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,7 +21,7 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-
+<!--{% block body %}-->
 <div class="main_container">
 
     <div id="mySidenav" class="sidenav">
@@ -30,7 +31,12 @@
         <a href="javascript:void(0)" onclick="toggleNav()" class="closebtn">
             <span style="font-size:30px;cursor:pointer; color: rgba(1,1,1,0.8)">&#9776;</span>
         </a>
-        <a href="javascript:void(0)" id="dashboard" onclick="dashBoard()" class="nav_itm"> <i class="fas fa-home icn"></i> <span>Dashboard</span></a>
+        <a href="javascript:void(0)" id="dashboard" onclick="dashBoard()" class="nav_itm">
+            <i class="fas fa-home icn"></i>
+            <span>
+                Dashboard
+            </span>
+        </a>
         <a href="javascript:void(0)" id="mycomplain" onclick="myComplain('{{user.username}}')" class="nav_itm"><i class="fas fa-bug icn"></i> <span>My Complain</span></a>
         <a href="javascript:void(0)" id="report" onclick="reports()" class="nav_itm"><i class="far fa-flag icn"></i>
             <span>Reports</span></a>
@@ -45,6 +51,18 @@
         <div class="hom_nav container-fluid">
             <table class="pro_tbl">
                 <tr>
+
+                    <td rowspan="2">
+                         <div class="notic_div" onclick="ViewNotices()">
+                            <i class="far fa-bell m_bell">
+                            </i>
+                        </div>
+                    </td>
+                    <td rowspan="2">
+                        {%if total_noti != '0'%}
+                        <div class="bell_pow" onclick="ViewNotices()">{{total_noti}}</div>
+                        {%endif%}
+                    </td>
                     <td>
                         {{user.get_full_name}}
                     </td>
@@ -99,6 +117,14 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+<!--{% endblock %}-->
+
+<!--{% block extra_js %}-->
+<!--    <script>-->
+<!--        var focus_to='{{focus_to}}';-->
+<!--        alert(focus_to);-->
+<!--    </script>-->
+<!--{% endblock extra_js %}-->
 
 </body>
 </html>

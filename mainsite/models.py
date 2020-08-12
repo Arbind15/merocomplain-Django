@@ -24,11 +24,17 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.User_ID.first_name} -Profile'
 
-    def save(self,*args,**kwargs):
-        super().save(*args,**kwargs)
-        img1=Image.open(self.Profile_Picture.path)
-        img1.thumbnail((200,200))
-        img1.save(self.Profile_Picture.path)
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        nts = Notifications(User_ID=self.User_ID)
+        nts.save()
+        usrs = User.objects.all()
+        for usr in usrs:
+            ntfs = Notifications.objects.get(User_ID=usr)
+            tmp = eval(ntfs.New_Notifications)
+            tmp.append(['new_user', self.id])
+            ntfs.New_Notifications = tmp
+            ntfs.save()
 
 
 class Complain(models.Model):
@@ -40,9 +46,85 @@ class Complain(models.Model):
     Body=models.TextField()
     Attachments=models.FileField(upload_to="User_Data")
     Priority=models.CharField(max_length=50)
-    Seen_Status=models.CharField(max_length=50,default="Unseen")
-    Seen_Date=models.CharField(max_length=50,default="Unseen")
-    Seen_By=models.CharField(max_length=100,default="Unseen")
-    Replies=models.CharField(max_length=50,default="0")
+    # Seen_Status=models.CharField(max_length=50,default="Unseen")
+    # Seen_Date=models.CharField(max_length=50,default="Unseen")
+    Seen_By=models.TextField(default='{}')
+    Shares=models.TextField(default='{}')
+    Reports=models.TextField(default='{}')
+    Replies=models.TextField(default='{}')
+    Status=models.CharField(max_length=100,default="Unseen")
+    Remarks = models.CharField(max_length=100, default="")
     def __str__(self):
         return f'{self.User_ID.first_name} -Complain'
+
+    def save(self,*args,**kwargs):
+        super().save(*args,**kwargs)
+        usrs = User.objects.all()
+        for usr in usrs:
+            ntfs = Notifications.objects.get(User_ID=usr)
+            tmp = eval(ntfs.New_Notifications)
+            tmp.append(['new_complain', self.id])
+            ntfs.New_Notifications = tmp
+            ntfs.save()
+
+
+
+class Replies(models.Model):
+    # Complain_ID=models.
+    Complain_ID = models.ForeignKey(Complain, on_delete=models.CASCADE)
+    Replied_By = models.ForeignKey(User, on_delete=models.CASCADE)
+    DateTime=models.DateTimeField(default=datetime.datetime.now())
+    Body=models.TextField()
+    Attachments=models.FileField(upload_to="User_Data")
+    # Seen_Status=models.CharField(max_length=50,default="Unseen")
+    # Seen_Date=models.CharField(max_length=50,default="Unseen")
+    Remarks=models.CharField(max_length=100,default='')
+    Status=models.CharField(max_length=100,default='Unseen')
+    def __str__(self):
+        return f'{self.Complain_ID} -Replies'
+
+    def save(self,*args,**kwargs):
+        super().save(*args,**kwargs)
+        usrs = User.objects.all()
+        for usr in usrs:
+            ntfs = Notifications.objects.get(User_ID=usr)
+            tmp = eval(ntfs.New_Notifications)
+            tmp.append(['new_replies', self.id])
+            ntfs.New_Notifications = tmp
+            ntfs.save()
+
+
+class Re_Replies(models.Model):
+    # Complain_ID=models.
+    Complain_ID=models.ForeignKey(Complain, on_delete=models.CASCADE)
+    Replies_ID = models.ForeignKey(Replies, on_delete=models.CASCADE)
+    DateTime=models.DateTimeField(default=datetime.datetime.now())
+    Replied_By=models.ForeignKey(User,on_delete=models.CASCADE)
+    Body=models.TextField()
+    Attachments=models.FileField(upload_to="User_Data")
+    # Seen_Status=models.CharField(max_length=50,default="Unseen")
+    # Seen_Date=models.CharField(max_length=50,default="Unseen")
+    Remarks=models.CharField(max_length=100,default='')
+    Status=models.CharField(max_length=100,default='Unseen')
+    def __str__(self):
+        return f'{self.Replies_ID} -Re_Replies'
+
+    def save(self,*args,**kwargs):
+        super().save(*args,**kwargs)
+        usrs = User.objects.all()
+        for usr in usrs:
+            ntfs=Notifications.objects.get(User_ID=usr)
+            tmp=eval(ntfs.New_Notifications)
+            tmp.append(['new_re_replies',self.id])
+            ntfs.New_Notifications=tmp
+            ntfs.save()
+
+class Notifications(models.Model):
+    User_ID=models.OneToOneField(User,on_delete=models.CASCADE,verbose_name='User_ID',primary_key=True)
+    New_Notifications=models.TextField(default='[]')
+    # New_Complain=models.TextField(default='[]')
+    # New_Replies=models.TextField(default='[]')
+    # New_Re_Replies=models.TextField(default='[]')
+    Remarks=models.TextField(default="None")
+    def __str__(self):
+        return f'{self.User_ID} -Notification'

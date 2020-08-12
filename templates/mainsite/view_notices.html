@@ -1,0 +1,67 @@
+<div class="compln">
+    <div class="row">
+
+        <div class="col-sm-12 col-md-3">
+
+        </div>
+
+        <div class="col-sm-12 col-md-6 coms">
+
+            <div class="list-group lst_grp_notice">
+                {%for itm in notices%}
+                    {%if 'new_user' in itm.0%}
+                        <a href="#" id="n_user+{{itm.1.id}}" onclick="ViewParticularNotice('n_user+{{itm.1.id}}')"
+                         class="list-group-item list-group-item-action flex-column align-items-start list-group-item-info">
+                        <div class="d-flex w-100 justify-content-between">
+    <!--                      <h5 class="mb-1">List group item heading</h5>-->
+    <!--                      <small>3 days ago</small>-->
+                        </div>
+                        <p class="mb-1">{{itm.1.get_full_name}} is new to MeroComplain</p>
+                        <small>Donec id elit non mi porta.</small>
+                      </a>
+                    {%endif%}
+
+                    {%if 'new_complain' in itm.0%}
+                      <a href="#" id="n_complain+{{itm.1.id}}" onclick="ViewParticularNotice('n_complain+{{itm.1.id}}')"
+                         class="list-group-item list-group-item-action flex-column align-items-start list-group-item-info">
+                        <div class="d-flex w-100 justify-content-between">
+    <!--                      <h5 class="mb-1">List group item heading</h5>-->
+    <!--                      <small class="text-muted">3 days ago</small>-->
+                        </div>
+                        <p class="mb-1">{{itm.1.User_ID.get_full_name}} has new Complain.</p>
+                        <small class="text-muted">Donec id elit non mi porta.</small>
+                      </a>
+                    {%endif%}
+
+                    {%if 'new_replies' in itm.0%}
+                      <a href="#" id="n_replies+{{itm.1.id}}" onclick="ViewParticularNotice('n_replies+{{itm.1.id}}')"
+                         class="list-group-item list-group-item-action flex-column align-items-start list-group-item-info">
+                        <div class="d-flex w-100 justify-content-between">
+                        </div>
+                        <p class="mb-1">{{itm.1.Replied_By.get_full_name}} replied to {{itm.1.Complain_ID.User_ID.get_full_name}}'s complain.</p>
+                        <small class="text-muted">Donec id elit non mi porta.</small>
+                      </a>
+                    {%endif%}
+
+                    {%if 'new_re_replies' in itm.0%}
+                        <a href="#" id="n_re_replies+{{itm.1.id}}" onclick="ViewParticularNotice('n_re_replies+{{itm.1.id}}')"
+                           class="list-group-item list-group-item-action flex-column align-items-start list-group-item-info">
+                            <div class="d-flex w-100 justify-content-between">
+                            </div>
+                            <p class="mb-1">{{itm.1.Replied_By.get_full_name}} also replied to {{itm.1.Replies_ID.Replied_By.get_full_name}}'s
+                                reply on {{itm.1.Replies_ID.Complain_ID.User_ID.get_full_name}}'s complain.</p>
+                            <small class="text-muted">Donec id elit non mi porta.</small>
+                        </a>
+                    {%endif%}
+
+                {%endfor%}
+            </div>
+
+        </div>
+
+        <div class="col-sm-12 col-md-3 new_cmp">
+        </div>
+
+    </div>
+</div>
+

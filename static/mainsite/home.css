@@ -33,6 +33,38 @@
     text-decoration: none;
     color: rgba(1,1,1,0.8);
 }
+.notic_div{
+    /*font-size: 30px;*/
+    margin-right: 20px;
+}
+.notic_div:hover{
+    cursor: pointer;
+}
+
+.m_bell{
+    color: rgba(0,0,0,0.63);
+    font-size: 30px;
+    /*margin-bottom:1px;*/
+}
+
+.bell_pow{
+    color: #f4f6ff;
+    /*margin-top: -10px;*/
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bolder;
+    background-color: red;
+    border-radius: 50%;
+    line-height: 19px;
+    margin-top: -17px;
+    margin-left: -38px;
+}
+.bell_pow:hover{
+    cursor: pointer;
+}
+
 .btn_spinner{
     height: 20px;
     width: 20px;
@@ -390,6 +422,22 @@
     color: #0f4c75;
     padding: 10px;
 }
+.semmis_bdy_re_reply{
+    /*border: 0;*/
+    border: 0;
+    border-radius: 3px;
+    max-width: 50%;
+    min-width: 30%;
+    margin: 4px;
+    min-height: 8vh;
+    font-size: 13px;
+    /*font-family: 'Bree Serif';*/
+    background-color: #ebecf1;
+    /*opacity: 0.2;*/
+    color: #0f4c75;
+    padding: 10px;
+}
+
 .ncr{
     margin: 5px;
     background-color: red;
@@ -446,3 +494,45 @@ select ~ option:hover{
 
 
 /*---------------------------end of new complain------------------*/
+
+/*-------------------------------ReReply--------------------------*/
+.re_reply_card{
+    display: none;
+}
+
+.replies_optn{
+
+}
+.replies_optn:hover{
+    cursor: pointer;
+}
+
+.active_reply_card{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    animation: 1s blink ease-in-out 3;
+    background-color: rgba(14,238,238,0.05) !important;
+    /*transition: background-color linear 500ms;*/
+}
+@-webkit-keyframes blink {
+    0%     {background-color: rgba(14,238,238,0.09)}
+    50.0%  {background-color: rgba(14,238,238,0.0);}
+    100.0%  {background-color: rgba(14,238,238,0.09);}
+}
+
+@keyframes blink {
+    0%     {background-color: rgba(14,238,238,0.09);}
+    50.0%  {background-color: rgba(14,238,238,0.0);}
+    100.0%  {background-color: rgba(14,238,238,0.09);}
+}
+
+/*-------------------End Re Reply----------------------------------*/
+
+/*-------------------End Notice----------------------------------*/
+
+.lst_grp_notice{
+    margin-bottom: 15px!important;
+    font-size: 14px!important;
+}
+/*-------------------End Notice----------------------------------*/
