@@ -32,7 +32,7 @@ class Profile(models.Model):
         for usr in usrs:
             ntfs = Notifications.objects.get(User_ID=usr)
             tmp = eval(ntfs.New_Notifications)
-            tmp.append(['new_user', self.id])
+            tmp.append(['new_user', self.User_ID])
             ntfs.New_Notifications = tmp
             ntfs.save()
 

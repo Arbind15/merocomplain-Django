@@ -77,15 +77,15 @@ WSGI_APPLICATION = 'MeroComplain.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'df5l5g4iposqbn',
-        'USER': 'cziyziqglpcrdz',
-        'PASSWORD':'c3f5c6fc46d110689a740de2a7b27731052e0b0153936a4e175329cf04eb8150',
-        'PORT':'5432',
-        'HOST':'ec2-52-20-248-222.compute-1.amazonaws.com',
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': 'df5l5g4iposqbn',
+        # 'USER': 'cziyziqglpcrdz',
+        # 'PASSWORD':'c3f5c6fc46d110689a740de2a7b27731052e0b0153936a4e175329cf04eb8150',
+        # 'PORT':'5432',
+        # 'HOST':'ec2-52-20-248-222.compute-1.amazonaws.com',
     }
 }
 
