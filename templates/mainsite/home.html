@@ -15,6 +15,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Sriracha' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Bree Serif' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -58,10 +59,8 @@
                             </i>
                         </div>
                     </td>
-                    <td rowspan="2">
-                        {%if total_noti != '0'%}
-                        <div class="bell_pow" onclick="ViewNotices()">{{total_noti}}</div>
-                        {%endif%}
+                    <td rowspan="2" id="notic_num_container">
+<!--                        <div class="bell_pow" id="notic_num" onclick="ViewNotices()"></div>-->
                     </td>
                     <td>
                         {{user.get_full_name}}

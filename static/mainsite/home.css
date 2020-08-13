@@ -48,7 +48,7 @@
 }
 
 .bell_pow{
-    color: #f4f6ff;
+    color: white;
     /*margin-top: -10px;*/
     height: 20px;
     width: 20px;
@@ -60,6 +60,7 @@
     line-height: 19px;
     margin-top: -17px;
     margin-left: -38px;
+    transition: background-color ease-in-out 1s;
 }
 .bell_pow:hover{
     cursor: pointer;
@@ -506,6 +507,15 @@ select ~ option:hover{
 .replies_optn:hover{
     cursor: pointer;
 }
+.re_replies_card{
+    margin-bottom: 5px;
+}
+
+.active_re_replies_card{
+    margin-bottom: 5px;
+    background-color: rgba(14,238,238,0.07) !important;
+    animation: 1s blink ease-in-out 3;
+}
 
 .active_reply_card{
     margin-top: 15px;
@@ -533,6 +543,7 @@ select ~ option:hover{
 
 .lst_grp_notice{
     margin-bottom: 15px!important;
-    font-size: 14px!important;
+    font-size: 13px!important;
+    font-family: 'Quicksand'!important;
 }
 /*-------------------End Notice----------------------------------*/

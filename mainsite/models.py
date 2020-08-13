@@ -32,7 +32,7 @@ class Profile(models.Model):
         for usr in usrs:
             ntfs = Notifications.objects.get(User_ID=usr)
             tmp = eval(ntfs.New_Notifications)
-            tmp.append(['new_user', self.User_ID])
+            tmp.append(['new_user', self.User_ID.id,'unseen'])
             ntfs.New_Notifications = tmp
             ntfs.save()
 
@@ -57,15 +57,18 @@ class Complain(models.Model):
     def __str__(self):
         return f'{self.User_ID.first_name} -Complain'
 
-    def save(self,*args,**kwargs):
-        super().save(*args,**kwargs)
+    def save_with_notification_update(self,*args,**kwargs):
+        super().save(*args, **kwargs)
         usrs = User.objects.all()
         for usr in usrs:
             ntfs = Notifications.objects.get(User_ID=usr)
             tmp = eval(ntfs.New_Notifications)
-            tmp.append(['new_complain', self.id])
+            tmp.append(['new_complain', self.id, 'unseen'])
             ntfs.New_Notifications = tmp
             ntfs.save()
+
+    def save(self,*args,**kwargs):
+        super().save(*args,**kwargs)
 
 
 
@@ -83,15 +86,18 @@ class Replies(models.Model):
     def __str__(self):
         return f'{self.Complain_ID} -Replies'
 
-    def save(self,*args,**kwargs):
-        super().save(*args,**kwargs)
+    def save_with_notification_update(self,*args,**kwargs):
+        super().save(*args, **kwargs)
         usrs = User.objects.all()
         for usr in usrs:
             ntfs = Notifications.objects.get(User_ID=usr)
             tmp = eval(ntfs.New_Notifications)
-            tmp.append(['new_replies', self.id])
+            tmp.append(['new_replies', self.id, 'unseen'])
             ntfs.New_Notifications = tmp
             ntfs.save()
+
+    def save(self,*args,**kwargs):
+        super().save(*args,**kwargs)
 
 
 class Re_Replies(models.Model):
@@ -115,7 +121,7 @@ class Re_Replies(models.Model):
         for usr in usrs:
             ntfs=Notifications.objects.get(User_ID=usr)
             tmp=eval(ntfs.New_Notifications)
-            tmp.append(['new_re_replies',self.id])
+            tmp.append(['new_re_replies',self.id,'unseen'])
             ntfs.New_Notifications=tmp
             ntfs.save()
 

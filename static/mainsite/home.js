@@ -1,5 +1,6 @@
 var nav = true;
 
+
 function openNav() {
   document.getElementById("mySidenav").style.width = "200px";
   document.getElementById("main_content").style = "left: 200px; calc(calc(100vw) - 200px);";
@@ -148,8 +149,6 @@ function viewcomplain(complain_id) {
 
    }
 
-
-
   var xhttp = new XMLHttpRequest();
   var url = '/viewcomplain?complain_id='+complain_id;
   xhttp.onreadystatechange = function () {
@@ -163,6 +162,8 @@ function viewcomplain(complain_id) {
           mdl=rtxt.slice(mdl);
           div.innerHTML=mn_cnt;
           modal_div.innerHTML=mdl;
+            // alert('');
+          complain_viewed_staff(complain_id);
 
 
       }
@@ -425,6 +426,19 @@ function OnLogin() {
 
 }
 
+function complain_viewed_staff(complain_id) {
+  var xhttp = new XMLHttpRequest();
+  var url = '/increase_com_view?complain_id='+complain_id;
+  // alert('');
+  xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+          var rtxt = (xhttp.response);
+          alert(rtxt);
+      }
+  };
+  xhttp.open("GET", url, true);
+  xhttp.send();
+}
 
 
 function complain_shared_staff(complain_id) {
@@ -670,13 +684,26 @@ function ScrollTo(rep_id) {
     // alert(rep_id);
     var crd=document.getElementById('re_card'+rep_id);
     crd.scrollIntoView({behavior:'smooth',block:"start"});
-    crd.className='card active_reply_card';
-    // alert(crd);
-    var s='#re_card'+rep_id
-    $(s).mouseover(function(){
-        // alert('');
-        $(s).addClass("card newcomplain").removeClass("active_reply_card")
-    })
+
+    if(rep_id.slice(-2)=='re'){
+        crd.className='card active_re_replies_card';
+        // alert(crd);
+        var s='#re_card'+rep_id
+        $(s).mouseover(function(){
+            // alert('');
+            $(s).addClass("card re_replies_card").removeClass("active_re_replies_card")
+        })
+    }
+    else {
+        crd.className='card active_reply_card';
+        // alert(crd);
+        var s='#re_card'+rep_id
+        $(s).mouseover(function(){
+            // alert('');
+            $(s).addClass("card newcomplain").removeClass("active_reply_card")
+        })
+    }
+
 
 }
 
@@ -725,7 +752,141 @@ function ViewNotices() {
 }
 
 
-function ViewParticularNotice(val) {
-    var div=document.getElementById(val);
+function ViewParticularNotice(status,val,indx,opt_id=null) {
+    var div=document.getElementById(status+val);
     div.className='list-group-item list-group-item-action flex-column align-items-start'
+    // alert(val);
+    // alert(status);
+    if(status=='n_user_welcome'){
+
+    }
+    else if(status=='n_user'){
+
+    }
+    else if(status=='n_complain'){
+        View_Content_From_Notifications(val)
+    }
+    else if(status=='n_replies'){
+        View_Content_From_Notifications(opt_id,val)
+    }
+    else if(status=='n_re_replies'){
+        View_Content_From_Notifications(opt_id,val+'re')
+    }
+
+    Update_Notice_Seen_Status(status,val,indx);
+
+}
+
+
+function View_Content_From_Notifications(complain_id,rep_id=null) {
+
+  // var rep_id=document.getElementById('replies_sel_'+complain_id).value;
+  var div=document.getElementById('chng_cnt');
+  div.innerHTML=''
+  div.appendChild(m_s_div);
+
+   var modal_div = document.getElementById('model_div');
+
+  var xhttp = new XMLHttpRequest();
+
+  if(rep_id==null){
+      var url = '/viewcomplain?complain_id='+complain_id;
+  }
+  else {
+      var url = '/viewcomplain?complain_id='+complain_id+'&reply_id='+rep_id;
+  }
+
+  xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+          var rtxt = (xhttp.responseText);
+          // console.log(rtxt);
+          div.innerHTML = rtxt;
+          var mdl,mn_cnt;
+          mdl=rtxt.indexOf('<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">');
+          mn_cnt=rtxt.slice(0,mdl)
+          mdl=rtxt.slice(mdl);
+          div.innerHTML=mn_cnt;
+          modal_div.innerHTML=mdl;
+
+          var fs_crd=document.getElementById('focus_to_card');
+          // alert(fs_crd);
+          if(fs_crd !== null){
+              // alert('H');
+              var r_id=fs_crd.getAttribute('content');
+              ScrollTo(r_id);
+          }
+
+          Count_Unseen_Notifications();
+
+      }
+  };
+  xhttp.open("GET", url, true);
+  xhttp.send();
+
+}
+
+
+
+
+
+function Update_Notice_Seen_Status(sta,val,indx) {
+
+  var xhttp = new XMLHttpRequest();
+  var url = '/Update_Notice_Seen_Status?status='+sta+'&value='+val+'&index='+indx;
+  xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+          var rtxt = (xhttp.responseText);
+          // alert(rtxt);
+      }
+  };
+  xhttp.open("GET", url, true);
+  xhttp.send();
+}
+
+
+
+
+window.onload=Count_Unseen_Notifications();
+function Count_Unseen_Notifications() {
+  var xhttp = new XMLHttpRequest();
+  var url = '/Count_Unseen_Notifications';
+  xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+          var rtxt = (xhttp.responseText);
+          // alert(rtxt);
+          var notic_num=document.createElement('div');
+          var contr=document.getElementById('notic_num_container');
+          contr.innerHTML='';
+          if(rtxt=='0'){
+              return;
+          }
+          notic_num.className='bell_pow';
+          notic_num.id='notic_num';
+          notic_num.setAttribute('onclick','ViewNotices()');
+          notic_num.innerText=rtxt;
+          contr.appendChild(notic_num);
+      }
+  };
+  xhttp.open("GET", url, true);
+  xhttp.send();
+}
+
+
+//calling function after each 30 secs
+setInterval(Count_Unseen_Notifications,30000);
+
+
+
+function Report_Complain(complain_id) {
+  var xhttp = new XMLHttpRequest();
+  var url = '/increase_reported_view?complain_id='+complain_id;
+  // alert('');
+  xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+          var rtxt = (xhttp.response);
+          alert(rtxt);
+      }
+  };
+  xhttp.open("GET", url, true);
+  xhttp.send();
 }

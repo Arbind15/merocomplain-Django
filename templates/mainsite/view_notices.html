@@ -1,3 +1,4 @@
+{%load mytags%}
 <div class="compln">
     <div class="row">
 
@@ -7,51 +8,129 @@
 
         <div class="col-sm-12 col-md-6 coms">
 
-            <div class="list-group lst_grp_notice">
+            <div class="list-group lst_grp_notice" style="font-family: 'Quicksand'!important;">
                 {%for itm in notices%}
-                    {%if 'new_user' in itm.0%}
-                        <a href="#" id="n_user+{{itm.1.id}}" onclick="ViewParticularNotice('n_user+{{itm.1.id}}')"
-                         class="list-group-item list-group-item-action flex-column align-items-start list-group-item-info">
-                        <div class="d-flex w-100 justify-content-between">
-    <!--                      <h5 class="mb-1">List group item heading</h5>-->
-    <!--                      <small>3 days ago</small>-->
+                    {%if 'new_user' == itm.0%}
+                        {%if user.username == itm.1.username%}
+                        <a href="#" id="n_user_welcome{{itm.1.id}}" onclick="ViewParticularNotice('n_user_welcome','{{itm.1.id}}','{{itm.3}}')"
+                             class="list-group-item list-group-item-action flex-column align-items-start
+                                {%if 'unseen' == itm.2%}
+                                list-group-item-info
+                                {%endif%}">
+                            <p class="mb-1">{{itm.1.get_full_name}} Welcome to MeroComplane</p>
+                            <div class="d-flex w-100 justify-content-end">
+                              <small>{{itm.1.date_joined|get_time_difference}}</small>
+                            </div>
+                        </a>
+                        {%else%}
+                            <a href="#" id="n_user{{itm.1.id}}" onclick="ViewParticularNotice('n_user','{{itm.1.id}}','{{itm.3}}')"
+                             class="list-group-item list-group-item-action flex-column align-items-start
+                                {%if 'unseen' == itm.2%}
+                                list-group-item-info
+                                {%endif%}">
+                            <p class="mb-1">{{itm.1.get_full_name}} is new to MeroComplain</p>
+                            <div class="d-flex w-100 justify-content-end">
+                              <small>{{itm.1.date_joined|get_time_difference}}</small>
+                            </div>
+                          </a>
+                        {%endif%}
+                    {%endif%}
+
+                    {%if 'new_complain' == itm.0%}
+                      <a href="#" id="n_complain{{itm.1.id}}" onclick="ViewParticularNotice('n_complain','{{itm.1.id}}','{{itm.3}}')"
+                         class="list-group-item list-group-item-action flex-column align-items-start
+                                {%if 'unseen' == itm.2%}
+                                list-group-item-info
+                                {%endif%}">
+<!--                        <div class="d-flex w-100 justify-content-between">-->
+<!--                          <h5 class="mb-1">List group item heading</h5>-->
+<!--                          <small class="text-muted">3 days ago</small>-->
+<!--                        </div>-->
+                        <p class="mb-1">{{itm.1.User_ID.get_full_name}} has a new Complain.</p>
+<!--                        <small class="text-muted">Donec id elit non mi porta.</small>-->
+                        <div class="d-flex w-100 justify-content-end">
+<!--                          <h5 class="mb-1">List group item heading</h5>-->
+                          <small class="text-muted">{{itm.1.DateTime|get_time_difference}}</small>
                         </div>
-                        <p class="mb-1">{{itm.1.get_full_name}} is new to MeroComplain</p>
-                        <small>Donec id elit non mi porta.</small>
+
                       </a>
                     {%endif%}
 
-                    {%if 'new_complain' in itm.0%}
-                      <a href="#" id="n_complain+{{itm.1.id}}" onclick="ViewParticularNotice('n_complain+{{itm.1.id}}')"
-                         class="list-group-item list-group-item-action flex-column align-items-start list-group-item-info">
-                        <div class="d-flex w-100 justify-content-between">
-    <!--                      <h5 class="mb-1">List group item heading</h5>-->
-    <!--                      <small class="text-muted">3 days ago</small>-->
-                        </div>
-                        <p class="mb-1">{{itm.1.User_ID.get_full_name}} has new Complain.</p>
-                        <small class="text-muted">Donec id elit non mi porta.</small>
-                      </a>
-                    {%endif%}
-
-                    {%if 'new_replies' in itm.0%}
-                      <a href="#" id="n_replies+{{itm.1.id}}" onclick="ViewParticularNotice('n_replies+{{itm.1.id}}')"
-                         class="list-group-item list-group-item-action flex-column align-items-start list-group-item-info">
+                    {%if 'new_replies' == itm.0%}
+                      <a href="#" id="n_replies{{itm.1.id}}" onclick="ViewParticularNotice('n_replies','{{itm.1.id}}','{{itm.3}}','{{itm.1.Complain_ID.id}}')"
+                         class="list-group-item list-group-item-action flex-column align-items-start
+                                {%if 'unseen' == itm.2%}
+                                list-group-item-info
+                                {%endif%}">
                         <div class="d-flex w-100 justify-content-between">
                         </div>
                         <p class="mb-1">{{itm.1.Replied_By.get_full_name}} replied to {{itm.1.Complain_ID.User_ID.get_full_name}}'s complain.</p>
-                        <small class="text-muted">Donec id elit non mi porta.</small>
+                        <div class="d-flex w-100 justify-content-end">
+                          <small class="text-muted">{{itm.1.DateTime|get_time_difference}}</small>
+                        </div>
+
                       </a>
                     {%endif%}
 
-                    {%if 'new_re_replies' in itm.0%}
-                        <a href="#" id="n_re_replies+{{itm.1.id}}" onclick="ViewParticularNotice('n_re_replies+{{itm.1.id}}')"
-                           class="list-group-item list-group-item-action flex-column align-items-start list-group-item-info">
+                    {%if 'new_re_replies' == itm.0%}
+                        <a href="#" id="n_re_replies{{itm.1.id}}" onclick="ViewParticularNotice('n_re_replies','{{itm.1.id}}','{{itm.3}}','{{itm.1.Replies_ID.Complain_ID.id}}')"
+                           class="list-group-item list-group-item-action flex-column align-items-start
+                                {%if 'unseen' == itm.2%}
+                                list-group-item-info
+                                {%endif%}">
                             <div class="d-flex w-100 justify-content-between">
                             </div>
                             <p class="mb-1">{{itm.1.Replied_By.get_full_name}} also replied to {{itm.1.Replies_ID.Replied_By.get_full_name}}'s
                                 reply on {{itm.1.Replies_ID.Complain_ID.User_ID.get_full_name}}'s complain.</p>
-                            <small class="text-muted">Donec id elit non mi porta.</small>
+                            <div class="d-flex w-100 justify-content-end">
+                              <small class="text-muted">{{itm.1.DateTime|get_time_difference}}</small>
+                            </div>
                         </a>
+                    {%endif%}
+
+                    {%if 'new_complain_view' == itm.0%}
+                            <a href="#" id="new_complain_view{{itm.1.id}}" onclick="ViewParticularNotice('new_complain_view','{{itm.1.id}}','{{itm.3}}')"
+                               class="list-group-item list-group-item-action flex-column align-items-start
+                               {%if 'unseen' == itm.2%}
+                                list-group-item-info
+                                {%endif%}">
+                                <div class="d-flex w-100 justify-content-between">
+                                </div>
+                                <p class="mb-1">{{itm.4.get_full_name}} has seen your complain: {{itm.1.Subject}}.</p>
+                                <div class="d-flex w-100 justify-content-end">
+                                  <small class="text-muted">{{itm.5|get_time_difference_from_string}}</small>
+                                </div>
+                            </a>
+                    {%endif%}
+
+                    {%if 'new_complain_shared' == itm.0%}
+                            <a href="#" id="new_complain_shared{{itm.1.id}}" onclick="ViewParticularNotice('new_complain_shared','{{itm.1.id}}','{{itm.3}}')"
+                               class="list-group-item list-group-item-action flex-column align-items-start
+                               {%if 'unseen' == itm.2%}
+                                list-group-item-info
+                                {%endif%}">
+                                <div class="d-flex w-100 justify-content-between">
+                                </div>
+                                <p class="mb-1">{{itm.4.get_full_name}} has shared {{itm.1.User_ID.get_full_name}} complain: {{itm.1.Subject}}.</p>
+                                <div class="d-flex w-100 justify-content-end">
+                                  <small class="text-muted">{{itm.5|get_time_difference_from_string}}</small>
+                                </div>
+                            </a>
+                    {%endif%}
+
+                    {%if 'new_complain_reported' == itm.0%}
+                            <a href="#" id="new_complain_reported{{itm.1.id}}" onclick="ViewParticularNotice('new_complain_reported','{{itm.1.id}}','{{itm.3}}')"
+                               class="list-group-item list-group-item-action flex-column align-items-start
+                               {%if 'unseen' == itm.2%}
+                                list-group-item-info
+                                {%endif%}">
+                                <div class="d-flex w-100 justify-content-between">
+                                </div>
+                                <p class="mb-1">{{itm.4.get_full_name}} has reported {{itm.1.User_ID.get_full_name}} complain: {{itm.1.Subject}}.</p>
+                                <div class="d-flex w-100 justify-content-end">
+                                  <small class="text-muted">{{itm.5|get_time_difference_from_string}}</small>
+                                </div>
+                            </a>
                     {%endif%}
 
                 {%endfor%}

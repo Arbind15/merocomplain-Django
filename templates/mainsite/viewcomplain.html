@@ -174,7 +174,7 @@
                         <h6>Replies:</h6>
                         <div id="re_replies_cnt">
                             {%for re_replies in m_replies.1%}
-                                <div class="card" style="margin-bottom: 5px">
+                                <div class="card re_replies_card" id="re_card{{re_replies.id}}re">
                                     <div class="card-body" style="padding: 3px;">
                                         <div class="com-attach" style="margin: 5px">
                                             <p style="font-size: 12px;">{{re_replies.Replied_By.get_full_name}} ({{re_replies.Replied_By}})</p>
