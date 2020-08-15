@@ -4,15 +4,16 @@
     <title>Home | Mero Complain</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'mainsite/home.css' %}">
+<!--    <link rel="stylesheet" href="{% static 'mainsite/Chart.css' %}">-->
 <!--{#    <link rel="stylesheet" href="{% static 'mainsite/dashboard.css' %}">#}-->
-    <script type="text/javascript" src="{% static 'mainsite/home.js' %}"></script>
+
 <!--      <script type="text/javascript" src="{% static 'mainsite/data.js' %}"></script>-->
 <!--{#    <script type="text/javascript" src="{% static 'mainsite/dashboard.js' %}"></script>#}-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
           integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
     <link href='https://fonts.googleapis.com/css?family=Sriracha' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Bree Serif' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
@@ -52,36 +53,94 @@
         <div class="hom_nav container-fluid">
             <table class="pro_tbl">
                 <tr>
-
+                    <td rowspan="2" class="dashboard_search_td">
+                        <div class="d-sm-flex align-items-center dashboard_search justify-content-between">
+                            <div class="d-none d-sm-inline-block">
+                                <form class="d-none d-sm-inline-block  form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                    <div class="input-group">
+                                      <input type="text" class="form-control border-0 small srch_tab" placeholder="Search complain..." aria-label="Search" aria-describedby="basic-addon2">
+                                      <div class="input-group-append">
+                                        <button class="btn btn-info" type="button">
+                                          <i class="fas fa-search fa-sm"></i>
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </form>
+                            </div>
+                        </div>
+                    </td>
                     <td rowspan="2">
                          <div class="notic_div" onclick="ViewNotices()">
                             <i class="far fa-bell m_bell">
                             </i>
                         </div>
                     </td>
+
                     <td rowspan="2" id="notic_num_container">
 <!--                        <div class="bell_pow" id="notic_num" onclick="ViewNotices()"></div>-->
                     </td>
-                    <td>
+                    <td data-toggle="dropdown" class="table_data_profile">
                         {{user.get_full_name}}
                     </td>
                     <td rowspan="2">
-                        <img src="{{user.profile.Profile_Picture.url}}" class="pro_pic dropdown">
-<!--                        <div class="dropdown-content">-->
-<!--                            dfnhpsgndan-->
-<!--                            gfds-->
-<!--                        </div>-->
+                                <a content="" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img class="pro_pic" src="{{user.profile.Profile_Picture.url}}">
+<!--                                <img src="{{user.profile.Profile_Picture.url}}" class="pro_pic dropdown">-->
+                                </a>
+                    <!-- Dropdown - User Information -->
+                      <div class="dropdown-menu dropdown-menu-right no-arrow shadow animated--grow-in pro_drodwn" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#">
+                          <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                          Profile
+                        </a>
+                        <a class="dropdown-item" href="#">
+                          <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                          Settings
+                        </a>
+                        <a class="dropdown-item" href="#">
+                          <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                          Activity Log
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'logout'%}" data-toggle="modal" data-target="#logoutModal">
+                          <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                          Logout
+                        </a>
+                      </div>
 
                     </td>
-                    <td rowspan="2">
-                        <a href="{% url 'logout'%}"><span data-toggle="tooltip"  class="signoutlogo" data-placement="left" title="Logout">
-                            <i class="fas fa-sign-out-alt"></i>
-                        </span></a>
-                    </td>
+
+<!--                    <td rowspan="2">-->
+<!--                        <a href="{% url 'logout'%}"><span data-toggle="tooltip"  class="signoutlogo" data-placement="left" title="Logout">-->
+<!--                            <i class="fas fa-sign-out-alt"></i>-->
+<!--                        </span></a>-->
+<!--                    </td>-->
                 </tr>
                 <tr >
-                    <td>
+                    <td data-toggle="dropdown" class="table_data_profile">
                        <span style="margin-top: -10px!important;"> User ID: {{user.username}}</span>
+
+                        <!-- Dropdown - User Information -->
+                          <div class="dropdown-menu no-arrow dropdown-menu-right shadow animated--grow-in pro_drodwn" aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="#">
+                              <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                              Profile
+                            </a>
+                            <a class="dropdown-item" href="#">
+                              <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                              Settings
+                            </a>
+                            <a class="dropdown-item" href="#">
+                              <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                              Activity Log
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'logout'%}" data-toggle="modal" data-target="#logoutModal">
+                              <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                              Logout
+                            </a>
+                          </div>
+
                     </td>
                 </tr>
             </table>
@@ -107,9 +166,13 @@
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>-->
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script type="text/javascript" src="{% static 'mainsite/home.js' %}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>

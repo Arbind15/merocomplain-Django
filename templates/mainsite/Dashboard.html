@@ -1,125 +1,229 @@
 {% load mytags %}
 <div class="compln">
-    <div class="row">
+    <div class="row justify-content-between no-gutters">
+
+        <div class="col-sm-12 col-md-3">
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+
+        </div>
+
         <div class="col-sm-12 col-md-3">
 
         </div>
-        <div class="col-sm-12 col-md-6 coms">
-            {%for data in datas%}
-            <div class="card complns">
-                <div class="card-body">
-<!--                     <div class="row">-->
-<!--                        <div class="col">-->
-<!--                            User ID:-->
-<!--                        </div>-->
-<!--                        <div class="col com_lbl">-->
-<!--                            {{Com.User_ID}}-->
-<!--                        </div>-->
-<!--                    </div>-->
+    </div>
 
-                    <div class="row">
-                        <div class="col">
-                            Submitted on:
-                        </div>
-                        <div class="col com_lbl">
-                            {{data.0.DateTime}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            Submitted By:
-                        </div>
-                        <div class="col com_lbl">
-                            {{data.0.User_ID.get_full_name}} ({{data.0.User_ID.username}})
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            Seen By:
-                        </div>
-                        <div class="col com_lbl">
+    <div class="dashboard_top_scroll_card  justify-content-around" id="dashboard_top_card">
+        <div class="dashboard_top_card_content" id="dashboard_top_card_1">
+          <div class="alert alert-info alert-dismissible fade show" role="alert">
+              <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+        </div>
 
-                            {% if data.0.Seen_By|evalutae|get_lenght == '0' %}
-                               Unseen
-                            {% else %}
-                                <select class="sel_dep">
-                                    {%for itm in data.0.Seen_By|evalutae|get_dict_value %}
-                                      <option>{{itm}}</option>
-                                    {% endfor %}
-                                </select>
-                            {% endif %}
-                        </div>
-                    </div>
+        <div class="dashboard_top_card_content " id="dashboard_top_card_2">
+          <div class="alert alert-info alert-dismissible fade show" role="alert">
+              <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+        </div>
 
-                    <div class="row">
-                        <div class="col">
-                            Shares:
-                        </div>
-                        <div class="col com_lbl">
-                            {% if data.0.Shares|evalutae|get_lenght == '0' %}
-                               No Share
-                            {% else %}
-                                <select class="sel_dep">
-                                    {%for itm in data.0.Shares|evalutae|get_dict_value %}
-                                      <option>{{itm}}</option>
-                                    {% endfor %}
-                                </select>
-                            {% endif %}
-                        </div>
-                    </div>
+        <div class="dashboard_top_card_content " id="dashboard_top_card_3">
+          <div class="alert alert-info alert-dismissible fade show" role="alert">
+              <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+        </div>
 
-                    <div class="row">
-                        <div class="col">
-                            Replies:
+
+        <div class="dashboard_top_card_content " id="dashboard_top_card_4">
+          <div class="alert alert-info alert-dismissible fade show" role="alert">
+              <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+        </div>
+
+
+<!--        <div class="dashboard_top_card_content" id="dashboard_top_card_5">-->
+<!--          <div class="card" >-->
+<!--            <div class="card-body">-->
+<!--              <div class="row no-gutters align-items-center">-->
+<!--                <div class="col">-->
+<!--                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>-->
+<!--                  <div class="h5 mb-0 font-weight-bold text-gray-800">555555</div>-->
+<!--                </div>-->
+<!--                <div class="col-auto">-->
+<!--                  <i class="fas fa-calendar fa-2x text-gray-300"></i>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+
+    </div>
+
+    <div class="row justify-content-around no-gutters">
+
+        <div class="col-md-8">
+            <div class="card timeline_card" id="timeline_card">
+                <div class="card-header  dashboard_chart_header">
+                    <div style="display: flex; justify-content: space-between;">
+                        <div>
+                            <p class="dashboard_chart_header_txt"><i class="far fa-calendar-alt"></i> Timeline</p>
                         </div>
-                        <div class="col com_lbl">
-
-                            {% if data.1|get_lenght == '0' %}
-                               No Replies
-                            {% else %}
-                                <select class="sel_dep" id="replies_sel_{{data.0.id}}" onchange="Onclick_Replies_Option('{{data.0.id}}')">
-                                    <option value="">{{data.1|get_lenght}}</option>
-                                    {%for itm in data.1%}
-                                      <option class="replies_optn") value="{{itm.id}}">
-                                          {{itm.Replied_By.get_full_name}}
-                                      </option>
-                                    {% endfor %}
-                                </select>
-                            {% endif %}
-
+                        <div >
+                            <div class="dropdown no-arrow " style="margin-top: 13px!important;">
+                                <a class="dropdown-toggle timeline_dropdown"  href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="fas fa-ellipsis-v fa-sm fa-fw"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                                  <a class="dropdown-item" href="#">Full timeline</a>
+                                  <a class="dropdown-item" href="#">Search</a>
+                                  <div class="dropdown-divider"></div>
+                                  <a class="dropdown-item" onclick="RemoveTimeline()" href="#">Close</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="card-footer text-center">
-                    <div class="row justify-content-center">
-                        <div class="col ">
-                            <button class="g-button" onclick="Report_Complain('{{data.0.id}}')">Report</button>
+                <div class="card-body">
+                    <ul class="timeline">
+                        <li>
+                            <a target="_blank" href="https://www.totoprayogo.com/#">New Web Design</a>
+                            <a href="#" class="float-right">21 March, 2014</a>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula....</p>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://www.totoprayogo.com/#">New Web Design</a>
+                            <a href="#" class="float-right">21 March, 2014</a>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula....</p>
+                        </li><li>
+                            <a target="_blank" href="https://www.totoprayogo.com/#">New Web Design</a>
+                            <a href="#" class="float-right">21 March, 2014</a>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula....</p>
+                        </li><li>
+                            <a target="_blank" href="https://www.totoprayogo.com/#">New Web Design</a>
+                            <a href="#" class="float-right">21 March, 2014</a>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula....</p>
+                        </li>
+
+                        <li>
+                            <a href="#">21 000 Job Seekers</a>
+                            <a href="#" class="float-right">4 March, 2014</a>
+                            <p>Curabitur purus sem, malesuada eu luctus eget, suscipit sed turpis. Nam pellentesque felis vitae justo accumsan, sed semper nisi sollicitudin...</p>
+                        </li>
+                        <li>
+                            <a href="#">Awesome Employers</a>
+                            <a href="#" class="float-right">1 April, 2014</a>
+                            <p id="last_timeline_p">Fusce ullamcorper ligula sit amet quam accumsan aliquet. Sed nulla odio, tincidunt vitae nunc vitae, mollis pharetra velit. Sed nec tempor nibh...</p>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+		</div>
+
+        <div class="col-md-4">
+            <div class="card canvas_cotainer" id="Donut_chatr">
+                <div class="card-header justify-content-between dashboard_chart_header">
+                    <div class="row">
+                        <div class="col">
+                            <p class="dashboard_chart_header_txt"><i class="fas fa-flag-checkered"></i> Complain</p>
                         </div>
-                        <div class="col ">
-                            <button class="g-button" onclick="Reply_to_Comment('{{data.0.id}}')">Reply</button>
-                        </div>
-                        <div class="col ">
-                            <button class="g-button" onclick="Share_mdl('{{data.0.id}}')"
-                            data-toggle="modal" data-target="#exampleModalCenter" type="button"><i class="far fa-share-square">
-                                </i>Share</button>
-                        </div>
-                        <div class="col ">
-                            <button class="g-button" disable id="my_com_view_btn{{data.0.id}}" onclick="viewcomplain('{{data.0.id}}')">View</button>
+                        <div class="col">
+                            <button onclick="RemoveDonut()" type="button" class="close dashboard_chart_header_button" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
                     </div>
+                </div>
+                <div class="card-body">
+                    <canvas id="DashboardCharts" width="50" height="50"></canvas>
+<!--                    <button onclick="Update_Complain_Chart('2','50')">Update</button>-->
                 </div>
             </div>
-            {% endfor %}
+
+            <div class="card quick_links_cotainer">
+                <div class="card-body text-center">
+                    <div class="row justify-content-between quick_lnks">
+                        <div class="col-md-4">
+                            <div class="quick_lnks_content">
+                                <i class="fas fa-id-card"></i>
+                                <h3>Profile</h3>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="quick_lnks_content">
+                                <i class="fas fa-users-cog"></i>
+                                <h3>Settings</h3>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="quick_lnks_content">
+                                <i class="fas fa-address-book"></i>
+                                <h3>Contacts</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-between quick_lnks">
+                        <div class="col-md-4">
+                            <div class="quick_lnks_content">
+                                <i class="fas fa-donate"></i>
+                                <h3>Donate</h3>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="quick_lnks_content">
+                                <i class="fas fa-question-circle"></i>
+                                <h3>Help</h3>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="quick_lnks_content">
+                                 <i class="fas fa-sign-out-alt"></i>
+                                <h3>Sign Out</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
         </div>
-        <div class="col-sm-12 col-md-3 new_cmp">
-            <button onclick="newComplain()" data-toggle="tooltip" data-placement="bottom"
-                title="New Comment"
-                class="addc">
-                <i class="fas fa-plus-circle"></i>&nbsp;New Complain
-            </button>
-        </div>
+
     </div>
+
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!--<div class="compln" id="com_cont">-->
@@ -226,3 +330,245 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--{% load mytags %}-->
+<!--<div class="compln">-->
+<!--    <div class="row">-->
+<!--        <div class="col-sm-12 col-md-3">-->
+
+<!--        </div>-->
+<!--        <div class="col-sm-12 col-md-6 coms">-->
+<!--            {%for data in datas%}-->
+<!--            <div class="card complns">-->
+<!--                <div class="card-body">-->
+<!--&lt;!&ndash;                     <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="col">&ndash;&gt;-->
+<!--&lt;!&ndash;                            User ID:&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="col com_lbl">&ndash;&gt;-->
+<!--&lt;!&ndash;                            {{Com.User_ID}}&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+
+<!--                    <div class="row">-->
+<!--                        <div class="col">-->
+<!--                            Submitted on:-->
+<!--                        </div>-->
+<!--                        <div class="col com_lbl">-->
+<!--                            {{data.0.DateTime}}-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row">-->
+<!--                        <div class="col">-->
+<!--                            Submitted By:-->
+<!--                        </div>-->
+<!--                        <div class="col com_lbl">-->
+<!--                            {{data.0.User_ID.get_full_name}} ({{data.0.User_ID.username}})-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row">-->
+<!--                        <div class="col">-->
+<!--                            Seen By:-->
+<!--                        </div>-->
+<!--                        <div class="col com_lbl">-->
+
+<!--                            {% if data.0.Seen_By|evalutae|get_lenght == '0' %}-->
+<!--                               Unseen-->
+<!--                            {% else %}-->
+<!--                                <select class="sel_dep">-->
+<!--                                    {%for itm in data.0.Seen_By|evalutae|get_dict_value %}-->
+<!--                                      <option>{{itm}}</option>-->
+<!--                                    {% endfor %}-->
+<!--                                </select>-->
+<!--                            {% endif %}-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    <div class="row">-->
+<!--                        <div class="col">-->
+<!--                            Shares:-->
+<!--                        </div>-->
+<!--                        <div class="col com_lbl">-->
+<!--                            {% if data.0.Shares|evalutae|get_lenght == '0' %}-->
+<!--                               No Share-->
+<!--                            {% else %}-->
+<!--                                <select class="sel_dep">-->
+<!--                                    {%for itm in data.0.Shares|evalutae|get_dict_value %}-->
+<!--                                      <option>{{itm}}</option>-->
+<!--                                    {% endfor %}-->
+<!--                                </select>-->
+<!--                            {% endif %}-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    <div class="row">-->
+<!--                        <div class="col">-->
+<!--                            Replies:-->
+<!--                        </div>-->
+<!--                        <div class="col com_lbl">-->
+
+<!--                            {% if data.1|get_lenght == '0' %}-->
+<!--                               No Replies-->
+<!--                            {% else %}-->
+<!--                                <select class="sel_dep" id="replies_sel_{{data.0.id}}" onchange="Onclick_Replies_Option('{{data.0.id}}')">-->
+<!--                                    <option value="">{{data.1|get_lenght}}</option>-->
+<!--                                    {%for itm in data.1%}-->
+<!--                                      <option class="replies_optn") value="{{itm.id}}">-->
+<!--                                          {{itm.Replied_By.get_full_name}}-->
+<!--                                      </option>-->
+<!--                                    {% endfor %}-->
+<!--                                </select>-->
+<!--                            {% endif %}-->
+
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="card-footer text-center">-->
+<!--                    <div class="row justify-content-center">-->
+<!--                        <div class="col ">-->
+<!--                            <button class="g-button" onclick="Report_Complain('{{data.0.id}}')">Report</button>-->
+<!--                        </div>-->
+<!--                        <div class="col ">-->
+<!--                            <button class="g-button" onclick="Reply_to_Comment('{{data.0.id}}')">Reply</button>-->
+<!--                        </div>-->
+<!--                        <div class="col ">-->
+<!--                            <button class="g-button" onclick="Share_mdl('{{data.0.id}}')"-->
+<!--                            data-toggle="modal" data-target="#exampleModalCenter" type="button"><i class="far fa-share-square">-->
+<!--                                </i>Share</button>-->
+<!--                        </div>-->
+<!--                        <div class="col ">-->
+<!--                            <button class="g-button" disable id="my_com_view_btn{{data.0.id}}" onclick="viewcomplain('{{data.0.id}}')">View</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            {% endfor %}-->
+<!--        </div>-->
+<!--        <div class="col-sm-12 col-md-3 new_cmp">-->
+<!--            <button onclick="newComplain()" data-toggle="tooltip" data-placement="bottom"-->
+<!--                title="New Comment"-->
+<!--                class="addc">-->
+<!--                <i class="fas fa-plus-circle"></i>&nbsp;New Complain-->
+<!--            </button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<!--&lt;!&ndash;<div class="compln" id="com_cont">&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="new_cmp">&ndash;&gt;-->
+<!--&lt;!&ndash;        <button onclick="newComplain()" data-toggle="tooltip" data-placement="bottom"&ndash;&gt;-->
+<!--&lt;!&ndash;                title="New Comment"&ndash;&gt;-->
+<!--&lt;!&ndash;                class="addc"><i class="fas fa-plus-circle"></i>&nbsp;New Complain</button>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="container-fluid" style="margin-top: -30px">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-sm-1 col-md-3 align-self-start">&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-sm-10 col-md-6 align-self-center coms">&ndash;&gt;-->
+<!--&lt;!&ndash;                    {%for Com in complain%}&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="card complns">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="card-header">&ndash;&gt;-->
+<!--&lt;!&ndash;                            Subject:&nbsp;{{Com.Subject}}&ndash;&gt;-->
+<!--&lt;!&ndash;                            Department:&nbsp;{{Com.Department}}&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="card-body">&ndash;&gt;-->
+<!--&lt;!&ndash;                            Status:&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="col">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    Submitted on:&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="col">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    {{Com.DateTime}}&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="col">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    Seen Status:&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="col">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    S&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="col">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    Seen Date:&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="col">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    S&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="col">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    Seen By:&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="col">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    S&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="card-footer text-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="row justify-content-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="col ">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <button class="g-button">Report</button>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="col ">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <button class="g-button"><i class="far fa-share-square"></i>&nbsp;Share</button>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="col ">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <button class="g-button">View</button>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    {% endfor %}&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-sm-1 col-md-3 align-self-end">&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+
+<!-- &lt;!&ndash; Modal &ndash;&gt;-->
+<!--<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">-->
+<!--  <div class="modal-dialog modal-dialog-centered"  role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="exampleModalLongTitle">Share</h5>-->
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--          <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--          <div class="row">-->
+<!--              <div class="col">Share via Email:</div>-->
+<!--              <div class="col">-->
+<!--                  <i onclick="Send_Email()" class="far fa-share-square g-logo"></i>-->
+<!--              </div>-->
+<!--          </div>-->
+<!--          <br>-->
+<!--          <div class="row">-->
+<!--              <div class="col">Download Pdf:</div>-->
+<!--              <div class="col"><i onclick="GeneratePdf()" id="mdl_pdf_btn" class="far fa-file-pdf g-logo"></i></div>-->
+<!--          </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

@@ -1,5 +1,11 @@
 var nav = true;
 
+document.addEventListener('DOMContentLoaded', function() {
+   dashBoard();
+   Count_Unseen_Notifications();
+   // Data_Collection_For_Dashboard(13);
+   // DashboardCharts();
+}, false);
 
 function openNav() {
   document.getElementById("mySidenav").style.width = "200px";
@@ -61,12 +67,16 @@ m_s_div.appendChild(s_div)
 
 
 function dashBoard() {
-
   // document.getElementById('spinner_con').style.display='flex';
+ try {
+      var div=document.getElementById('chng_cnt');
+      div.innerHTML=''
+      div.appendChild(m_s_div);
+ }
 
-  var div=document.getElementById('chng_cnt');
-  div.innerHTML=''
-  div.appendChild(m_s_div);
+ catch (e) {
+
+ }
 
   document.getElementById('dashboard').style='border-left: 3px solid rgba(182,2,33,0.9);' +
       'color: white;background-color: rgba(1,1,1,0.3);';
@@ -74,6 +84,7 @@ function dashBoard() {
   document.getElementById('faq').style='';
   document.getElementById('report').style='';
 
+   var modal_div = document.getElementById('model_div');
   var div=document.getElementById('chng_cnt')
   // div.innerHTML='<p>Hi from Dashboard</p>';
 
@@ -83,8 +94,14 @@ function dashBoard() {
     if (this.readyState == 4 && this.status == 200) {
       var rtxt = (xhttp.responseText);
       // console.log(rtxt);
-      div.innerHTML=rtxt;
-      document.getElementById('spinner_con').style.display='none';
+      div.innerHTML = rtxt;
+      var mdl,mn_cnt;
+      mdl=rtxt.indexOf('<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">');
+      mn_cnt=rtxt.slice(0,mdl)
+      mdl=rtxt.slice(mdl);
+      div.innerHTML=mn_cnt;
+      modal_div.innerHTML=mdl;
+      Data_Collection_For_Dashboard(13);
     }
   };
   xhttp.open("GET", url, true);
@@ -433,7 +450,7 @@ function complain_viewed_staff(complain_id) {
   xhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
           var rtxt = (xhttp.response);
-          alert(rtxt);
+          // alert(rtxt);
       }
   };
   xhttp.open("GET", url, true);
@@ -765,14 +782,28 @@ function ViewParticularNotice(status,val,indx,opt_id=null) {
     }
     else if(status=='n_complain'){
         View_Content_From_Notifications(val)
+        complain_viewed_staff(val);
     }
     else if(status=='n_replies'){
         View_Content_From_Notifications(opt_id,val)
+        complain_viewed_staff(opt_id);
     }
     else if(status=='n_re_replies'){
         View_Content_From_Notifications(opt_id,val+'re')
+        complain_viewed_staff(opt_id);
     }
 
+    else if(status=='new_complain_view'){
+        View_Content_From_Notifications(val)
+    }
+    else if(status=='new_complain_shared'){
+        View_Content_From_Notifications(val)
+        complain_viewed_staff(val);
+    }
+    else if(status=='new_complain_reported'){
+        View_Content_From_Notifications(val)
+        complain_viewed_staff(val);
+    }
     Update_Notice_Seen_Status(status,val,indx);
 
 }
@@ -846,7 +877,7 @@ function Update_Notice_Seen_Status(sta,val,indx) {
 
 
 
-window.onload=Count_Unseen_Notifications();
+// window.onload=Count_Unseen_Notifications();
 function Count_Unseen_Notifications() {
   var xhttp = new XMLHttpRequest();
   var url = '/Count_Unseen_Notifications';
@@ -860,7 +891,8 @@ function Count_Unseen_Notifications() {
           if(rtxt=='0'){
               return;
           }
-          notic_num.className='bell_pow';
+          notic_num.className='bell_pow badge badge-danger badge-counter';
+          // badge badge-danger badge-counter
           notic_num.id='notic_num';
           notic_num.setAttribute('onclick','ViewNotices()');
           notic_num.innerText=rtxt;
@@ -889,4 +921,236 @@ function Report_Complain(complain_id) {
   };
   xhttp.open("GET", url, true);
   xhttp.send();
+}
+
+
+// setInterval(Dashboard_Top_Cards,5000);
+var glblint=1;
+function Dashboard_Top_Cards() {
+
+    var cards = document.getElementById('dashboard_top_card');
+    var card1 = document.getElementById('dashboard_top_card_1');
+    var card2 = document.getElementById('dashboard_top_card_2');
+    var card3 = document.getElementById('dashboard_top_card_3');
+    var card4 = document.getElementById('dashboard_top_card_4');
+
+    var div1=document.createElement('div');
+    div1.id='dashboard_top_card_4';
+    div1.className='dashboard_top_card_5'
+    var chngd_card=document.createElement('div');
+    chngd_card.className='card dashboard_top_card_content';
+    var div2=document.createElement('div');
+    div2.className="card-body";
+    div2.innerText='Done'+glblint;
+    glblint=glblint+1;
+    chngd_card.appendChild(div2);
+    div1.appendChild(chngd_card);
+
+    card1.className='dashboard_top_card_1';
+    card2.className='dashboard_top_card_2';
+    card3.className='dashboard_top_card_3';
+    card4.className='dashboard_top_card_4';
+
+
+    card1.addEventListener('animationend',function () {
+         card1.remove();
+         card2.id='dashboard_top_card_1';
+         card3.id='dashboard_top_card_2';
+         card4.id='dashboard_top_card_3';
+         cards.appendChild(div1);
+    })
+
+    // div1.className='col-xl-3 col-md-6 mb-4 dashboard_top_card_4';
+    //
+    // card1.className='col-xl-3 col-md-6 mb-4 dashboard_top_card_1';
+
+    // card1.addEventListener('animationstart',function () {
+    //     card2.className='col-xl-3 col-md-6 mb-4 dashboard_top_card_2';
+    //     card3.className='col-xl-3 col-md-6 mb-4 dashboard_top_card_3';
+    //     card4.className='col-xl-3 col-md-6 mb-4 dashboard_top_card_4';
+    //
+    // })
+    //
+    // card1.addEventListener('animationiteration',function () {
+    //
+    // })
+    //
+    // card1.addEventListener('animationend',function () {
+    //      card1.remove();
+    //      cards.appendChild(div1);
+    //      div1.className='col-xl-3 col-md-6 mb-4 dashboard_top_card_5'
+    //       card2.id='dashboard_top_card_1';
+    //      card3.id='dashboard_top_card_2';
+    //      card4.id='dashboard_top_card_3';
+    //      div1.className='col-xl-3 col-md-6 mb-4 dashboard_top_card_4';
+    // })
+    //
+
+
+
+
+    //  div1.addEventListener('animationend',function () {
+    //     // alert('');
+    //     console.log('done')
+    //     // card5.id='dashboard_top_card_4';
+    //
+    //
+    // })
+
+
+    // var card5 = document.getElementById('dashboard_top_card_5');
+    // card5.id='dashboard_top_card_4';
+    // div1.addEventListener('animationstart',function () {
+    //     // alert('');
+    //     console.log('done')
+    //     // card5.id='dashboard_top_card_4';
+    // })
+
+
+    // div1.id='dashboard_top_card_4';
+
+
+
+
+
+
+
+
+    // cards.removehild(card1);
+    // console.log(cards.appendChild(chngd_card3))
+    //
+    // chngd_card3.id='dashboard_top_card_';
+    //
+    // card2.id='dashboard_top_card_1';
+    // card3.id='dashboard_top_card_2';
+
+
+    // chngd_card3.id='dashboard_top_card_3'
+    // card2.appendChild(chngd_card3)
+    // card2.id='dashboard_top_card_1'
+    // card3.id='dashboard_top_card_2'
+    // console.log(cards)
+    // console.log(card1)
+    // console.log(card2)
+    // console.log(chngd_card3)
+}
+
+function Data_Collection_For_Dashboard(complain_id){
+  var xhttp = new XMLHttpRequest();
+  var url = '/Data_Collection_For_Dashboard?complain_id='+complain_id;
+    xhttp.responseType='json';
+  xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+          // var rtxt = (xhttp.responseText);
+          // alert(xhttp.response);
+          var Data=xhttp.response;
+          // DashboardCharts(Data);
+          // alert(window.onload)
+          global_dashboard_chart=DashboardCharts(Data);
+          global_dashboard_data=Data;
+      }
+  };
+  xhttp.open("GET", url, true);
+  xhttp.send();
+}
+
+// window.onload=Data_Collection_For_Dashboard(13);
+var global_dashboard_chart,global_dashboard_data,global_dashboard_complain_id;
+function DashboardCharts(Data) {
+    // var cnvs=document.createElement('canvas');
+    // cnvs.id='DashboardCharts';
+    // var cnvs_cntr= document.getElementById('canvas_cotainer');
+    // var ctx=cnvs.getContext('2d');
+    var ctx = document.getElementById('DashboardCharts').getContext('2d');
+    var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'doughnut',
+
+    // The data for our dataset
+    data: {
+        labels: ['Replies', 'Re-Replies', 'Views', 'Shares', 'Reports'],
+        datasets: [{
+            label: 'My First dataset',
+            // backgroundColor: 'rgb(255, 99, 132)',
+            // borderColor: 'rgb(255, 99, 132)',
+            data: Data,
+            backgroundColor: ["#e5ffff", "#ffeeff", "#d1d9ff", "#ffddc1", "#ffc4ff"],
+            hoverBackgroundColor: ["#82ada9", "#c48b9f", "#6f79a8", "#c97b63", "#9c64a6"]
+        }]
+    },
+
+    // Configuration options go here
+    options: {
+        legend: {
+            position:'bottom',
+            boxWidth:20,
+        }
+    }
+
+});
+    return chart;
+
+}
+
+global_dashboard_complain_id=13;
+setInterval(Update_Data_of_Complain_Chart,3000);
+
+function Update_Data_of_Complain_Chart() {
+    var dat=Math.random();
+    dat=dat*10;
+    var i=Math.random();
+    i=Math.trunc(i*10);
+    if(i<=4){
+        Update_Complain_Chart(i,dat);
+        console.log('indx')
+    }
+
+    // var xhttp = new XMLHttpRequest();
+    // var url = '/Data_Collection_For_Dashboard?complain_id=' + global_dashboard_complain_id;
+    // xhttp.responseType = 'json';
+    // xhttp.onreadystatechange = function () {
+    //     if (this.readyState == 4 && this.status == 200) {
+    //         var Data = xhttp.response;
+    //         var i=0;
+    //
+    //         for(i=0;i<Data.length;i++){
+    //             if(global_dashboard_data[i]!=Data[i]){
+    //                 Update_Complain_Chart(i,itm);
+    //             }
+    //         }
+    //
+    //     }
+    // };
+    // xhttp.open("GET", url, true);
+    // xhttp.send();
+
+}
+
+
+function Update_Complain_Chart(indx,dat) {
+    // console.log(dat)
+    var chart=global_dashboard_chart;
+    // chart.data.labels.push('label');
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.splice(parseInt(indx),1,parseInt(dat));
+        // console.log(dataset)
+    });
+    chart.update();
+}
+
+function RemoveDonut() {
+    var donut=document.getElementById('Donut_chatr');
+    donut.className='col animate_chart_to_remove'
+    donut.addEventListener('animationend',function () {
+        donut.style='display: none';
+    })
+
+}
+
+function RemoveTimeline() {
+    var donut=document.getElementById('timeline_card');
+    donut.className='card timeline_card animate_chart_to_remove'
+    donut.addEventListener('animationend',function () {
+        donut.style='display: none';
+    })
 }

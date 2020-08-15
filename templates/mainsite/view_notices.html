@@ -46,7 +46,16 @@
 <!--                          <h5 class="mb-1">List group item heading</h5>-->
 <!--                          <small class="text-muted">3 days ago</small>-->
 <!--                        </div>-->
-                        <p class="mb-1">{{itm.1.User_ID.get_full_name}} has a new Complain.</p>
+                        <p class="mb-1">
+<!--                            {{itm.1.User_ID.get_full_name}} has a new Complain.-->
+                            {%if user.username == itm.1.User_ID.username%}
+                                    You have
+                            {%else%}
+                                    {{itm.1.User_ID.get_full_name}} has
+                            {%endif%}
+                            a new complain.
+
+                        </p>
 <!--                        <small class="text-muted">Donec id elit non mi porta.</small>-->
                         <div class="d-flex w-100 justify-content-end">
 <!--                          <h5 class="mb-1">List group item heading</h5>-->
@@ -64,7 +73,23 @@
                                 {%endif%}">
                         <div class="d-flex w-100 justify-content-between">
                         </div>
-                        <p class="mb-1">{{itm.1.Replied_By.get_full_name}} replied to {{itm.1.Complain_ID.User_ID.get_full_name}}'s complain.</p>
+                        <p class="mb-1">
+<!--                            {{itm.1.Replied_By.get_full_name}} replied to {{itm.1.Complain_ID.User_ID.get_full_name}}'s complain.-->
+                            {%if user.username == itm.1.Replied_By.username%}
+                                You replied
+                            {%else%}
+                                {{itm.1.Replied_By.get_full_name}} replied to
+                            {%endif%}
+
+                            {%if user.username == itm.1.Complain_ID.User_ID.username%}
+                                Your
+                            {%else%}
+                                {{itm.1.Complain_ID.User_ID.get_full_name}}'s
+                            {%endif%}
+
+                            complain.
+
+                        </p>
                         <div class="d-flex w-100 justify-content-end">
                           <small class="text-muted">{{itm.1.DateTime|get_time_difference}}</small>
                         </div>
@@ -80,8 +105,30 @@
                                 {%endif%}">
                             <div class="d-flex w-100 justify-content-between">
                             </div>
-                            <p class="mb-1">{{itm.1.Replied_By.get_full_name}} also replied to {{itm.1.Replies_ID.Replied_By.get_full_name}}'s
-                                reply on {{itm.1.Replies_ID.Complain_ID.User_ID.get_full_name}}'s complain.</p>
+                            <p class="mb-1">
+<!--                                {{itm.1.Replied_By.get_full_name}} also replied to {{itm.1.Replies_ID.Replied_By.get_full_name}}'s-->
+<!--                                reply on {{itm.1.Replies_ID.Complain_ID.User_ID.get_full_name}}'s complain.-->
+
+                                {%if user.username == itm.1.Replied_By.username%}
+                                    You replied to
+                                {%else%}
+                                    {{itm.1.Replied_By.get_full_name}} replied to
+                                {%endif%}
+
+                                {%if user.username == itm.1.Replies_ID.Replied_By.username%}
+                                    your reply on
+                                {%else%}
+                                    {{itm.1.Replies_ID.Replied_By.get_full_name}}'s reply on
+                                {%endif%}
+
+                                {%if user.username == itm.1.Replies_ID.Complain_ID.User_ID.username%}
+                                    your complain.
+                                {%else%}
+                                    {{itm.1.Replies_ID.Complain_ID.User_ID.get_full_name}}'s complain.
+                                {%endif%}
+
+
+                            </p>
                             <div class="d-flex w-100 justify-content-end">
                               <small class="text-muted">{{itm.1.DateTime|get_time_difference}}</small>
                             </div>
@@ -96,7 +143,8 @@
                                 {%endif%}">
                                 <div class="d-flex w-100 justify-content-between">
                                 </div>
-                                <p class="mb-1">{{itm.4.get_full_name}} has seen your complain: {{itm.1.Subject}}.</p>
+                                <p class="mb-1">{{itm.4.get_full_name}} {%if itm.6 > 1 %} and {{itm.6}} others {%endif%} has seen your complain {%if itm.6 > 1 %} so far. {%endif%}</p>
+<!--                                    {{itm.1.Subject}}.</p>-->
                                 <div class="d-flex w-100 justify-content-end">
                                   <small class="text-muted">{{itm.5|get_time_difference_from_string}}</small>
                                 </div>
@@ -111,7 +159,33 @@
                                 {%endif%}">
                                 <div class="d-flex w-100 justify-content-between">
                                 </div>
-                                <p class="mb-1">{{itm.4.get_full_name}} has shared {{itm.1.User_ID.get_full_name}} complain: {{itm.1.Subject}}.</p>
+                                <p class="mb-1">
+<!--                                    {{itm.4.get_full_name}} {%if itm.6 > 1 %} and {{itm.6}} others {%endif%} has shared {{itm.1.User_ID.get_full_name}} complain {%if itm.6 > 1 %} so far. {%endif%}-->
+                                {%if user.username == itm.4.username%}
+                                    You
+                                {%else%}
+                                    {{itm.4.get_full_name}}
+                                {%endif%}
+                                {%if itm.6 >= 1 %}
+                                    and {{itm.6}} others has shared
+                                {%else%}
+                                    {%if user.username == itm.4.username%}
+                                        have shared
+                                    {%else%}
+                                        has shared
+                                    {%endif%}
+                                {%endif%}
+
+                                {%if user.username == itm.1.User_ID.username%}
+                                    your
+                                {%else%}
+                                    {{itm.1.User_ID.get_full_name}}'s
+                                {%endif%}
+                                    complain
+                                {%if itm.6 >= 1 %}
+                                    so far.
+                                {%endif%}
+                                </p>
                                 <div class="d-flex w-100 justify-content-end">
                                   <small class="text-muted">{{itm.5|get_time_difference_from_string}}</small>
                                 </div>
@@ -126,7 +200,28 @@
                                 {%endif%}">
                                 <div class="d-flex w-100 justify-content-between">
                                 </div>
-                                <p class="mb-1">{{itm.4.get_full_name}} has reported {{itm.1.User_ID.get_full_name}} complain: {{itm.1.Subject}}.</p>
+                                <p class="mb-1">
+                                    {%if user.username == itm.4.username%}
+                                        You
+                                    {%else%}
+                                        {{itm.4.get_full_name}}
+                                    {%endif%}
+                                    {%if itm.6 >= 1 %}
+                                        and {{itm.6}} others
+                                    {%endif%}
+
+                                    {%if user.username == itm.4.username%}
+                                       have reported
+                                    {%else%}
+                                        has reported
+                                    {%endif%}
+
+                                    {%if user.username == itm.1.User_ID.username%}
+                                        your
+                                    {%else%}
+                                        {{itm.1.User_ID.get_full_name}}'s
+                                    {%endif%}
+                                    complain {%if itm.6 >= 1 %} so far. {%endif%}</p>
                                 <div class="d-flex w-100 justify-content-end">
                                   <small class="text-muted">{{itm.5|get_time_difference_from_string}}</small>
                                 </div>

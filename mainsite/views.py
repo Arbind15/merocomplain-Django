@@ -92,20 +92,21 @@ def viewnotices(request):
         if notic[0]=='new_complain_view':
             com=Complain.objects.get(id=notic[1])
             usr=User.objects.get(id=notic[3])
-            m_lst.append(['new_complain_view',com,notic[2],len(m_lst),usr,notic[4]])
+            m_lst.append(['new_complain_view',com,notic[2],len(m_lst),usr,notic[4],notic[5]])
 
         if notic[0]=='new_complain_shared':
             com = Complain.objects.get(id=notic[1])
             usr = User.objects.get(id=notic[3])
-            m_lst.append(['new_complain_shared',com,notic[2],len(m_lst),usr,notic[4]])
+            m_lst.append(['new_complain_shared',com,notic[2],len(m_lst),usr,notic[4],notic[5]-1])
 
         if notic[0]=='new_complain_reported':
             com = Complain.objects.get(id=notic[1])
             usr = User.objects.get(id=notic[3])
-            m_lst.append(['new_complain_reported',com,notic[2],len(m_lst),usr,notic[4]])
+            m_lst.append(['new_complain_reported',com,notic[2],len(m_lst),usr,notic[4],notic[5]-1])
+            print(notic)
 
     contex['notices']=reversed(m_lst)
-    print(m_lst)
+    # print(m_lst)
     return render(request, 'mainsite/view_notices.html', contex)
 
 def login(request):
@@ -541,6 +542,39 @@ def email_complain(request):
         # cont=dumps(cont)
         return JsonResponse(cont,safe=False)
 
+def Data_Collection_For_Dashboard(request):
+    com_id = request.GET.get('complain_id')
+    print('id',com_id)
+    com = Complain.objects.get(id=com_id)
+    user_id = request.user
+    if(request.user.id==com.User_ID.id):
+        ntfs=Notifications.objects.get(User_ID=user_id)
+        ntfs=eval(ntfs.New_Notifications)
+        # print(com,ntfs)
+        totl_new_replies = 0
+        totl_new_re_rep = 0
+        totl_new_view = 0
+        totl_new_share = 0
+        totl_new_report = 0
+        for ntf in ntfs:
+            # print(ntf)
+            if ntf[0]=='new_replies':
+                totl_new_replies=totl_new_replies+1
+
+            if ntf[0]=='new_re_replies':
+                totl_new_re_rep=totl_new_re_rep+1
+
+            if ntf[0]=='new_complain_view':
+                totl_new_view=totl_new_view+1
+
+            if ntf[0]=='new_complain_shared':
+                totl_new_share=ntf[5]
+
+            if ntf[0]=='new_complain_reported':
+                totl_new_report=ntf[5]
+        lst=[totl_new_replies,totl_new_re_rep,totl_new_view,totl_new_share,totl_new_report]
+    return JsonResponse(lst,safe=False)
+
 @login_required(login_url='login')
 def increase_com_view(request):
     c_id=request.GET.get('complain_id')
@@ -558,7 +592,13 @@ def increase_com_view(request):
     Complain.refresh_from_db(com)
     ntfs=Notifications.objects.get(User_ID=com.User_ID)
     uptonow=eval(ntfs.New_Notifications)
-    uptonow.append(['new_complain_view',c_id,'unseen',request.user.id,str(datetime.datetime.now().strftime('%b. %d, %Y, %I:%M %p'))])
+
+    for lst  in uptonow:
+        if str(lst[0])=='new_complain_view' and str(lst[3])==str(request.user.id) and str(lst[1])==str(c_id):
+            # print(uptonow)
+            return HttpResponse(request.GET.get('complain_id'))
+
+    uptonow.append(['new_complain_view',c_id,'unseen',request.user.id,str(datetime.datetime.now().strftime('%b. %d, %Y, %I:%M %p')),len(up_now)])
     ntfs.New_Notifications=uptonow
     ntfs.save()
     # print(Complain.objects.get(id=c_id).Seen_By)
@@ -578,7 +618,7 @@ def increase_shared_view(request):
     ntfs = Notifications.objects.all()
     for ntf in ntfs:
         uptonow = eval(ntf.New_Notifications)
-        uptonow.append(['new_complain_shared', c_id, 'unseen',request.user.id,str(datetime.datetime.now().strftime('%b. %d, %Y, %I:%M %p'))])
+        uptonow.append(['new_complain_shared', c_id, 'unseen',request.user.id,str(datetime.datetime.now().strftime('%b. %d, %Y, %I:%M %p')),len(up_now)])
         ntf.New_Notifications = uptonow
         ntf.save()
     # print(Complain.objects.get(id=c_id).Seen_By)
@@ -599,12 +639,25 @@ def increase_reported_view(request):
     com.save()
     Complain.refresh_from_db(com)
     ntfs = Notifications.objects.all()
-
+    flg=''
     for ntf in ntfs:
         uptonow = eval(ntf.New_Notifications)
-        uptonow.append(['new_complain_reported', c_id, 'unseen', request.user.id,str(datetime.datetime.now().strftime('%b. %d, %Y, %I:%M %p'))])
-        ntf.New_Notifications = uptonow
-        ntf.save()
+
+        for  indx,lst in enumerate(uptonow):
+            if str(lst[0]) == 'new_complain_reported' and str(lst[3]) == str(request.user.id) and str(lst[1]) == str(c_id):
+                uptonow[indx]=(['new_complain_reported', c_id, 'unseen', request.user.id,
+                                str(datetime.datetime.now().strftime('%b. %d, %Y, %I:%M %p')), lst[5]+1])
+                flg='found'
+        if flg=='found':
+            ntf.New_Notifications = uptonow
+            ntf.save()
+            Notifications.refresh_from_db(ntf)
+        else:
+            uptonow.append(['new_complain_reported', c_id, 'unseen', request.user.id,
+                            str(datetime.datetime.now().strftime('%b. %d, %Y, %I:%M %p')), len(up_now)])
+            ntf.New_Notifications = uptonow
+            ntf.save()
+            Notifications.refresh_from_db(ntf)
     # print(Complain.objects.get(id=c_id).Seen_By)
     return HttpResponse(request.GET.get('complain_id'))
 
