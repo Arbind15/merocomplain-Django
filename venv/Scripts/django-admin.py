@@ -1,4 +1,4 @@
-#!D:\Hackarhon 2020\MeroComplain\venv\Scripts\python.exe
+#!E:\Projects\Python\Django Projects\Hackarhon 2020\MeroComplain\venv\Scripts\python.exe
 from django.core import management
 
 if __name__ == "__main__":

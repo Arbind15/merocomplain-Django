@@ -878,6 +878,7 @@ function Update_Notice_Seen_Status(sta,val,indx) {
 
 
 // window.onload=Count_Unseen_Notifications();
+var Notification_Count=null;
 function Count_Unseen_Notifications() {
   var xhttp = new XMLHttpRequest();
   var url = '/Count_Unseen_Notifications';
@@ -897,6 +898,12 @@ function Count_Unseen_Notifications() {
           notic_num.setAttribute('onclick','ViewNotices()');
           notic_num.innerText=rtxt;
           contr.appendChild(notic_num);
+          // console.log(rtxt);
+          if(Notification_Count!=null & rtxt !=Notification_Count) {
+             Notification_Count=rtxt;
+             Dashboard_Top_Cards('This is New Message.');
+          }
+          Notification_Count=rtxt;
       }
   };
   xhttp.open("GET", url, true);
@@ -905,7 +912,7 @@ function Count_Unseen_Notifications() {
 
 
 //calling function after each 30 secs
-setInterval(Count_Unseen_Notifications,30000);
+setInterval(Count_Unseen_Notifications,300);
 
 
 
@@ -923,42 +930,76 @@ function Report_Complain(complain_id) {
   xhttp.send();
 }
 
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
-// setInterval(Dashboard_Top_Cards,5000);
-var glblint=1;
-function Dashboard_Top_Cards() {
 
+// setInterval(Dashboard_Top_Cards,500);
+var num_flg=1;
+function Dashboard_Top_Cards(message) {
     var cards = document.getElementById('dashboard_top_card');
-    var card1 = document.getElementById('dashboard_top_card_1');
-    var card2 = document.getElementById('dashboard_top_card_2');
-    var card3 = document.getElementById('dashboard_top_card_3');
-    var card4 = document.getElementById('dashboard_top_card_4');
+    var c_ndx;
+    if(num_flg<=4){
+        c_ndx=num_flg;
+        num_flg=num_flg+1;
+    }
+    else {
+        c_ndx=getRandomInt(1,4);
+    }
+    var n_div=document.createElement('div');
+    n_div.id='dashboard_top_card_'+c_ndx;
+    n_div.className='dashboard_top_card_content'
 
-    var div1=document.createElement('div');
-    div1.id='dashboard_top_card_4';
-    div1.className='dashboard_top_card_5'
-    var chngd_card=document.createElement('div');
-    chngd_card.className='card dashboard_top_card_content';
-    var div2=document.createElement('div');
-    div2.className="card-body";
-    div2.innerText='Done'+glblint;
-    glblint=glblint+1;
-    chngd_card.appendChild(div2);
-    div1.appendChild(chngd_card);
-
-    card1.className='dashboard_top_card_1';
-    card2.className='dashboard_top_card_2';
-    card3.className='dashboard_top_card_3';
-    card4.className='dashboard_top_card_4';
+    var div=document.createElement('div');
+    div.className='alert alert-info alert-dismissible fade show';
+    div.setAttribute('role','alert')
+    div.innerText=message;
+    var x_btn=document.createElement('button');
+    x_btn.setAttribute('type','button');
+    x_btn.className='close';
+    x_btn.setAttribute('data-dismiss','alert');
+    x_btn.setAttribute('aria-label','Close');
 
 
-    card1.addEventListener('animationend',function () {
-         card1.remove();
-         card2.id='dashboard_top_card_1';
-         card3.id='dashboard_top_card_2';
-         card4.id='dashboard_top_card_3';
-         cards.appendChild(div1);
-    })
+    var spn=document.createElement('span');
+    spn.setAttribute('aria-hidden','true');
+    spn.innerHTML='&times;';
+
+    x_btn.appendChild(spn);
+    div.appendChild(x_btn);
+    n_div.appendChild(div);
+
+    var rplc=cards.childNodes[c_ndx];
+    console.log(rplc)
+    cards.replaceChild(n_div,rplc);
+    // var div1=document.createElement('div');
+    // div1.id='dashboard_top_card_4';
+    // div1.className='dashboard_top_card_5'
+    // var chngd_card=document.createElement('div');
+    // chngd_card.className='card dashboard_top_card_content';
+    // var div2=document.createElement('div');
+    // div2.className="card-body";
+    // div2.innerText='Done'+glblint;
+    // glblint=glblint+1;
+    // chngd_card.appendChild(div2);
+    // div1.appendChild(chngd_card);
+    //
+    // card1.className='dashboard_top_card_1';
+    // card2.className='dashboard_top_card_2';
+    // card3.className='dashboard_top_card_3';
+    // card4.className='dashboard_top_card_4';
+    //
+    //
+    // card1.addEventListener('animationend',function () {
+    //      card1.remove();
+    //      card2.id='dashboard_top_card_1';
+    //      card3.id='dashboard_top_card_2';
+    //      card4.id='dashboard_top_card_3';
+    //      cards.appendChild(div1);
+    // })
 
     // div1.className='col-xl-3 col-md-6 mb-4 dashboard_top_card_4';
     //
@@ -1102,7 +1143,7 @@ function Update_Data_of_Complain_Chart() {
     i=Math.trunc(i*10);
     if(i<=4){
         Update_Complain_Chart(i,dat);
-        console.log('indx')
+        // console.log('indx')
     }
 
     // var xhttp = new XMLHttpRequest();
