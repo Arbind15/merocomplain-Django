@@ -1,0 +1,121 @@
+<div class="m_new_c">
+
+    <div class="row">
+        <div class="col-sm-12 col-md-3">
+
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+            <div class="card newcomplain">
+                <div class="card-body">
+                    <div class="com-bdy">
+                        <div class="row">
+                            <div class="col-6">
+                                <h3>Profile</h3>
+                            </div>
+                            <div class="col-6">
+                                <img style="width: 100px;height: 100px;border-radius: 5px" src="{{ user.profile.Profile_Picture.url }}">
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="com-bdy">
+                        <div class="row" style="text-align: left!important;">
+                            <div class="col-6">
+                                Document Number/User ID:
+                            </div>
+                            <div class="col-6" >
+                                {{ user.profile.Document_Number }}
+                            </div>
+                        </div>
+                        <div class="row" style="text-align: left!important;">
+                            <div class="col-6">
+                                Full Name:
+                            </div>
+                            <div class="col-6" >
+                                {{ user.get_full_name }}
+                            </div>
+                        </div>
+                        <div class="row" style="text-align: left!important;">
+                            <div class="col-6">
+                                Email:
+                            </div>
+                            <div class="col-6" >
+                                {{ user.email }}
+                            </div>
+                        </div>
+                        <div class="row" style="text-align: left!important;">
+                            <div class="col-6">
+                                Date of Birth:
+                            </div>
+                            <div class="col-6" >
+                                {{ user.profile.Date_of_Birth }}
+                            </div>
+                        </div>
+                        <div class="row" style="text-align: left!important;">
+                            <div class="col-6">
+                                Phone Number:
+                            </div>
+                            <div class="col-6" >
+                                {{ user.profile.Phone_Number }}
+                            </div>
+                        </div>
+                        <div class="row" style="text-align: left!important;">
+                            <div class="col-6">
+                                Address:
+                            </div>
+                            <div class="col-6" >
+                                {{ user.profile.Address }}
+                            </div>
+                        </div>
+                        <br>
+                        <div>
+                                Documents:
+                        </div>
+
+                        <hr>
+
+                        <br>
+                        <div class="row" style="text-align: left!important;">
+                            Front:
+                        </div>
+
+                        <br>
+
+                        <div class="row" style="text-align: left!important;">
+                            <img width="300" height="200" src="{{ user.profile.Document_Front.url }}">
+                        </div>
+
+                        <br>
+                        <div class="row" style="text-align: left!important;">
+                            Rear:
+                        </div>
+                        <br>
+                        <div class="row" style="text-align: left!important;">
+                            <img height="200" width="300" src="{{ user.profile.Document_Rare.url }}">
+                        </div>
+
+
+                        </div>
+                    </div>
+                    <br>
+                    <div class="com-attach">
+                    </div>
+                    <div class="com-attach">
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-3">
+
+        </div>
+    </div>
+
+
+</div>
+
+
+

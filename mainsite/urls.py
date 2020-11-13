@@ -9,6 +9,7 @@ urlpatterns = [
     path('', views.login, name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='mainsite/login.html'), name='logout'),
     path('home/', views.home, name='home'),
+    path('profile/', views.profile, name='profile'),
     path('Count_Unseen_Notifications/', views.Count_Unseen_Notifications, name='Count_Unseen_Notifications'),
     path('Data_Collection_For_Dashboard/', views.Data_Collection_For_Dashboard, name='Data_Collection_For_Dashboard'),
     path('signup/', views.signup, name='signup'),

@@ -48,6 +48,35 @@ function openNavSm() {
 
 }
 
+function Profile(){
+
+      var div=document.getElementById('chng_cnt');
+      div.innerHTML=''
+      div.appendChild(m_s_div);
+
+      document.getElementById('faq').style='';
+      document.getElementById('mycomplain').style='';
+      document.getElementById('dashboard').style='';
+      document.getElementById('report').style='';
+
+      var div=document.getElementById('chng_cnt')
+      // div.innerHTML='<p>Hi from Dashboard</p>';
+
+      var xhttp = new XMLHttpRequest();
+      var url = '/profile';
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          var rtxt = (xhttp.responseText);
+          // console.log(rtxt);
+          div.innerHTML=rtxt;
+          document.getElementById('spinner_con').style.display='none';
+        }
+      };
+      xhttp.open("GET", url, true);
+      xhttp.send();
+
+}
+
 //------------Spinner-------------------------------------------
 
 var m_s_div=document.createElement('div');

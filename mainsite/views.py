@@ -109,6 +109,10 @@ def viewnotices(request):
     # print(m_lst)
     return render(request, 'mainsite/view_notices.html', contex)
 
+def profile(request):
+    contex={'user': request.user}
+    return render(request, 'mainsite/profile.html',contex)
+
 def login(request):
     # print(request)
     if request.method=="POST":
