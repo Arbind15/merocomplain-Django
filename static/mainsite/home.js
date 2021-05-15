@@ -77,6 +77,19 @@ function Profile(){
 
 }
 
+function Logout(){
+
+      var xhttp = new XMLHttpRequest();
+      var url = '/logout';
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          alert("loggedout");
+        }
+      };
+      xhttp.open("GET", url, true);
+      xhttp.send();
+}
+
 //------------Spinner-------------------------------------------
 
 var m_s_div=document.createElement('div');
